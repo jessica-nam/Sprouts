@@ -11,7 +11,7 @@ public class CharacterController2D : MonoBehaviour
     SpriteRenderer spriteRenderer;
     Vector2 motionVector;
 
-    [SerializeField] float speed = 5f;
+    [SerializeField] float speed;
     
 
     // Start is called before the first frame update
@@ -39,13 +39,13 @@ public class CharacterController2D : MonoBehaviour
         if ((Input.GetKey("d") || Input.GetKey("right")))
         {
                 //check if player grounded functionality?
-                rigidbody2d.velocity = new Vector2(1.5f, rigidbody2d.velocity.y);
+                rigidbody2d.velocity = new Vector2(5.0f, rigidbody2d.velocity.y);
                 animator.Play("PlayerWalk");
                 spriteRenderer.flipX = false;
         }
         else if ((Input.GetKey("a") || Input.GetKey("left")))
         {
-                rigidbody2d.velocity = new Vector2(-1.5f, rigidbody2d.velocity.y);
+                rigidbody2d.velocity = new Vector2(-5.0f, rigidbody2d.velocity.y);
                 animator.Play("PlayerWalk");
                 spriteRenderer.flipX = true;
         }
