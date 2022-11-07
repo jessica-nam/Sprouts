@@ -11,7 +11,7 @@ public class CharacterController2D : MonoBehaviour
     SpriteRenderer spriteRenderer;
     Vector2 motionVector;
 
-    [SerializeField] float speed = 2f;
+    [SerializeField] float speed = 5f;
     
 
     // Start is called before the first frame update
@@ -35,7 +35,7 @@ public class CharacterController2D : MonoBehaviour
 
     private void Move(){
         rigidbody2d.velocity = motionVector * speed;
-
+        
         if ((Input.GetKey("d") || Input.GetKey("right")))
         {
                 //check if player grounded functionality?
