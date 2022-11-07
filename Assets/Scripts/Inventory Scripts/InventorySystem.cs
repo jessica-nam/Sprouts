@@ -23,7 +23,7 @@ public class InventorySystem
             inventorySlots.Add(new InventorySlot());
         }
     }
-
+    //l
     public bool AddToInventory(ShopItemSO itemToAdd, int amountToAdd)
     {
         // currently can't stack inventory because I can't figure out the "ContainsItem" method
