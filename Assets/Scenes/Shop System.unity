@@ -1313,7 +1313,6 @@ GameObject:
   - component: {fileID: 624449735}
   - component: {fileID: 624449734}
   - component: {fileID: 624449736}
-  - component: {fileID: 624449737}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1365,50 +1364,6 @@ MonoBehaviour:
     inventorySlots:
     - itemData: {fileID: 0}
       stackSize: 10
---- !u!114 &624449737
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 624449733}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bb1c188ef830714aa2b85a84d90bb2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coins: 100
-  coinUI: {fileID: 2133955359}
-  shopItemsSO:
-  - {fileID: 11400000, guid: 1daeb7ab64ebe3f4386d1ae353c5d770, type: 2}
-  - {fileID: 11400000, guid: f4fc64a33a03a694b876a9dd40e6d4b9, type: 2}
-  - {fileID: 11400000, guid: 234e34a25690c414bba57156ab9aab61, type: 2}
-  - {fileID: 11400000, guid: 5657257c028ad224e8d8c223eddea788, type: 2}
-  - {fileID: 11400000, guid: 4c8529186b53be6439909a07bb8a3e48, type: 2}
-  - {fileID: 11400000, guid: 22a030297b6691248872a978539fc866, type: 2}
-  shopPanelsGO:
-  - {fileID: 1507104776}
-  - {fileID: 1137512417}
-  - {fileID: 1604997376}
-  - {fileID: 854637276}
-  - {fileID: 255356243}
-  - {fileID: 1382909063}
-  shopPanels:
-  - {fileID: 1746831553}
-  - {fileID: 1594093400}
-  - {fileID: 1604997379}
-  - {fileID: 854637279}
-  - {fileID: 2105464039}
-  - {fileID: 1382909066}
-  myPurchaseBtns:
-  - {fileID: 889808441}
-  - {fileID: 1672013601}
-  - {fileID: 196171179}
-  - {fileID: 245464911}
-  - {fileID: 828370791}
-  - {fileID: 156778006}
-  PlayerMgr: {fileID: 624449734}
-  InvSlotUIMgr: {fileID: 1213010856}
 --- !u!1001 &636084911
 PrefabInstance:
   m_ObjectHideFlags: 0

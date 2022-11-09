@@ -28,19 +28,17 @@ public class InventorySystem
     {
         // currently can't stack inventory because I can't figure out the "ContainsItem" method
 
-
         // check whether item exists in inventory
-        //if (ContainsItem(itemToAdd, out List<InventorySlot> invSlot))
-        //{
-        //    Debug.Log("contains item = " + itemToAdd);
-        //    // add to already existing stack of that item
-        //    foreach (var slot in invSlot)
-        //    {
-        //        slot.AddToStack(amountToAdd);
-        //        OnInventorySlotChanged.Invoke(slot);
-        //    }
-        //    return true;
-        //}
+        if (ContainsItem(itemToAdd, out List<InventorySlot> invSlot))
+        {
+            // add to already existing stack of that item
+            foreach (var slot in invSlot)
+            {
+                slot.AddToStack(amountToAdd);
+                OnInventorySlotChanged.Invoke(slot);
+            }
+            return true;
+        }
 
         // gets first available slot
         if (HasFreeSlot(out InventorySlot freeSlot))
@@ -58,10 +56,14 @@ public class InventorySystem
 
     public bool ContainsItem(ShopItemSO itemToAdd, out List<InventorySlot> invSlot)
     {
-        // fill inventory slots
-        invSlot = InventorySlots.Where(i => i.ItemData == itemToAdd).ToList();
+        // Filters sequence of values based on a predicate (bool-valued function)
 
-        return invSlot == null ? false : true;
+
+        // get item in slot list where its itemData equal to itemToAdd
+        invSlot = InventorySlots.Where(i => i.ItemData == itemToAdd).ToList();
+    
+        // if there is no slot that contains same itemData as itemToAdd, return false
+        return invSlot.Count == 0 ? false : true;
     }
 
     public bool HasFreeSlot(out InventorySlot freeSlot)

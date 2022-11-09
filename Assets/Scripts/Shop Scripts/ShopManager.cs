@@ -28,36 +28,37 @@ public class ShopManager : MonoBehaviour
         CheckPurchaseable();
     }
 
-    public void AddCoins()
-    {
-        coins++;
-        coinUI.text = "Coins: " + coins.ToString();
-        CheckPurchaseable();
-    }
+    //public void AddCoins()
+    //{
+    //    coins++;
+    //    coinUI.text = "Coins: " + coins.ToString();
+    //    CheckPurchaseable();
+    //}
 
+    // turns buttons off if not enough money to purchase item
     public void CheckPurchaseable()
     {
         for (int i = 0; i < shopItemsSO.Length; i++)
         {
-            if (coins >= shopItemsSO[i].baseCost) //if i have enough money.
+            if (coins >= shopItemsSO[i].baseCost) //if i have enough money
                 myPurchaseBtns[i].interactable = true;
             else
                 myPurchaseBtns[i].interactable = false;
         }
     }
 
+    // run when "purchase" bttns pressed
     public void PurchaseItem(int btnNum)
     {
         if (coins >= shopItemsSO[btnNum].baseCost)
         {
+            // update coin value
             coins = coins - shopItemsSO[btnNum].baseCost;
             coinUI.text = "Coins: " + coins.ToString();
 
-            // add to inventory
-            var inventory = PlayerMgr.GetComponent<InventoryHolder>();
-            inventory.InventorySystem.AddToInventory(shopItemsSO[btnNum], 1);
-            InvSlotUIMgr.UpdateUISlot();
-
+            // add to player inventory
+            var inventory = PlayerMgr.GetComponent<InventoryHolder>(); // get player inventory
+            inventory.InventorySystem.AddToInventory(shopItemsSO[btnNum], 1); // add item to it
 
             CheckPurchaseable();
         }

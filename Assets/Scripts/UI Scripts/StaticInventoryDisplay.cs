@@ -18,6 +18,7 @@ public class StaticInventoryDisplay : InventoryDisplay
         }
         else Debug.LogWarning($"No inventory assigned to {this.gameObject}");
 
+        // initialize -- assign slots and slot UI
         AssignSlot(inventorySystem);
     }
 
