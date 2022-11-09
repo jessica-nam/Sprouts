@@ -13,9 +13,15 @@ public class ShopManager : MonoBehaviour
     public ShopTemplate[] shopPanels;
     public Button[] myPurchaseBtns;
 
-   // public InventorySystem InvSysMgr;
-    public Player PlayerMgr;
-    public InventorySlot_UI InvSlotUIMgr;
+    GameObject SavedObjs; 
+    public GameObject Player;
+
+    private void Awake()
+    {
+        //Debug.Log(SavedObjs.gameObject.transform.Find("Player").gameObject.name);
+        SavedObjs = SaveObject.savedObjs;
+        Player = SavedObjs.gameObject.transform.Find("Player").gameObject;
+    }
 
     void Start()
     {
@@ -57,7 +63,7 @@ public class ShopManager : MonoBehaviour
             coinUI.text = "Coins: " + coins.ToString();
 
             // add to player inventory
-            var inventory = PlayerMgr.GetComponent<InventoryHolder>(); // get player inventory
+            var inventory = Player.GetComponent<InventoryHolder>(); // get player inventory
             inventory.InventorySystem.AddToInventory(shopItemsSO[btnNum], 1); // add item to it
 
             CheckPurchaseable();

@@ -12,7 +12,7 @@ public class TileManager : MonoBehaviour
     {
         foreach(var position in interactableMap.cellBounds.allPositionsWithin){
             interactableMap.SetTile(position, hiddenInteractableTile);
-            print("Changed");
+           // print("Changed");
         }
     }
 

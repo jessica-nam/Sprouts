@@ -56,8 +56,7 @@ public class InventorySystem
 
     public bool ContainsItem(ShopItemSO itemToAdd, out List<InventorySlot> invSlot)
     {
-        // Filters sequence of values based on a predicate (bool-valued function)
-
+        // Where Filters sequence of values based on a predicate (bool-valued function)
 
         // get item in slot list where its itemData equal to itemToAdd
         invSlot = InventorySlots.Where(i => i.ItemData == itemToAdd).ToList();
@@ -68,7 +67,7 @@ public class InventorySystem
 
     public bool HasFreeSlot(out InventorySlot freeSlot)
     {
-        // get first element in inventory where itemData is null
+        // get first element in inventory where there is no item
         freeSlot = InventorySlots.FirstOrDefault(i => i.ItemData == null);
         return freeSlot == null ? false : true;
     }
