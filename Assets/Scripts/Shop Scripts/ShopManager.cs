@@ -6,21 +6,25 @@ using TMPro;
 
 public class ShopManager : MonoBehaviour
 {
-    public int coins = 100;
-    public TMP_Text coinUI;
+    
     public ShopItemSO[] shopItemsSO;
     public GameObject[] shopPanelsGO;
     public ShopTemplate[] shopPanels;
     public Button[] myPurchaseBtns;
 
     GameObject SavedObjs; 
-    public GameObject Player;
+    private GameObject invHolder;
+    private CoinMgr coinMgr;
+  //  CoinMgr cm;
 
     private void Awake()
     {
         //Debug.Log(SavedObjs.gameObject.transform.Find("Player").gameObject.name);
         SavedObjs = SaveObject.savedObjs;
-        Player = SavedObjs.gameObject.transform.Find("Player").gameObject;
+        invHolder = SavedObjs.gameObject.transform.Find("Inventory Holder").gameObject;
+        coinMgr = SavedObjs.gameObject.transform.Find("Coin UI").gameObject.GetComponent<CoinMgr>();// GetComponent<TMP_Text>();
+       // cm = coinMgr.GetComponent<CoinMgr>();
+        //coins = coins
     }
 
     void Start()
@@ -29,7 +33,8 @@ public class ShopManager : MonoBehaviour
         {
             shopPanelsGO[i].SetActive(true);
         }
-        coinUI.text = "Coins: " + coins.ToString();
+        coinMgr.coinUI.text = "Coins: " + coinMgr.coins.ToString();
+        //coins.transform = coins;
         LoadPanels();
         CheckPurchaseable();
     }
@@ -46,7 +51,7 @@ public class ShopManager : MonoBehaviour
     {
         for (int i = 0; i < shopItemsSO.Length; i++)
         {
-            if (coins >= shopItemsSO[i].baseCost) //if i have enough money
+            if (coinMgr.coins >= shopItemsSO[i].baseCost) //if i have enough money
                 myPurchaseBtns[i].interactable = true;
             else
                 myPurchaseBtns[i].interactable = false;
@@ -56,14 +61,14 @@ public class ShopManager : MonoBehaviour
     // run when "purchase" bttns pressed
     public void PurchaseItem(int btnNum)
     {
-        if (coins >= shopItemsSO[btnNum].baseCost)
+        if (coinMgr.coins >= shopItemsSO[btnNum].baseCost)
         {
             // update coin value
-            coins = coins - shopItemsSO[btnNum].baseCost;
-            coinUI.text = "Coins: " + coins.ToString();
+            coinMgr.coins = coinMgr.coins - shopItemsSO[btnNum].baseCost;
+            coinMgr.coinUI.text = "Coins: " + coinMgr.coins.ToString();
 
             // add to player inventory
-            var inventory = Player.GetComponent<InventoryHolder>(); // get player inventory
+            var inventory = invHolder.GetComponent<InventoryHolder>(); // get player inventory
             inventory.InventorySystem.AddToInventory(shopItemsSO[btnNum], 1); // add item to it
 
             CheckPurchaseable();

@@ -18,5 +18,8 @@ public class SaveObject : MonoBehaviour
         instance = this;
         savedObjs = this.gameObject;
         DontDestroyOnLoad(this.gameObject);
+        coins = 100;
     }
+
+    public int coins { get; set; }
 }

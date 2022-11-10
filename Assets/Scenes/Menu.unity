@@ -134,8 +134,9 @@ GameObject:
   - component: {fileID: 1866240}
   - component: {fileID: 1866239}
   - component: {fileID: 1866238}
+  - component: {fileID: 1866241}
   m_Layer: 5
-  m_Name: Coin UI Txt
+  m_Name: Coin UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -258,6 +259,20 @@ RectTransform:
   m_AnchoredPosition: {x: -196, y: -100}
   m_SizeDelta: {x: 342.829, y: 110.5577}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1866241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1866237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79bbe78bdf5e45945b622a4a26f4f5fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coins: 100
+  coinUI: {fileID: 1866238}
 --- !u!1 &35660638
 GameObject:
   m_ObjectHideFlags: 0
@@ -1148,7 +1163,7 @@ GameObject:
   - component: {fileID: 910737100}
   - component: {fileID: 910737099}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Inventory Holder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
