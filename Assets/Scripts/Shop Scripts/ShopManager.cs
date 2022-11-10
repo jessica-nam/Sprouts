@@ -33,8 +33,6 @@ public class ShopManager : MonoBehaviour
         {
             shopPanelsGO[i].SetActive(true);
         }
-        coinMgr.coinUI.text = "Coins: " + coinMgr.coins.ToString();
-        //coins.transform = coins;
         LoadPanels();
         CheckPurchaseable();
     }
@@ -65,7 +63,7 @@ public class ShopManager : MonoBehaviour
         {
             // update coin value
             coinMgr.coins = coinMgr.coins - shopItemsSO[btnNum].baseCost;
-            coinMgr.coinUI.text = "Coins: " + coinMgr.coins.ToString();
+            coinMgr.UpdateCoinUI();
 
             // add to player inventory
             var inventory = invHolder.GetComponent<InventoryHolder>(); // get player inventory
