@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ShopSlot : ItemSlot
 {
-    public ShopSlot()
-    {
-        ClearSlot();
-    }
+    //public ShopSlot()
+    //{
+    //    ClearSlot();
+    //}
 }

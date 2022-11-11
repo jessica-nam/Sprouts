@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public abstract class InventoryDisplay : MonoBehaviour
 {
-    //[SerializeField] MouseItemData mouseInventoryItem;
+    [SerializeField] MouseItemData mouseInventoryItem;
 
     protected InventorySystem inventorySystem;
     protected Dictionary<InventorySlot_UI, InventorySlot> slotDictionary;
@@ -16,7 +16,7 @@ public abstract class InventoryDisplay : MonoBehaviour
 
     protected virtual void Start()
     {
-
+       // must keep for abstract class
     }
 
     public abstract void AssignSlot(InventorySystem invToDisplay); // need to know which system slots correspond to UI slots
@@ -33,8 +33,21 @@ public abstract class InventoryDisplay : MonoBehaviour
         }
     }
 
-    public void SlotClicked(InventorySlot_UI clickedSlot)
+    public void SlotClicked(InventorySlot_UI clickedUISlot)
     {
-        Debug.Log("slot clicked");
+        // clicked slot has an item, mouse doesn't have item -- pick up item
+
+        // clicked slot doesn't have item, mouse does -- place mouse item into empty slot
+        if(clickedUISlot.AssignedInvSlot.ItemData != null && mouseInventoryItem.AssignedInvSlot.ItemData == null)
+        {
+            mouseInventoryItem.UpdateMouseSlot(clickedUISlot.AssignedInvSlot);
+            clickedUISlot.ClearSlot();
+            return;
+        }
+
+        // both slots have item 
+            // If items same -- combine stack
+            // If not -- swap them
+
     }
 }
