@@ -4,12 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class MouseItemData : MonoBehaviour
 {
     public Image itemSprite;
     public TextMeshProUGUI itemCount;
     public InventorySlot AssignedInvSlot;
+    public bool hasItem = false;
 
     private void Awake()
     {
@@ -35,7 +37,21 @@ public class MouseItemData : MonoBehaviour
         if(AssignedInvSlot.ItemData != null) // if mouse has item on it
         {
             transform.position = Mouse.current.position.ReadValue(); // follow mouse 
+            hasItem = true;
         }
+        else
+        {
+            hasItem = false;
+        }
+    }
+
+    public List<RaycastResult> getObjectsClickedOn()
+    {
+        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+        eventDataCurrentPosition.position = Mouse.current.position.ReadValue();
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+        return results;
     }
 
     public void ClearSlot()

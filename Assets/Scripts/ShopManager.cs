@@ -3,28 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class ShopManager : MonoBehaviour
 {
-    
     public ShopItemSO[] shopItemsSO;
     public GameObject[] shopPanelsGO;
     public ShopTemplate[] shopPanels;
-    public Button[] myPurchaseBtns;
+    public Button[] purchaseBtns;
+    public GameObject sellTemplate;
 
     GameObject SavedObjs; 
     private GameObject invHolder;
     private CoinMgr coinMgr;
-  //  CoinMgr cm;
+    private MouseItemData mouseObj;
+
+    Transform childFound = null;
 
     private void Awake()
     {
-        //Debug.Log(SavedObjs.gameObject.transform.Find("Player").gameObject.name);
-        SavedObjs = SaveObject.savedObjs;
+        // instantiate saved objects
+        SavedObjs = SaveObject.savedObjs; 
+
         invHolder = SavedObjs.gameObject.transform.Find("Inventory Holder").gameObject;
-        coinMgr = SavedObjs.gameObject.transform.Find("Coin UI").gameObject.GetComponent<CoinMgr>();// GetComponent<TMP_Text>();
-       // cm = coinMgr.GetComponent<CoinMgr>();
-        //coins = coins
+        coinMgr = SavedObjs.gameObject.transform.Find("Coin UI").gameObject.GetComponent<CoinMgr>();
+        mouseObj = SavedObjs.gameObject.transform.Find("Mouse Object").gameObject.GetComponent<MouseItemData>();
     }
 
     void Start()
@@ -36,6 +39,61 @@ public class ShopManager : MonoBehaviour
         LoadPanels();
         CheckPurchaseable();
     }
+
+    private void Update()
+    {
+        CheckIfSelling();
+    }
+
+    public void CheckIfSelling()
+    {
+        var results = mouseObj.getObjectsClickedOn();
+        foreach (var result in results)
+        {
+            if (result.gameObject.name == "Shop" && mouseObj.hasItem && Mouse.current.leftButton.wasPressedThisFrame) // if item on mouse and player clicks
+            {
+                Debug.Log("in shop");
+                DisplayItemsToSell();
+            }
+        }
+    }
+
+    public void DisplayItemsToSell()
+    {
+        Transform parentTransform = CustomFindChild("Sell Contents", this.transform); // get correct parent obj
+        if (parentTransform)
+        {
+            GameObject sellItemDisplay = Instantiate(sellTemplate, parentTransform); // instantiate new templates as children of that obj
+        }
+        else
+        {
+            Debug.Log("Error: Cannot find object 'Sell Contents'. Did you rename it?");
+        }
+    }
+
+    Transform CustomFindChild(string key, Transform parent)
+    {
+        // search through object tree for given object name
+        foreach (Transform child in parent)
+        {
+            if (child.name == key)
+            {
+                childFound = child;
+            }
+            else
+            {
+                if (child.childCount > 0)
+                {
+                    if (childFound == null)
+                    {
+                        CustomFindChild(key, child);
+                    }
+                }
+            }
+        }
+        return childFound;
+    }
+
 
     //public void AddCoins()
     //{
@@ -50,9 +108,9 @@ public class ShopManager : MonoBehaviour
         for (int i = 0; i < shopItemsSO.Length; i++)
         {
             if (coinMgr.coins >= shopItemsSO[i].baseCost) //if i have enough money
-                myPurchaseBtns[i].interactable = true;
+                purchaseBtns[i].interactable = true;
             else
-                myPurchaseBtns[i].interactable = false;
+                purchaseBtns[i].interactable = false;
         }
     }
 
