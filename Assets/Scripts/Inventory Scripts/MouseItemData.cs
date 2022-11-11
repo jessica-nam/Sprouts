@@ -32,4 +32,12 @@ public class MouseItemData : MonoBehaviour
             transform.position = Mouse.current.position.ReadValue(); // follow mouse 
         }
     }
+
+    public void ClearSlot()
+    {
+        AssignedInvSlot.ClearSlot();
+        itemCount.text = "";
+        itemSprite.color = Color.clear;
+        itemSprite.sprite = null;
+    }
 }

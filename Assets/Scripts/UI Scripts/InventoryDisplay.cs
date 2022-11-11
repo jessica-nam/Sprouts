@@ -36,18 +36,25 @@ public abstract class InventoryDisplay : MonoBehaviour
     public void SlotClicked(InventorySlot_UI clickedUISlot)
     {
         // clicked slot has an item, mouse doesn't have item -- pick up item
-
-        // clicked slot doesn't have item, mouse does -- place mouse item into empty slot
-        if(clickedUISlot.AssignedInvSlot.ItemData != null && mouseInventoryItem.AssignedInvSlot.ItemData == null)
+        if (clickedUISlot.AssignedInvSlot.ItemData != null && mouseInventoryItem.AssignedInvSlot.ItemData == null)
         {
             mouseInventoryItem.UpdateMouseSlot(clickedUISlot.AssignedInvSlot);
             clickedUISlot.ClearSlot();
             return;
         }
 
+        // clicked slot doesn't have item, mouse does -- place mouse item into empty slot
+        if (clickedUISlot.AssignedInvSlot.ItemData == null && mouseInventoryItem.AssignedInvSlot.ItemData != null)
+        {
+            clickedUISlot.AssignedInvSlot.AssignItem(mouseInventoryItem.AssignedInvSlot);
+            clickedUISlot.UpdateUISlot();
+
+            mouseInventoryItem.ClearSlot();
+        }
+
         // both slots have item 
-            // If items same -- combine stack
-            // If not -- swap them
+        // If items same -- combine stack
+        // If not -- swap them
 
     }
 }
