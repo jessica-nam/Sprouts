@@ -53,8 +53,35 @@ public abstract class InventoryDisplay : MonoBehaviour
         }
 
         // both slots have item 
-        // If items same -- combine stack
-        // If not -- swap them
+        if (clickedUISlot.AssignedInvSlot.ItemData != null && mouseInventoryItem.AssignedInvSlot.ItemData != null)
+        {
+            // If items same -- combine stack
+            if (clickedUISlot.AssignedInvSlot.ItemData == mouseInventoryItem.AssignedInvSlot.ItemData)
+            {
+                clickedUISlot.AssignedInvSlot.AssignItem(mouseInventoryItem.AssignedInvSlot); // add to stack
+                clickedUISlot.UpdateUISlot();
+                mouseInventoryItem.ClearSlot();
+            }
 
+            // If not -- swap them
+            else
+            {
+                SwapSlots(clickedUISlot);
+            }
+        }
+
+    }
+
+    private void SwapSlots(InventorySlot_UI clickedUISlot)
+    {
+        var clonedSlot = new InventorySlot(mouseInventoryItem.AssignedInvSlot.ItemData, mouseInventoryItem.AssignedInvSlot.StackSize); // temp slot containing mouse item
+        mouseInventoryItem.ClearSlot(); // clear mouse
+
+        mouseInventoryItem.UpdateMouseSlot(clickedUISlot.AssignedInvSlot); // mouse now has item from slot
+
+        clickedUISlot.ClearSlot(); // clear slot (now mouse has item)
+
+        clickedUISlot.AssignedInvSlot.AssignItem(clonedSlot); // get new slot item from temp
+        clickedUISlot.UpdateUISlot(); 
     }
 }
