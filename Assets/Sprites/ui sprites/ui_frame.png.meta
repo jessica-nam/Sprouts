@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: df52b290db8b389428b835ffa00daec3
+guid: f90b63f9d74fefb4dbef888eb295345d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -49,7 +49,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 120, y: 30, z: 1625, w: 30}
+  spriteBorder: {x: 30, y: 30, z: 40, w: 30}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -119,22 +119,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: toolbar 1_0
+      name: ui_frame_0
       rect:
         serializedVersion: 2
-        x: 120
+        x: 30
         y: 30
         width: 260
         height: 270
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2c62757948860164e85f7997fab3a8cf
-      internalID: -1703444985
+      spriteID: 83681b9cb42115843816307f117ecbf6
+      internalID: -1272081163
       vertices: []
       indices: 
       edges: []
@@ -150,7 +150,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      toolbar 1_0: -1703444985
+      ui_frame_0: -1272081163
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 
