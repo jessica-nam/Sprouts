@@ -11,6 +11,9 @@ public class TileManager : MonoBehaviour
     void Start()
     {
         foreach(var position in interactableMap.cellBounds.allPositionsWithin){
+            Debug.Log("Tilemap interactable");
+            Debug.Log(position);
+
             interactableMap.SetTile(position, hiddenInteractableTile);
            // print("Changed");
         }

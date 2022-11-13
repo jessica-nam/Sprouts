@@ -5,16 +5,23 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
+using UnityEngine.Tilemaps;
 
 public class MouseItemData : MonoBehaviour
 {
+
+    public static MouseItemData instance;
+
     public Image itemSprite;
     public TextMeshProUGUI itemCount;
     public InventorySlot AssignedInvSlot;
     public bool hasItem = false;
 
+    [SerializeField] private Tilemap interactableMap;
+
     private void Awake()
     {
+        instance = this;
         itemSprite.color = Color.clear;
         itemCount.text = "";
     }
@@ -43,16 +50,25 @@ public class MouseItemData : MonoBehaviour
         {
             hasItem = false;
         }
+        if(Plant.instance.BabyPlanted){
+            ClearSlot();
+        }
+        
     }
 
     public List<RaycastResult> getObjectsClickedOn()
     {
         PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
         eventDataCurrentPosition.position = Mouse.current.position.ReadValue();
+        Debug.Log(eventDataCurrentPosition);
         List<RaycastResult> results = new List<RaycastResult>();
         EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+        
+    
         return results;
     }
+
+   
 
     public void ClearSlot()
     {
@@ -66,4 +82,6 @@ public class MouseItemData : MonoBehaviour
     {
         return AssignedInvSlot;
     }
+
+    
 }
