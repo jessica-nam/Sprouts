@@ -52,6 +52,7 @@ public class MouseItemData : MonoBehaviour
         }
         if(Plant.instance.BabyPlanted){
             ClearSlot();
+            Plant.instance.BabyPlanted = false;
         }
         
     }
