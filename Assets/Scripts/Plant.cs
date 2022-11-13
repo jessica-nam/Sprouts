@@ -9,7 +9,7 @@ public class Plant : MonoBehaviour
     public static Plant instance;
 
     [SerializeField] private Tilemap interactableMap;
-    [SerializeField] private Tile LeafBabyTile;
+    [SerializeField] private Tile baby1;
 
     public bool BabyPlanted = false;
 
@@ -19,12 +19,18 @@ public class Plant : MonoBehaviour
 
     }
 
+    void Update(){
+
+    }
+
     public void PlantBaby(){
         Debug.Log(MouseItemData.instance.hasItem);
         if(MouseItemData.instance.hasItem){
-            interactableMap.SetTile(new Vector3Int(-5, -6, 0), LeafBabyTile);
-            Debug.Log("Plant");
-            BabyPlanted = true;
+            if(InventoryDisplay.instance.babyName == "Baby 1"){
+                interactableMap.SetTile(new Vector3Int(-5, -6, 0), baby1);
+                Debug.Log("Plant");
+                BabyPlanted = true;
+            }
         }
     }
 }

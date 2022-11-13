@@ -771,7 +771,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactableMap: {fileID: 2086388156}
-  LeafBabyTile: {fileID: 11400000, guid: ad3842d92f200c7429be522409ef6629, type: 2}
+  baby1: {fileID: 11400000, guid: d23a096909b4c0d4680d63210343b1a2, type: 2}
+  BabyPlanted: 0
 --- !u!1 &1215892989
 GameObject:
   m_ObjectHideFlags: 0

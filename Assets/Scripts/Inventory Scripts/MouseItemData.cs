@@ -17,7 +17,6 @@ public class MouseItemData : MonoBehaviour
     public InventorySlot AssignedInvSlot;
     public bool hasItem = false;
 
-    [SerializeField] private Tilemap interactableMap;
 
     private void Awake()
     {
@@ -49,10 +48,6 @@ public class MouseItemData : MonoBehaviour
         else
         {
             hasItem = false;
-        }
-        if(Plant.instance.BabyPlanted){
-            ClearSlot();
-            Plant.instance.BabyPlanted = false;
         }
         
     }
