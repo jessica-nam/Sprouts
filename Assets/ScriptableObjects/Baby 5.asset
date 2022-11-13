@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eac48673ca37723488fab3b80c2caf88, type: 3}
   m_Name: Baby 5
   m_EditorClassIdentifier: 
-  title: Baby 5
+  title: Seed Bag 5
   description: Description
   cost: 50
-  icon: {fileID: 21300000, guid: 920da61c31ad53043bf03858e5a0b632, type: 3}
+  icon: {fileID: 21300000, guid: 10770bea83696ed46bb9aaad366199e7, type: 3}
