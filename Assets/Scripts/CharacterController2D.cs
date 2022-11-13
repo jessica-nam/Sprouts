@@ -9,7 +9,6 @@ public class CharacterController2D : MonoBehaviour
     Rigidbody2D rigidbody2d;
     Animator animator;
     SpriteRenderer spriteRenderer;
-    Vector2 motionVector;
 
     [SerializeField] float speed;
     
@@ -22,11 +21,6 @@ public class CharacterController2D : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
-    private void Update()
-    {
-        motionVector = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-    }
 
     void FixedUpdate()
     {
@@ -34,7 +28,6 @@ public class CharacterController2D : MonoBehaviour
     }
 
     private void Move(){
-        rigidbody2d.velocity = motionVector * speed;
         
         if ((Input.GetKey("d") || Input.GetKey("right")))
         {

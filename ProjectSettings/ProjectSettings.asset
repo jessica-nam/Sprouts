@@ -763,7 +763,10 @@ PlayerSettings:
   XboxOneOverrideIdentityName: 
   XboxOneOverrideIdentityPublisher: 
   vrEditorSettings: {}
-  cloudServicesEnabled: {}
+  cloudServicesEnabled:
+    Collab: 0
+    Purchasing: 0
+    Unity Ads: 0
   luminIcon:
     m_Name: 
     m_ModelFolderPath: 
@@ -777,11 +780,11 @@ PlayerSettings:
     m_VersionName: 
   apiCompatibilityLevel: 6
   activeInputHandler: 2
-  cloudProjectId: 
+  cloudProjectId: 33d068a9-a36d-41b0-941c-c282ebcd7728
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: 
-  organizationId: 
+  projectName: Baby farmer (mine)
+  organizationId: jfliegler
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   playerDataPath: 

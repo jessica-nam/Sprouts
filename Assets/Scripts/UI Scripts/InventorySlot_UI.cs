@@ -1,12 +1,15 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 public class InventorySlot_UI : MonoBehaviour
 {
     [SerializeField] private Image itemSprite;
     [SerializeField] private TextMeshProUGUI itemCount;
     [SerializeField] private InventorySlot assignedInvSlot;
+
 
     private Button button;
 
@@ -21,6 +24,7 @@ public class InventorySlot_UI : MonoBehaviour
         button?.onClick.AddListener(OnUISlotClick); // if null
 
         ParentDisplay = transform.parent.GetComponent<InventoryDisplay>();
+
     }
 
     public void Init(InventorySlot slot)
@@ -67,4 +71,7 @@ public class InventorySlot_UI : MonoBehaviour
         // access display class function
         ParentDisplay?.SlotClicked(this);
     }
+
+    
+
 }

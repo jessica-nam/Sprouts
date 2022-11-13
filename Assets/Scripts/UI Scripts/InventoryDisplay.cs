@@ -5,7 +5,11 @@ using UnityEngine.InputSystem;
 
 public abstract class InventoryDisplay : MonoBehaviour
 {
+
+    public static InventoryDisplay instance;
     [SerializeField] MouseItemData mouseInventoryItem;
+
+    public string babyName;
 
     protected InventorySystem inventorySystem;
     protected Dictionary<InventorySlot_UI, InventorySlot> slotDictionary;
@@ -16,7 +20,20 @@ public abstract class InventoryDisplay : MonoBehaviour
 
     protected virtual void Start()
     {
+       // must keep for abstract class
+    }
 
+    private void Awake()
+    {
+        instance = this;
+
+    }
+
+    void Update(){
+        if(Plant.instance.BabyPlanted==true){
+            MouseItemData.instance.ClearSlot();
+            Plant.instance.BabyPlanted = false;
+        }
     }
 
     public abstract void AssignSlot(InventorySystem invToDisplay); // need to know which system slots correspond to UI slots
@@ -33,8 +50,57 @@ public abstract class InventoryDisplay : MonoBehaviour
         }
     }
 
-    public void SlotClicked(InventorySlot_UI clickedSlot)
+    public void SlotClicked(InventorySlot_UI clickedUISlot)
     {
-        Debug.Log("slot clicked");
+        // clicked slot has an item, mouse doesn't have item -- pick up item
+        if (clickedUISlot.AssignedInvSlot.ItemData != null && mouseInventoryItem.AssignedInvSlot.ItemData == null)
+        {
+            Debug.Log(mouseInventoryItem.AssignedInvSlot.ItemData);
+            mouseInventoryItem.UpdateMouseSlot(clickedUISlot.AssignedInvSlot);
+            babyName = mouseInventoryItem.AssignedInvSlot.ItemData.name;
+            clickedUISlot.ClearSlot();
+            return;
+        }
+
+        // clicked slot doesn't have item, mouse does -- place mouse item into empty slot
+        if (clickedUISlot.AssignedInvSlot.ItemData == null && mouseInventoryItem.AssignedInvSlot.ItemData != null)
+        {
+            clickedUISlot.AssignedInvSlot.AssignItem(mouseInventoryItem.AssignedInvSlot);
+            clickedUISlot.UpdateUISlot();
+
+            mouseInventoryItem.ClearSlot();
+        }
+
+        // both slots have item 
+        if (clickedUISlot.AssignedInvSlot.ItemData != null && mouseInventoryItem.AssignedInvSlot.ItemData != null)
+        {
+            // If items same -- combine stack
+            if (clickedUISlot.AssignedInvSlot.ItemData == mouseInventoryItem.AssignedInvSlot.ItemData)
+            {
+                clickedUISlot.AssignedInvSlot.AssignItem(mouseInventoryItem.AssignedInvSlot); // add to stack
+                clickedUISlot.UpdateUISlot();
+                mouseInventoryItem.ClearSlot();
+            }
+
+            // If not -- swap them
+            else
+            {
+                SwapSlots(clickedUISlot);
+            }
+        }
+
+    }
+
+    private void SwapSlots(InventorySlot_UI clickedUISlot)
+    {
+        var clonedSlot = new InventorySlot(mouseInventoryItem.AssignedInvSlot.ItemData, mouseInventoryItem.AssignedInvSlot.StackSize); // temp slot containing mouse item
+        mouseInventoryItem.ClearSlot(); // clear mouse
+
+        mouseInventoryItem.UpdateMouseSlot(clickedUISlot.AssignedInvSlot); // mouse now has item from slot
+
+        clickedUISlot.ClearSlot(); // clear slot (now mouse has item)
+
+        clickedUISlot.AssignedInvSlot.AssignItem(clonedSlot); // get new slot item from temp
+        clickedUISlot.UpdateUISlot(); 
     }
 }
