@@ -18,6 +18,10 @@ public class ShopManager : MonoBehaviour
     private CoinMgr coinMgr;
     private MouseItemData mouseObj;
 
+    public SellItem sellMgr;
+    public Button buyBtn;
+    public Button sellBtn;
+
     Transform childFound = null;
 
     private void Awake()
@@ -52,27 +56,43 @@ public class ShopManager : MonoBehaviour
         {
             if (result.gameObject.name == "Shop" && mouseObj.hasItem && Mouse.current.leftButton.wasPressedThisFrame) // if item on mouse and player clicks
             {
-                Debug.Log("in shop");
-                DisplayItemsToSell();
+                DisplayShopSell(); // swap to sell view
+                DisplayItemsToSell(); // add template for every item dragged onto sell view
+                mouseObj.ClearSlot(); // destroy item on mouse
             }
         }
     }
 
+    public void DisplayShopSell()
+    {
+        // remove instructions text
+        Transform instructions = CustomFindChild("Instructions Txt", this.transform);
+        instructions.gameObject.SetActive(false);
+
+        // show sell view
+        sellBtn.onClick.Invoke();
+    }
+
     public void DisplayItemsToSell()
     {
-        Transform parentTransform = CustomFindChild("Sell Contents", this.transform); // get correct parent obj
+        Transform parentTransform = CustomFindChild("Templates Container", this.transform);
         if (parentTransform)
         {
-            GameObject sellItemDisplay = Instantiate(sellTemplate, parentTransform); // instantiate new templates as children of that obj
+            GameObject newItemToSell = Instantiate(sellTemplate, parentTransform); // instantiate new templates as children of that obj
+            sellMgr.UpdateItemToSell(mouseObj.getCurrentMouseItem().ItemData, mouseObj.getCurrentMouseItem().StackSize, newItemToSell);
         }
         else
         {
-            Debug.Log("Error: Cannot find object 'Sell Contents'. Did you rename it?");
+            Debug.Log("Error: Cannot find object 'Templates Container'. Did you rename it?");
         }
     }
 
+ 
+
     Transform CustomFindChild(string key, Transform parent)
     {
+        childFound = null; // reset
+
         // search through object tree for given object name
         foreach (Transform child in parent)
         {
@@ -91,23 +111,16 @@ public class ShopManager : MonoBehaviour
                 }
             }
         }
+  
         return childFound;
     }
-
-
-    //public void AddCoins()
-    //{
-    //    coins++;
-    //    coinUI.text = "Coins: " + coins.ToString();
-    //    CheckPurchaseable();
-    //}
 
     // turns buttons off if not enough money to purchase item
     public void CheckPurchaseable()
     {
         for (int i = 0; i < shopItemsSO.Length; i++)
         {
-            if (coinMgr.coins >= shopItemsSO[i].baseCost) //if i have enough money
+            if (coinMgr.coins >= shopItemsSO[i].cost) //if i have enough money
                 purchaseBtns[i].interactable = true;
             else
                 purchaseBtns[i].interactable = false;
@@ -117,10 +130,10 @@ public class ShopManager : MonoBehaviour
     // run when "purchase" bttns pressed
     public void PurchaseItem(int btnNum)
     {
-        if (coinMgr.coins >= shopItemsSO[btnNum].baseCost)
+        if (coinMgr.coins >= shopItemsSO[btnNum].cost)
         {
             // update coin value
-            coinMgr.coins = coinMgr.coins - shopItemsSO[btnNum].baseCost;
+            coinMgr.coins = coinMgr.coins - shopItemsSO[btnNum].cost;
             coinMgr.UpdateCoinUI();
 
             // add to player inventory
@@ -137,7 +150,7 @@ public class ShopManager : MonoBehaviour
         {
             shopPanels[i].titleTxt.text = shopItemsSO[i].title;
             shopPanels[i].descriptionTxt.text = shopItemsSO[i].description;
-            shopPanels[i].costTxt.text = "Coins: " + shopItemsSO[i].baseCost.ToString();
+            shopPanels[i].costTxt.text = "Coins: " + shopItemsSO[i].cost.ToString();
             shopPanels[i].image.sprite = shopItemsSO[i].icon;
         }
     }

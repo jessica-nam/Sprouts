@@ -17,4 +17,10 @@ public class CoinMgr : MonoBehaviour
     {
         coinUI.text = "Coins: " + coins.ToString();
     }
+
+    public void AddCoins(int amount)
+    {
+        coins = coins + amount;
+        UpdateCoinUI();
+    }
 }

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Baby 3
   description: Description
-  baseCost: 50
+  cost: 25
   icon: {fileID: 21300000, guid: cd0076526c7d5cc4b91ce15348329b6d, type: 3}

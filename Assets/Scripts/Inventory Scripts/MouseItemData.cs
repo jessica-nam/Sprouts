@@ -61,4 +61,9 @@ public class MouseItemData : MonoBehaviour
         itemSprite.color = Color.clear;
         itemSprite.sprite = null;
     }
+
+    public InventorySlot getCurrentMouseItem()
+    {
+        return AssignedInvSlot;
+    }
 }
