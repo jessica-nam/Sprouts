@@ -11,6 +11,7 @@ using UnityEngine.Tilemaps;
 public class BabyTimer : MonoBehaviour
 {
     private bool inProgress;
+    public bool readyForHarvest = false;
     private DateTime TimerStart;
     private DateTime TimerEnd;
 
@@ -34,6 +35,7 @@ public class BabyTimer : MonoBehaviour
     [SerializeField] private Slider timeLeftSlider;
     [SerializeField] private Button skipButton;
     [SerializeField] private Button startButton;
+    [SerializeField] private Button harvestButton;
     [SerializeField] private Tilemap interactableMap;
     [SerializeField] private Tile done;
 
@@ -55,6 +57,7 @@ public class BabyTimer : MonoBehaviour
 
             timeLeftObject.SetActive(true);
             window.SetActive(true);
+            readyForHarvest = false;
             lastDisplay = StartCoroutine(DisplayTime());
 
             startButton.gameObject.SetActive(false);
@@ -103,8 +106,10 @@ public class BabyTimer : MonoBehaviour
             else{
                 Debug.Log(position);
                 interactableMap.SetTile(position, done);
+                readyForHarvest = true;
                 timeLeftText.text = "Finished";
                 skipButton.gameObject.SetActive(false);
+                harvestButton.gameObject.SetActive(true);
                 inProgress = false;
                 
                 break;
@@ -144,6 +149,8 @@ public class BabyTimer : MonoBehaviour
         Debug.Log(position);
         interactableMap.SetTile(position, done);
 
+        readyForHarvest = true;
+
         TimerEnd = DateTime.Now;
         inProgress = false;
         
@@ -154,7 +161,8 @@ public class BabyTimer : MonoBehaviour
 
         StopCoroutine(lastDisplay);
         skipButton.gameObject.SetActive(false);
-        startButton.gameObject.SetActive(true);
+        startButton.gameObject.SetActive(false);
+        harvestButton.gameObject.SetActive(true);
     }
     #endregion
 

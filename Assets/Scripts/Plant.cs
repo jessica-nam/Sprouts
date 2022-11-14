@@ -23,10 +23,6 @@ public class Plant : MonoBehaviour
 
     }
 
-    void Update(){
-
-    }
-
     public void PlantBabySlot1(){
         Debug.Log(MouseItemData.instance.hasItem);
         if(MouseItemData.instance.hasItem){

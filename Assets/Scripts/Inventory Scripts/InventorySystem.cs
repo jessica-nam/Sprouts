@@ -7,12 +7,21 @@ using System.Linq;
 [System.Serializable]
 public class InventorySystem
 {
+
+    public static InventorySystem instance;
+
     [SerializeField] private List<InventorySlot> inventorySlots;
 
     public List<InventorySlot> InventorySlots => inventorySlots;
     public int InventorySize => InventorySlots.Count;
 
     public UnityAction<InventorySlot> OnInventorySlotChanged;
+
+    private void Awake()
+    {
+        instance = this;
+
+    }
 
     public InventorySystem(int size)
     {
