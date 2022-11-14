@@ -8,7 +8,7 @@ using UnityEngine.Tilemaps;
 
 
 
-public class test : MonoBehaviour
+public class BabyTimer : MonoBehaviour
 {
     private bool inProgress;
     private DateTime TimerStart;
