@@ -138,11 +138,13 @@ public class BabyTimer : MonoBehaviour
     }
 
     private void Skip(){
-        TimerEnd = DateTime.Now;
-        inProgress = false;
 
         position = Plant.instance.currentSprout;
+        Debug.Log(position);
         interactableMap.SetTile(position, done);
+        
+        TimerEnd = DateTime.Now;
+        inProgress = false;
         
         StopCoroutine(lastTimer);
 
