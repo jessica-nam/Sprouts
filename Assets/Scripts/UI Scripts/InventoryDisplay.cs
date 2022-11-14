@@ -58,6 +58,7 @@ public abstract class InventoryDisplay : MonoBehaviour
             Debug.Log(mouseInventoryItem.AssignedInvSlot.ItemData);
             mouseInventoryItem.UpdateMouseSlot(clickedUISlot.AssignedInvSlot);
             babyName = mouseInventoryItem.AssignedInvSlot.ItemData.name;
+            Debug.Log(babyName);
             clickedUISlot.ClearSlot();
             return;
         }
