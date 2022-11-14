@@ -310,7 +310,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000076294, y: -189}
+  m_AnchoredPosition: {x: -0.0000076294, y: -296}
   m_SizeDelta: {x: 134.93, y: 70.0995}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &35660640
@@ -697,7 +697,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 4.9
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -721,7 +721,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 254774641}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: -0.99, y: 0.17, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2071,6 +2071,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1286946603}
   - component: {fileID: 1286946605}
+  - component: {fileID: 1286946606}
   m_Layer: 0
   m_Name: Waterfall
   m_TagString: Untagged
@@ -2086,8 +2087,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1286946602}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0316, y: 0.0206, z: 0}
-  m_LocalScale: {x: 3.205407, y: 2.796052, z: 1}
+  m_LocalPosition: {x: -0.9059, y: -0.0048, z: 0}
+  m_LocalScale: {x: 1.605939, y: 1.5581363, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -2134,7 +2135,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 308ddc5d239874c4780edf555b6ae2c1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 67e96cef7ec498940a8ba27799152662, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2145,6 +2146,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1286946606
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1286946602}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8b3ba40fe7af8144e9cfb129bdeaa63f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1291112193
 GameObject:
   m_ObjectHideFlags: 0
@@ -2470,8 +2491,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000015259, y: 71.80002}
-  m_SizeDelta: {x: 792, y: 243.6}
+  m_AnchoredPosition: {x: 0, y: 246}
+  m_SizeDelta: {x: 1147.41, y: 392.872}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1613334571
 MonoBehaviour:
@@ -2493,7 +2514,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b5df464a233453a4da875538dc5acb16, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bac9da96414a70242add05d3b75d7179, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
