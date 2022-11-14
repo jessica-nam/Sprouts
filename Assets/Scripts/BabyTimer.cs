@@ -101,11 +101,12 @@ public class BabyTimer : MonoBehaviour
             
             }
             else{
+                Debug.Log(position);
+                interactableMap.SetTile(position, done);
                 timeLeftText.text = "Finished";
                 skipButton.gameObject.SetActive(false);
                 inProgress = false;
-                Debug.Log(position);
-                interactableMap.SetTile(position, done);
+                
                 break;
             }
         }
@@ -142,7 +143,7 @@ public class BabyTimer : MonoBehaviour
         position = Plant.instance.currentSprout;
         Debug.Log(position);
         interactableMap.SetTile(position, done);
-        
+
         TimerEnd = DateTime.Now;
         inProgress = false;
         

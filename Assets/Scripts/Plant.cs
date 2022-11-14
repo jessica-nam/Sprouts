@@ -38,22 +38,27 @@ public class Plant : MonoBehaviour
                 BabyPlanted = true;
             }else if(InventoryDisplay.instance.babyName == "Baby 2"){
                 interactableMap.SetTile(new Vector3Int(-5, -6, 0), sprout);
+                currentSprout = new Vector3Int(-5, -6, 0);
                 Debug.Log("Plant");
                 BabyPlanted = true;
             }else if(InventoryDisplay.instance.babyName == "Baby 3"){
                 interactableMap.SetTile(new Vector3Int(-5, -6, 0), sprout);
+                currentSprout = new Vector3Int(-5, -6, 0);
                 Debug.Log("Plant");
                 BabyPlanted = true;
             }else if(InventoryDisplay.instance.babyName == "Baby 4"){
                 interactableMap.SetTile(new Vector3Int(-5, -6, 0), sprout);
+                currentSprout = new Vector3Int(-5, -6, 0);
                 Debug.Log("Plant");
                 BabyPlanted = true;
             }else if(InventoryDisplay.instance.babyName == "Baby 5"){
                 interactableMap.SetTile(new Vector3Int(-5, -6, 0), sprout);
+                currentSprout = new Vector3Int(-5, -6, 0);
                 Debug.Log("Plant");
                 BabyPlanted = true;
             }else if(InventoryDisplay.instance.babyName == "Baby 6"){
                 interactableMap.SetTile(new Vector3Int(-5, -6, 0), sprout);
+                currentSprout = new Vector3Int(-5, -6, 0);
                 Debug.Log("Plant");
                 BabyPlanted = true;
             }
