@@ -5,17 +5,21 @@ using UnityEngine.UI;
 using TMPro;
 public class TimeManager : MonoBehaviour
 {
+    //Variables for counting the days
     public int currentDay = 1;
     public int previousDay = 0;
     public int dayLimit = 7;
     public bool gameEnd = false;
+
+    //variables for UI
     public TMP_Text currDay;
+    public GameObject TimeUI;
     SpriteRenderer sprite;
     // Start is called before the first frame update
     void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
-       
+        TimeUI.SetActive(false);
     }
 
     private void Update()
@@ -31,13 +35,20 @@ public class TimeManager : MonoBehaviour
     private void OnMouseDown()
     {
         //bring up canvas to make sure user wants to move to next day
-
-        //test click is working properly
-        previousDay = currentDay;
-        currentDay += 1;
-
+        TimeUI.SetActive(true);
     }
 
+    public void selectNo()
+    {
+        TimeUI.SetActive(false);
+    }
+
+    public void selectYes()
+    {
+        TimeUI.SetActive(false);
+        previousDay = currentDay;
+        currentDay += 1;
+    }
     private void OnMouseOver()
     {
         //change sign color when hovered over.
