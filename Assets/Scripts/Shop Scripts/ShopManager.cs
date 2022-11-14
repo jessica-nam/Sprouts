@@ -17,6 +17,7 @@ public class ShopManager : MonoBehaviour
     private GameObject invHolder;
     private CoinMgr coinMgr;
     private MouseItemData mouseObj;
+    private GameObject hotbarBG;
 
     public SellItem sellMgr;
     public Button buyBtn;
@@ -86,8 +87,6 @@ public class ShopManager : MonoBehaviour
             Debug.Log("Error: Cannot find object 'Templates Container'. Did you rename it?");
         }
     }
-
- 
 
     Transform CustomFindChild(string key, Transform parent)
     {

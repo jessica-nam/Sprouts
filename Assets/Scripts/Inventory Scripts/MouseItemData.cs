@@ -56,7 +56,7 @@ public class MouseItemData : MonoBehaviour
     {
         PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
         eventDataCurrentPosition.position = Mouse.current.position.ReadValue();
-        Debug.Log(eventDataCurrentPosition);
+        //Debug.Log(eventDataCurrentPosition);
         List<RaycastResult> results = new List<RaycastResult>();
         EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
         
