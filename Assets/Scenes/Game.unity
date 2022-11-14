@@ -1448,12 +1448,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactableMap: {fileID: 2086388156}
-  baby1: {fileID: 11400000, guid: d23a096909b4c0d4680d63210343b1a2, type: 2}
-  baby2: {fileID: 11400000, guid: 7d4909bf5e55e2747a2341cc3944146c, type: 2}
-  baby3: {fileID: 11400000, guid: 84ce40fa3c2fa1a4ca0c82432bc9c282, type: 2}
-  baby4: {fileID: 11400000, guid: 291ff6de4b5e96c448709f8bb9908297, type: 2}
-  baby5: {fileID: 11400000, guid: 6192a332f185b1f4d8579d5c63fa7e7b, type: 2}
-  baby6: {fileID: 11400000, guid: 643d27f6876c3b440a1d3f9c68e51fd9, type: 2}
+  seed1: {fileID: 11400000, guid: 20e6519945c80b046b847cbc4e2c00ab, type: 2}
+  seed2: {fileID: 11400000, guid: 20e6519945c80b046b847cbc4e2c00ab, type: 2}
+  seed3: {fileID: 11400000, guid: 20e6519945c80b046b847cbc4e2c00ab, type: 2}
+  seed4: {fileID: 11400000, guid: 20e6519945c80b046b847cbc4e2c00ab, type: 2}
+  seed5: {fileID: 11400000, guid: 20e6519945c80b046b847cbc4e2c00ab, type: 2}
+  seed6: {fileID: 11400000, guid: 20e6519945c80b046b847cbc4e2c00ab, type: 2}
+  sprout: {fileID: 11400000, guid: 20e6519945c80b046b847cbc4e2c00ab, type: 2}
   BabyPlanted: 0
 --- !u!1 &1012500452
 GameObject:
