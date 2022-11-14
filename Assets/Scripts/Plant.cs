@@ -8,6 +8,8 @@ public class Plant : MonoBehaviour
 
     public static Plant instance;
 
+    public Vector3Int currentSprout;
+
     [SerializeField] private Tilemap interactableMap;
 
     [SerializeField] private Tile sprout;
@@ -31,6 +33,7 @@ public class Plant : MonoBehaviour
             Debug.Log(InventoryDisplay.instance.babyName);
             if(InventoryDisplay.instance.babyName == "Baby 1"){
                 interactableMap.SetTile(new Vector3Int(-5, -6, 0), sprout);
+                currentSprout = new Vector3Int(-5, -6, 0);
                 Debug.Log("Plant");
                 BabyPlanted = true;
             }else if(InventoryDisplay.instance.babyName == "Baby 2"){
