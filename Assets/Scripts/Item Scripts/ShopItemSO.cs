@@ -10,4 +10,7 @@ public class ShopItemSO : ScriptableObject
     public string description;
     public int cost;
     public Sprite icon;
+    public List<Attribute> attributes;
+    public string status; 
+        // if preferred, I can make status a bool, but I figured a string was more human-readable
 }

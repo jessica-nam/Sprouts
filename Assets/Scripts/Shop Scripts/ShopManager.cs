@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.InputSystem;
+using Random = System.Random;
+using System.Linq;
 
 public class ShopManager : MonoBehaviour
 {
@@ -25,6 +27,8 @@ public class ShopManager : MonoBehaviour
 
     Transform childFound = null;
 
+    public List<Attribute> possibleAttrs;
+
     private void Awake()
     {
         // instantiate saved objects
@@ -42,6 +46,7 @@ public class ShopManager : MonoBehaviour
             shopPanelsGO[i].SetActive(true);
         }
         LoadPanels();
+        CalculateBabyStatus(); // calc if baby good or bad
         CheckPurchaseable();
     }
 
@@ -140,6 +145,7 @@ public class ShopManager : MonoBehaviour
             inventory.InventorySystem.AddToInventory(shopItemsSO[btnNum], 1); // add item to it
 
             CheckPurchaseable();
+            Debug.Log(shopItemsSO[btnNum].status);
         }
     }
 
@@ -151,6 +157,47 @@ public class ShopManager : MonoBehaviour
             shopPanels[i].descriptionTxt.text = shopItemsSO[i].description;
             shopPanels[i].costTxt.text = "Coins: " + shopItemsSO[i].cost.ToString();
             shopPanels[i].image.sprite = shopItemsSO[i].icon;
+
+            // get 3 random attributes
+            for (int j = 0; j < 3; j++)
+            {
+                shopPanels[i].attributesTxt.text += PickRandomAttribute(shopItemsSO[i]) + System.Environment.NewLine;
+            }
+        }
+    }
+
+    public string PickRandomAttribute(ShopItemSO shopItem)
+    {        
+        Random r = new Random();
+        int rInt = r.Next(0, possibleAttrs.Count - 1);
+        
+        shopItem.attributes.Add(possibleAttrs[rInt]);
+        
+        return shopItem.attributes.LastOrDefault().attributeName;
+    }
+
+    public void CalculateBabyStatus()
+    {
+        for (int i = 0; i < shopItemsSO.Length; i++)
+        {
+            int totalWeight = 0;
+            foreach (Attribute attribute in shopItemsSO[i].attributes)
+            {
+                totalWeight += attribute.weight; // calc total weight of attrs
+            }
+
+            if(totalWeight > 0)
+            {
+                shopItemsSO[i].status = "good";
+            }
+            else if(totalWeight < 0)
+            {
+                shopItemsSO[i].status = "bad";
+            }
+            else // = 0
+            {
+                Debug.Log("Error with calculating " + shopItemsSO[i] + " status; cannot equal 0");
+            }
         }
     }
 }
