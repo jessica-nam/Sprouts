@@ -145,7 +145,6 @@ public class ShopManager : MonoBehaviour
             inventory.InventorySystem.AddToInventory(shopItemsSO[btnNum], 1); // add item to it
 
             CheckPurchaseable();
-            Debug.Log(shopItemsSO[btnNum].status);
         }
     }
 
