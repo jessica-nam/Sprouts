@@ -15,7 +15,7 @@ public class CoinMgr : MonoBehaviour
 
     public void UpdateCoinUI()
     {
-        coinUI.text = "Coins: " + coins.ToString();
+        coinUI.text = coins.ToString();
     }
 
     public void AddCoins(int amount)
