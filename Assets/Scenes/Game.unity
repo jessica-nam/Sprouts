@@ -3586,8 +3586,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentSprout: {x: 0, y: 0, z: 0}
+  hasOneatOne: 0
+  hasTwoatOne: 0
+  hasThreeatOne: 0
+  hasFouratOne: 0
+  hasFiveatOne: 0
+  hasSixatOne: 0
+  DoneBaby1: {fileID: 11400000, guid: 2c645189ce2791a45a5e8fbd3dd7aa82, type: 2}
+  DoneBaby2: {fileID: 11400000, guid: 0936844925bfdba4c8f0c160dc512c90, type: 2}
+  DoneBaby3: {fileID: 11400000, guid: cdbdfd614c6c73a4fa5956f5bcb1ff9a, type: 2}
+  DoneBaby4: {fileID: 11400000, guid: 8850acceac1262946be38a76acee2921, type: 2}
+  DoneBaby5: {fileID: 11400000, guid: c2574561f7a854042b13ee2bb99b76fa, type: 2}
+  DoneBaby6: {fileID: 11400000, guid: 4ebeea2b63635e2418ed0b3ee9add06f, type: 2}
   interactableMap: {fileID: 2086388156}
-  sprout: {fileID: 11400000, guid: 20e6519945c80b046b847cbc4e2c00ab, type: 2}
+  baby1: {fileID: 11400000, guid: d23a096909b4c0d4680d63210343b1a2, type: 2}
+  baby2: {fileID: 11400000, guid: 7d4909bf5e55e2747a2341cc3944146c, type: 2}
+  baby3: {fileID: 11400000, guid: 84ce40fa3c2fa1a4ca0c82432bc9c282, type: 2}
+  baby4: {fileID: 11400000, guid: 291ff6de4b5e96c448709f8bb9908297, type: 2}
+  baby5: {fileID: 11400000, guid: 6192a332f185b1f4d8579d5c63fa7e7b, type: 2}
+  baby6: {fileID: 11400000, guid: 643d27f6876c3b440a1d3f9c68e51fd9, type: 2}
   slot1: {fileID: 196285233}
   slot2: {fileID: 1399009499}
   slot3: {fileID: 796962188}

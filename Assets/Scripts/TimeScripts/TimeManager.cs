@@ -48,6 +48,7 @@ public class TimeManager : MonoBehaviour
     private void OnMouseDown()
     {
         //bring up canvas to make sure user wants to move to next day
+        Plant.instance.turnOffAnims();
         TimeUI.SetActive(true);
     }
 
@@ -61,6 +62,7 @@ public class TimeManager : MonoBehaviour
         TimeUI.SetActive(false);
         previousDay = currentDay;
         currentDay += 1;
+        Plant.instance.NewDayNewBabies();
     }
     private void OnMouseOver()
     {
@@ -71,4 +73,5 @@ public class TimeManager : MonoBehaviour
     {
         sprite.color = new Color(255, 255, 255, 1);
     }
+
 }
