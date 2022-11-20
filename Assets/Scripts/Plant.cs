@@ -359,32 +359,64 @@ public class Plant : MonoBehaviour
         six.SetActive(false);
     }
 
+    public void turnOnAnims(){
+        if(hasOneatOne || hasTwoatOne || hasThreeatOne || hasFouratOne || hasFiveatOne || hasSixatOne){
+            one.SetActive(true);
+        }
+        
+        if(hasOneatTwo || hasTwoatTwo || hasThreeatTwo || hasFouratTwo || hasFiveatTwo || hasSixatTwo){
+            two.SetActive(true);
+        }
+
+        if(hasOneatThree || hasTwoatThree || hasThreeatThree || hasFouratThree || hasFiveatThree || hasSixatThree){
+            three.SetActive(true);
+        }
+
+        if(hasOneatFour || hasTwoatFour || hasThreeatFour || hasFouratFour || hasFiveatFour || hasSixatFour){
+            four.SetActive(true);
+        }
+        
+        if(hasOneatFive || hasTwoatFive || hasThreeatFive || hasFouratFive || hasFiveatFive || hasSixatFive){
+            five.SetActive(true);
+        }
+        
+        if(hasOneatSix || hasTwoatSix || hasThreeatSix || hasFouratSix || hasFiveatSix || hasSixatSix){
+            six.SetActive(true);
+        }
+    }
+
     public void Harvest1(){
         var inventory = invHolder.GetComponent<InventoryHolder>();
         if(h1 == "baby1"){
             inventory.InventorySystem.AddToInventory(DoneBaby1, 1);
             interactableMap.SetTile(new Vector3Int(-5, -6, 0), null);
             harvest1.gameObject.SetActive(false);
+            hasOneatOne = false;
         }else if(h1 == "baby 2"){
             inventory.InventorySystem.AddToInventory(DoneBaby2, 1);
             interactableMap.SetTile(new Vector3Int(-5, -6, 0), null);
             harvest1.gameObject.SetActive(false);
+            hasTwoatOne = false;
         }else if(h1 == "baby 3"){
             inventory.InventorySystem.AddToInventory(DoneBaby3, 1);
             interactableMap.SetTile(new Vector3Int(-5, -6, 0), null);
             harvest1.gameObject.SetActive(false);
+            hasThreeatOne = false;
         }else if(h1 == "baby 4"){
             inventory.InventorySystem.AddToInventory(DoneBaby4, 1);
             interactableMap.SetTile(new Vector3Int(-5, -6, 0), null);
             harvest1.gameObject.SetActive(false);
+            hasFouratOne = false;
         }else if(h1 == "baby 5"){
             inventory.InventorySystem.AddToInventory(DoneBaby5, 1);
             interactableMap.SetTile(new Vector3Int(-5, -6, 0), null);
             harvest1.gameObject.SetActive(false);
+            hasFiveatOne = false;
         }else if(h1 == "baby 6"){
             inventory.InventorySystem.AddToInventory(DoneBaby6, 1);
             interactableMap.SetTile(new Vector3Int(-5, -6, 0), null);
             harvest1.gameObject.SetActive(false);
+            hasSixatOne = false;
         }
 
 
@@ -397,26 +429,32 @@ public class Plant : MonoBehaviour
             inventory.InventorySystem.AddToInventory(DoneBaby1, 1);
             interactableMap.SetTile(new Vector3Int(-11, -6, 0), null);
             harvest2.gameObject.SetActive(false);
+            hasOneatTwo = false;
         }else if(h2 == "baby 2"){ 
             inventory.InventorySystem.AddToInventory(DoneBaby2, 1);
             interactableMap.SetTile(new Vector3Int(-11, -6, 0), null);
             harvest2.gameObject.SetActive(false);
+            hasTwoatTwo = false;
         }else if(h2 == "baby 3"){ 
             inventory.InventorySystem.AddToInventory(DoneBaby3, 1);
             interactableMap.SetTile(new Vector3Int(-11, -6, 0), null);
             harvest2.gameObject.SetActive(false);
+            hasThreeatTwo = false;
         }else if(h2 == "baby 4"){ 
             inventory.InventorySystem.AddToInventory(DoneBaby4, 1);
             interactableMap.SetTile(new Vector3Int(-11, -6, 0), null);
             harvest2.gameObject.SetActive(false);
+            hasFouratTwo = false;
         }else if(h2 == "baby 5"){ 
             inventory.InventorySystem.AddToInventory(DoneBaby5, 1);
             interactableMap.SetTile(new Vector3Int(-11, -6, 0), null);
             harvest2.gameObject.SetActive(false);
+            hasFiveatTwo = false;
         }else if(h2 == "baby 6"){ 
             inventory.InventorySystem.AddToInventory(DoneBaby6, 1);
             interactableMap.SetTile(new Vector3Int(-11, -6, 0), null);
             harvest2.gameObject.SetActive(false);
+            hasSixatTwo = false;
         }
 
 
@@ -433,26 +471,32 @@ public class Plant : MonoBehaviour
             inventory.InventorySystem.AddToInventory(DoneBaby1, 1);
             interactableMap.SetTile(new Vector3Int(-17, -6, 0), null);
             harvest3.gameObject.SetActive(false);
+            hasOneatThree = false;
         }else if(h3 == "baby 2"){
             inventory.InventorySystem.AddToInventory(DoneBaby2, 1);
             interactableMap.SetTile(new Vector3Int(-17, -6, 0), null);
             harvest3.gameObject.SetActive(false);
+            hasTwoatThree = false;
         }else if(h3 == "baby 3"){
             inventory.InventorySystem.AddToInventory(DoneBaby3, 1);
             interactableMap.SetTile(new Vector3Int(-17, -6, 0), null);
             harvest3.gameObject.SetActive(false);
+            hasThreeatThree = false;
         }else if(h3 == "baby 4"){
             inventory.InventorySystem.AddToInventory(DoneBaby4, 1);
             interactableMap.SetTile(new Vector3Int(-17, -6, 0), null);
             harvest3.gameObject.SetActive(false);
+            hasFouratThree = false;
         }else if(h3 == "baby 5"){
             inventory.InventorySystem.AddToInventory(DoneBaby5, 1);
             interactableMap.SetTile(new Vector3Int(-17, -6, 0), null);
             harvest3.gameObject.SetActive(false);
+            hasFiveatThree = false;
         }else if(h3 == "baby 6"){
             inventory.InventorySystem.AddToInventory(DoneBaby6, 1);
             interactableMap.SetTile(new Vector3Int(-17, -6, 0), null);
             harvest3.gameObject.SetActive(false);
+            hasSixatThree = false;
         }
 
 
@@ -468,26 +512,32 @@ public class Plant : MonoBehaviour
             inventory.InventorySystem.AddToInventory(DoneBaby1, 1);
             interactableMap.SetTile(new Vector3Int(-17, 1, 0), null);
             harvest4.gameObject.SetActive(false);
+            hasOneatFour = false;
         }else if(h4 == "baby 2"){
             inventory.InventorySystem.AddToInventory(DoneBaby2, 1);
             interactableMap.SetTile(new Vector3Int(-17, 1, 0), null);
             harvest4.gameObject.SetActive(false);
+            hasTwoatFour = false;
         }else if(h4 == "baby 3"){
             inventory.InventorySystem.AddToInventory(DoneBaby3, 1);
             interactableMap.SetTile(new Vector3Int(-17, 1, 0), null);
             harvest4.gameObject.SetActive(false);
+            hasThreeatFour = false;
         }else if(h4 == "baby 4"){
             inventory.InventorySystem.AddToInventory(DoneBaby4, 1);
             interactableMap.SetTile(new Vector3Int(-17, 1, 0), null);
             harvest4.gameObject.SetActive(false);
+            hasFouratFour = false;
         }else if(h4 == "baby 5"){
             inventory.InventorySystem.AddToInventory(DoneBaby5, 1);
             interactableMap.SetTile(new Vector3Int(-17, 1, 0), null);
             harvest4.gameObject.SetActive(false);
+            hasFiveatFour = false;
         }else if(h4 == "baby 6"){
             inventory.InventorySystem.AddToInventory(DoneBaby6, 1);
             interactableMap.SetTile(new Vector3Int(-17, 1, 0), null);
             harvest4.gameObject.SetActive(false);
+            hasSixatFour = false;
         }
 
 
@@ -501,26 +551,32 @@ public class Plant : MonoBehaviour
             inventory.InventorySystem.AddToInventory(DoneBaby1, 1);
             interactableMap.SetTile(new Vector3Int(-11, 1, 0), null);
             harvest5.gameObject.SetActive(false);
+            hasOneatFive = false;
         }else if(h5 == "baby 2"){
             inventory.InventorySystem.AddToInventory(DoneBaby2, 1);
             interactableMap.SetTile(new Vector3Int(-11, 1, 0), null);
             harvest5.gameObject.SetActive(false);
+            hasTwoatFive = false;
         }else if(h5 == "baby 3"){
             inventory.InventorySystem.AddToInventory(DoneBaby3, 1);
             interactableMap.SetTile(new Vector3Int(-11, 1, 0), null);
             harvest5.gameObject.SetActive(false);
+            hasThreeatFive = false;
         }else if(h5 == "baby 4"){
             inventory.InventorySystem.AddToInventory(DoneBaby4, 1);
             interactableMap.SetTile(new Vector3Int(-11, 1, 0), null);
             harvest5.gameObject.SetActive(false);
+            hasFouratFive = false;
         }else if(h5 == "baby 5"){
             inventory.InventorySystem.AddToInventory(DoneBaby5, 1);
             interactableMap.SetTile(new Vector3Int(-11, 1, 0), null);
             harvest5.gameObject.SetActive(false);
+            hasFiveatFive = false;
         }else if(h5 == "baby 6"){
             inventory.InventorySystem.AddToInventory(DoneBaby6, 1);
             interactableMap.SetTile(new Vector3Int(-11, 1, 0), null);
             harvest5.gameObject.SetActive(false);
+            hasSixatFive = false;
         }
 
 
@@ -535,27 +591,33 @@ public class Plant : MonoBehaviour
             inventory.InventorySystem.AddToInventory(DoneBaby1, 1);
             interactableMap.SetTile(new Vector3Int(-5, 1, 0), null);
             harvest6.gameObject.SetActive(false);
+            hasOneatSix = false;
         }
         else if(h6 == "baby 2"){
             inventory.InventorySystem.AddToInventory(DoneBaby2, 1);
             interactableMap.SetTile(new Vector3Int(-5, 1, 0), null);
             harvest6.gameObject.SetActive(false);
+            hasTwoatSix = false;
         }else if(h6 == "baby 3"){
             inventory.InventorySystem.AddToInventory(DoneBaby3, 1);
             interactableMap.SetTile(new Vector3Int(-5, 1, 0), null);
             harvest6.gameObject.SetActive(false);
+            hasThreeatSix = false;
         }else if(h6 == "baby 4"){
             inventory.InventorySystem.AddToInventory(DoneBaby4, 1);
             interactableMap.SetTile(new Vector3Int(-5, 1, 0), null);
             harvest6.gameObject.SetActive(false);
+            hasFouratSix = false;
         }else if(h6 == "baby 5"){
             inventory.InventorySystem.AddToInventory(DoneBaby5, 1);
             interactableMap.SetTile(new Vector3Int(-5, 1, 0), null);
             harvest6.gameObject.SetActive(false);
+            hasFiveatSix = false;
         }else if(h6 == "baby 6"){
             inventory.InventorySystem.AddToInventory(DoneBaby6, 1);
             interactableMap.SetTile(new Vector3Int(-5, 1, 0), null);
             harvest6.gameObject.SetActive(false);
+            hasSixatSix = false;
         }
         
     }

@@ -54,6 +54,7 @@ public class TimeManager : MonoBehaviour
 
     public void selectNo()
     {
+        Plant.instance.turnOnAnims();
         TimeUI.SetActive(false);
     }
 
