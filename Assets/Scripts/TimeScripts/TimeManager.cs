@@ -10,11 +10,13 @@ public class TimeManager : MonoBehaviour
     public int previousDay = 0;
     public int dayLimit = 7;
     public bool gameEnd = false;
+    public int quota = 5;
 
     //variables for UI
     public TMP_Text currDay;
     public GameObject TimeUI;
     SpriteRenderer sprite;
+    public SellItem sellItem;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +30,17 @@ public class TimeManager : MonoBehaviour
         if(currentDay > dayLimit)
         {
             gameEnd = true;
+        }
+        if(gameEnd == true)
+        {
+            if(sellItem.goodSold >= quota)
+            {
+                print("You win");
+            }
+            else
+            {
+                print("You lose");
+            }
         }
     }
 

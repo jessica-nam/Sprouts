@@ -9,6 +9,7 @@ public class SellItem : MonoBehaviour
     private SellTemplate sellTemplate;
     GameObject SavedObjs;
     private CoinMgr coinMgr;
+    public int goodSold = 0;
 
     int totalRevenue;
     public GameObject instructions;
@@ -38,6 +39,11 @@ public class SellItem : MonoBehaviour
         totalRevenue += revenue;
         sellTemplate.costTxt.text = revenue.ToString() + " coins";
         sellTemplate.quantity.text = "x " + amount.ToString();
+
+        if(data.status == "good")
+        {
+            goodSold += 1;
+        }
     }
 
     public void SellItems()
