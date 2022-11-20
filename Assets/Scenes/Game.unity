@@ -4047,6 +4047,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f29d54709d374143975ff2770ed6d98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mouseObj: {fileID: 0}
   currentSprout: {x: 0, y: 0, z: 0}
   hasOneatOne: 0
   hasTwoatOne: 0

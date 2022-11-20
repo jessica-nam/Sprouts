@@ -63,8 +63,6 @@ public class MouseItemData : MonoBehaviour
         return results;
     }
 
-   
-
     public void ClearSlot()
     {
         AssignedInvSlot.ClearSlot();
@@ -77,6 +75,4 @@ public class MouseItemData : MonoBehaviour
     {
         return AssignedInvSlot;
     }
-
-    
 }
