@@ -102,33 +102,33 @@ public class Plant : MonoBehaviour
         Debug.Log(MouseItemData.instance.hasItem);
         if(MouseItemData.instance.hasItem){
             if(InventoryDisplay.instance.babyName == "Baby 1"){
-                interactableMap.SetTile(new Vector3Int(-16, -6, 0), sprout);
-                currentSprout = new Vector3Int(-16, -6, 0);
+                interactableMap.SetTile(new Vector3Int(-17, -6, 0), sprout);
+                currentSprout = new Vector3Int(-17, -6, 0);
                 Debug.Log("Plant");
                 BabyPlanted = true;
             }else if(InventoryDisplay.instance.babyName == "Baby 2"){
-                interactableMap.SetTile(new Vector3Int(-16, -6, 0), sprout);
-                currentSprout = new Vector3Int(-16, -6, 0);
+                interactableMap.SetTile(new Vector3Int(-17, -6, 0), sprout);
+                currentSprout = new Vector3Int(-17, -6, 0);
                 Debug.Log("Plant");
                 BabyPlanted = true;
             }else if(InventoryDisplay.instance.babyName == "Baby 3"){
-                interactableMap.SetTile(new Vector3Int(-16, -6, 0), sprout);
-                currentSprout = new Vector3Int(-16, -6, 0);
+                interactableMap.SetTile(new Vector3Int(-17, -6, 0), sprout);
+                currentSprout = new Vector3Int(-17, -6, 0);
                 Debug.Log("Plant");
                 BabyPlanted = true;
             }else if(InventoryDisplay.instance.babyName == "Baby 4"){
-                interactableMap.SetTile(new Vector3Int(-16, -6, 0), sprout);
-                currentSprout = new Vector3Int(-16, -6, 0);
+                interactableMap.SetTile(new Vector3Int(-17, -6, 0), sprout);
+                currentSprout = new Vector3Int(-17, -6, 0);
                 Debug.Log("Plant");
                 BabyPlanted = true;
             }else if(InventoryDisplay.instance.babyName == "Baby 5"){
-                interactableMap.SetTile(new Vector3Int(-16, -6, 0), sprout);
-                currentSprout = new Vector3Int(-16, -6, 0);
+                interactableMap.SetTile(new Vector3Int(-17, -6, 0), sprout);
+                currentSprout = new Vector3Int(-17, -6, 0);
                 Debug.Log("Plant");
                 BabyPlanted = true;
             }else if(InventoryDisplay.instance.babyName == "Baby 6"){
-                interactableMap.SetTile(new Vector3Int(-16, -6, 0), sprout);
-                currentSprout = new Vector3Int(-16, -6, 0);
+                interactableMap.SetTile(new Vector3Int(-17, -6, 0), sprout);
+                currentSprout = new Vector3Int(-17, -6, 0);
                 Debug.Log("Plant");
                 BabyPlanted = true;
             }
@@ -139,33 +139,33 @@ public class Plant : MonoBehaviour
         Debug.Log(MouseItemData.instance.hasItem);
         if(MouseItemData.instance.hasItem){
             if(InventoryDisplay.instance.babyName == "Baby 1"){
-                interactableMap.SetTile(new Vector3Int(-16, 1, 0), sprout);
-                currentSprout = new Vector3Int(-16, 1, 0);
+                interactableMap.SetTile(new Vector3Int(-17, 1, 0), sprout);
+                currentSprout = new Vector3Int(-17, 1, 0);
                 Debug.Log("Plant");
                 BabyPlanted = true;
             }else if(InventoryDisplay.instance.babyName == "Baby 2"){
-                interactableMap.SetTile(new Vector3Int(-16, 1, 0), sprout);
-                currentSprout = new Vector3Int(-16, 1, 0);
+                interactableMap.SetTile(new Vector3Int(-17, 1, 0), sprout);
+                currentSprout = new Vector3Int(-17, 1, 0);
                 Debug.Log("Plant");
                 BabyPlanted = true;
             }else if(InventoryDisplay.instance.babyName == "Baby 3"){
-                interactableMap.SetTile(new Vector3Int(-16, 1, 0), sprout);
-                currentSprout = new Vector3Int(-16, 1, 0);
+                interactableMap.SetTile(new Vector3Int(-17, 1, 0), sprout);
+                currentSprout = new Vector3Int(-17, 1, 0);
                 Debug.Log("Plant");
                 BabyPlanted = true;
             }else if(InventoryDisplay.instance.babyName == "Baby 4"){
-                interactableMap.SetTile(new Vector3Int(-16, 1, 0), sprout);
-                currentSprout = new Vector3Int(-16, 1, 0);
+                interactableMap.SetTile(new Vector3Int(-17, 1, 0), sprout);
+                currentSprout = new Vector3Int(-17, 1, 0);
                 Debug.Log("Plant");
                 BabyPlanted = true;
             }else if(InventoryDisplay.instance.babyName == "Baby 5"){
-                interactableMap.SetTile(new Vector3Int(-16, 1, 0), sprout);
-                currentSprout = new Vector3Int(-16, 1, 0);
+                interactableMap.SetTile(new Vector3Int(-17, 1, 0), sprout);
+                currentSprout = new Vector3Int(-17, 1, 0);
                 Debug.Log("Plant");
                 BabyPlanted = true;
             }else if(InventoryDisplay.instance.babyName == "Baby 6"){
-                interactableMap.SetTile(new Vector3Int(-16, 1, 0), sprout);
-                currentSprout = new Vector3Int(-16, 1, 0);
+                interactableMap.SetTile(new Vector3Int(-17, 1, 0), sprout);
+                currentSprout = new Vector3Int(-17, 1, 0);
                 Debug.Log("Plant");
                 BabyPlanted = true;
             }
