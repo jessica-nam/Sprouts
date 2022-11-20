@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: 
   description: 
-  cost: 40
+  cost: 0
   icon: {fileID: 21300000, guid: dd97119b2156e8944b2f24588fac1609, type: 3}
   attributes: []
   status: 

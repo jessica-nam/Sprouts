@@ -13,6 +13,7 @@ public class ShopManager : MonoBehaviour
     public GameObject[] shopPanelsGO;
     public ShopTemplate[] shopPanels;
     public Button[] purchaseBtns;
+    public List<Sprite> possibleIcons;
     public GameObject sellTemplate;
 
     GameObject SavedObjs; 
@@ -46,7 +47,6 @@ public class ShopManager : MonoBehaviour
             shopPanelsGO[i].SetActive(true);
         }
         LoadPanels();
-        CalculateBabyStatus(); // calc if baby good or bad
         CheckPurchaseable();
     }
 
@@ -152,16 +152,23 @@ public class ShopManager : MonoBehaviour
     {
         for (int i = 0; i < shopItemsSO.Length; i++)
         {
+            // set in inspector
             shopPanels[i].titleTxt.text = shopItemsSO[i].title;
-            shopPanels[i].descriptionTxt.text = shopItemsSO[i].description;
-            shopPanels[i].costTxt.text = "Coins: " + shopItemsSO[i].cost.ToString();
-            shopPanels[i].image.sprite = shopItemsSO[i].icon;
+            //shopPanels[i].descriptionTxt.text = shopItemsSO[i].description;
+
+            // randomly selected
+            shopPanels[i].image.sprite = GetRandomIcon(shopItemsSO[i]);
 
             // get 3 random attributes
             for (int j = 0; j < 3; j++)
             {
                 shopPanels[i].attributesTxt.text += PickRandomAttribute(shopItemsSO[i]) + System.Environment.NewLine;
             }
+
+            shopItemsSO[i].status = CalculateBabyStatus(shopItemsSO[i]);
+
+            // cost based on status (good/bad)
+            shopPanels[i].costTxt.text = SetCosts(shopItemsSO[i]).ToString() + " coins";
         }
     }
 
@@ -175,28 +182,58 @@ public class ShopManager : MonoBehaviour
         return shopItem.attributes.LastOrDefault().attributeName;
     }
 
-    public void CalculateBabyStatus()
+    public string CalculateBabyStatus(ShopItemSO shopItem)
     {
-        for (int i = 0; i < shopItemsSO.Length; i++)
+        int totalWeight = 0;
+        foreach (Attribute attribute in shopItem.attributes)
         {
-            int totalWeight = 0;
-            foreach (Attribute attribute in shopItemsSO[i].attributes)
-            {
-                totalWeight += attribute.weight; // calc total weight of attrs
-            }
-
-            if(totalWeight > 0)
-            {
-                shopItemsSO[i].status = "good";
-            }
-            else if(totalWeight < 0)
-            {
-                shopItemsSO[i].status = "bad";
-            }
-            else // = 0
-            {
-                Debug.Log("Error with calculating " + shopItemsSO[i] + " status; cannot equal 0");
-            }
+            totalWeight += attribute.weight; // calc total weight of attrs
         }
+
+        if(totalWeight > 0)
+        {
+            shopItem.status = "good";
+        }
+        else if(totalWeight < 0)
+        {
+            shopItem.status = "bad";
+        }
+        else // = 0
+        {
+            Debug.Log("Error with calculating " + shopItem + " status; cannot equal 0");
+        }
+
+        return shopItem.status;
+    }
+
+    public int SetCosts(ShopItemSO shopItem)
+    {
+        if(shopItem.status == "good")
+        {
+            shopItem.cost = 75;
+        }
+        else if(shopItem.status == "bad")
+        {
+            shopItem.cost = 25;
+        }
+
+        return shopItem.cost;
+    }
+
+    public Sprite GetRandomIcon(ShopItemSO shopItem)
+    {
+        Random r = new Random();
+        int rInt = r.Next(0, possibleIcons.Count - 1);
+
+        shopItem.icon = possibleIcons[rInt];
+
+        return shopItem.icon;
+    }
+
+    public void ResetShop()
+    {
+        // reset shop (randomize) each new day
+        LoadPanels();
+        CheckPurchaseable();
     }
 }

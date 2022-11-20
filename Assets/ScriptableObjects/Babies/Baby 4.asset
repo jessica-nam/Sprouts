@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Seed Bag 4
   description: Description
-  cost: 25
-  icon: {fileID: 21300000, guid: 09b4a8db47d125644b4500d5e5729f71, type: 3}
+  cost: 0
+  icon: {fileID: 0}
+  attributes: []
+  status: 

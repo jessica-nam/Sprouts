@@ -12,5 +12,4 @@ public class ShopItemSO : ScriptableObject
     public Sprite icon;
     public List<Attribute> attributes;
     public string status; 
-        // if preferred, I can make status a bool, but I figured a string was more human-readable
 }

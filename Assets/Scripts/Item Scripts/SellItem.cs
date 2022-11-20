@@ -35,6 +35,12 @@ public class SellItem : MonoBehaviour
         sellTemplate.titleTxt.text = data.title;
         sellTemplate.descriptionTxt.text = data.description;
 
+        // set cost based on status
+        Debug.Log(data.title);
+        Debug.Log(data.status);
+        data.cost = SetSellPrice(data);
+
+        // calc revenue and display
         int revenue = data.cost * amount;
         totalRevenue += revenue;
         sellTemplate.costTxt.text = revenue.ToString() + " coins";
@@ -65,5 +71,19 @@ public class SellItem : MonoBehaviour
 
         instructions.SetActive(true);
         sellItemsButton.gameObject.SetActive(false);
+    }
+
+    public int SetSellPrice(ShopItemSO shopItem)
+    {
+        if (shopItem.status == "good")
+        {
+            shopItem.cost = 175;
+        }
+        else if (shopItem.status == "bad")
+        {
+            shopItem.cost = 50;
+        }
+
+        return shopItem.cost;
     }
 }

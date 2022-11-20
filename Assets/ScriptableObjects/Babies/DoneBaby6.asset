@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: DoneBaby6
   description: 
-  cost: 60
+  cost: 0
   icon: {fileID: 21300000, guid: 6021340fda49c7f49b8b7215532ced4e, type: 3}
   attributes: []
   status: 
