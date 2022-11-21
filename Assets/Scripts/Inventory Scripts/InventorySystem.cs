@@ -35,19 +35,19 @@ public class InventorySystem
     //l
     public bool AddToInventory(ShopItemSO itemToAdd, int amountToAdd)
     {
-        // currently can't stack inventory because I can't figure out the "ContainsItem" method
+        // getting rid of stackability because doesn't carry over to planting functionality
 
         // check whether item exists in inventory
-        if (ContainsItem(itemToAdd, out List<InventorySlot> invSlot))
-        {
-            // add to already existing stack of that item
-            foreach (var slot in invSlot)
-            {
-                slot.AddToStack(amountToAdd);
-                OnInventorySlotChanged.Invoke(slot);
-            }
-            return true;
-        }
+        //if (ContainsItem(itemToAdd, out List<InventorySlot> invSlot))
+        //{
+        //    // add to already existing stack of that item
+        //    foreach (var slot in invSlot)
+        //    {
+        //        slot.AddToStack(amountToAdd);
+        //        OnInventorySlotChanged.Invoke(slot);
+        //    }
+        //    return true;
+        //}
 
         // gets first available slot
         if (HasFreeSlot(out InventorySlot freeSlot))
