@@ -11,7 +11,7 @@ public class TimeManager : MonoBehaviour
     public int previousDay = 0;
     public int dayLimit = 5;
     public bool gameEnd = false;
-    public bool endingGood;
+    public bool endingGood = false;
     public int quota = 7;
 
     //variables for UI
@@ -23,6 +23,7 @@ public class TimeManager : MonoBehaviour
     public ShopManager shopSell;
     public Image win;
     public Image lose;
+    
 
 
     // Start is called before the first frame update
