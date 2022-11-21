@@ -11,5 +11,16 @@ public class ShopItemSO : ScriptableObject
     public int cost;
     public Sprite icon;
     public List<Attribute> attributes;
-    public string status; 
+    public string status;
+
+    // Copy constructor
+    public ShopItemSO(ShopItemSO shopItemToCopy)
+    {
+        title = shopItemToCopy.title;
+        description = shopItemToCopy.description;
+        cost = shopItemToCopy.cost;
+        icon = shopItemToCopy.icon;
+        attributes = shopItemToCopy.attributes;
+        status = shopItemToCopy.status;
+    }
 }

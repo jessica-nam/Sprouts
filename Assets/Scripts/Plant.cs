@@ -9,6 +9,8 @@ public class Plant : MonoBehaviour
 
     public static Plant instance;
 
+    public MouseItemData mouseObj;
+
     public Vector3Int currentSprout;
 
     public bool hasOneatOne = false;
@@ -60,6 +62,9 @@ public class Plant : MonoBehaviour
     [SerializeField] private ShopItemSO DoneBaby4;
     [SerializeField] private ShopItemSO DoneBaby5;
     [SerializeField] private ShopItemSO DoneBaby6;
+
+    public static ShopItemSO babyObj;
+    public static InventorySlot slotData;
 
     GameObject SavedObjs; 
     private GameObject invHolder;
@@ -116,9 +121,9 @@ public class Plant : MonoBehaviour
         SavedObjs = SaveObject.savedObjs; 
 
         invHolder = SavedObjs.gameObject.transform.Find("Inventory Holder").gameObject;
-        
-        // animator = GetComponent<Animator>();
+        mouseObj = SavedObjs.gameObject.transform.Find("Mouse Object").gameObject.GetComponent<MouseItemData>();
 
+        // animator = GetComponent<Animator>();
     }
 
     void Update(){
@@ -387,32 +392,39 @@ public class Plant : MonoBehaviour
 
     public void Harvest1(){
         var inventory = invHolder.GetComponent<InventoryHolder>();
+
         if(h1 == "baby1"){
+            DoneBaby1.status = babyObj.status;
             inventory.InventorySystem.AddToInventory(DoneBaby1, 1);
             interactableMap.SetTile(new Vector3Int(-5, -6, 0), null);
             harvest1.gameObject.SetActive(false);
             hasOneatOne = false;
         }else if(h1 == "baby 2"){
+            DoneBaby2.status = babyObj.status;
             inventory.InventorySystem.AddToInventory(DoneBaby2, 1);
             interactableMap.SetTile(new Vector3Int(-5, -6, 0), null);
             harvest1.gameObject.SetActive(false);
             hasTwoatOne = false;
         }else if(h1 == "baby 3"){
+            DoneBaby3.status = babyObj.status;
             inventory.InventorySystem.AddToInventory(DoneBaby3, 1);
             interactableMap.SetTile(new Vector3Int(-5, -6, 0), null);
             harvest1.gameObject.SetActive(false);
             hasThreeatOne = false;
         }else if(h1 == "baby 4"){
+            DoneBaby4.status = babyObj.status;
             inventory.InventorySystem.AddToInventory(DoneBaby4, 1);
             interactableMap.SetTile(new Vector3Int(-5, -6, 0), null);
             harvest1.gameObject.SetActive(false);
             hasFouratOne = false;
         }else if(h1 == "baby 5"){
+            DoneBaby5.status = babyObj.status;
             inventory.InventorySystem.AddToInventory(DoneBaby5, 1);
             interactableMap.SetTile(new Vector3Int(-5, -6, 0), null);
             harvest1.gameObject.SetActive(false);
             hasFiveatOne = false;
         }else if(h1 == "baby 6"){
+            DoneBaby6.status = babyObj.status;
             inventory.InventorySystem.AddToInventory(DoneBaby6, 1);
             interactableMap.SetTile(new Vector3Int(-5, -6, 0), null);
             harvest1.gameObject.SetActive(false);
@@ -425,32 +437,38 @@ public class Plant : MonoBehaviour
 
         var inventory = invHolder.GetComponent<InventoryHolder>();
 
-        if(h2 == "baby1"){ 
+        if(h2 == "baby1"){
+            DoneBaby1.status = babyObj.status;
             inventory.InventorySystem.AddToInventory(DoneBaby1, 1);
             interactableMap.SetTile(new Vector3Int(-11, -6, 0), null);
             harvest2.gameObject.SetActive(false);
             hasOneatTwo = false;
-        }else if(h2 == "baby 2"){ 
+        }else if(h2 == "baby 2"){
+            DoneBaby2.status = babyObj.status;
             inventory.InventorySystem.AddToInventory(DoneBaby2, 1);
             interactableMap.SetTile(new Vector3Int(-11, -6, 0), null);
             harvest2.gameObject.SetActive(false);
             hasTwoatTwo = false;
-        }else if(h2 == "baby 3"){ 
+        }else if(h2 == "baby 3"){
+            DoneBaby3.status = babyObj.status;
             inventory.InventorySystem.AddToInventory(DoneBaby3, 1);
             interactableMap.SetTile(new Vector3Int(-11, -6, 0), null);
             harvest2.gameObject.SetActive(false);
             hasThreeatTwo = false;
-        }else if(h2 == "baby 4"){ 
+        }else if(h2 == "baby 4"){
+            DoneBaby4.status = babyObj.status;
             inventory.InventorySystem.AddToInventory(DoneBaby4, 1);
             interactableMap.SetTile(new Vector3Int(-11, -6, 0), null);
             harvest2.gameObject.SetActive(false);
             hasFouratTwo = false;
-        }else if(h2 == "baby 5"){ 
+        }else if(h2 == "baby 5"){
+            DoneBaby5.status = babyObj.status;
             inventory.InventorySystem.AddToInventory(DoneBaby5, 1);
             interactableMap.SetTile(new Vector3Int(-11, -6, 0), null);
             harvest2.gameObject.SetActive(false);
             hasFiveatTwo = false;
-        }else if(h2 == "baby 6"){ 
+        }else if(h2 == "baby 6"){
+            DoneBaby6.status = babyObj.status;
             inventory.InventorySystem.AddToInventory(DoneBaby6, 1);
             interactableMap.SetTile(new Vector3Int(-11, -6, 0), null);
             harvest2.gameObject.SetActive(false);
@@ -468,31 +486,37 @@ public class Plant : MonoBehaviour
 
 
         if(h3 == "baby1"){
+            DoneBaby1.status = babyObj.status;
             inventory.InventorySystem.AddToInventory(DoneBaby1, 1);
             interactableMap.SetTile(new Vector3Int(-17, -6, 0), null);
             harvest3.gameObject.SetActive(false);
             hasOneatThree = false;
         }else if(h3 == "baby 2"){
+            DoneBaby2.status = babyObj.status;
             inventory.InventorySystem.AddToInventory(DoneBaby2, 1);
             interactableMap.SetTile(new Vector3Int(-17, -6, 0), null);
             harvest3.gameObject.SetActive(false);
             hasTwoatThree = false;
         }else if(h3 == "baby 3"){
+            DoneBaby3.status = babyObj.status;
             inventory.InventorySystem.AddToInventory(DoneBaby3, 1);
             interactableMap.SetTile(new Vector3Int(-17, -6, 0), null);
             harvest3.gameObject.SetActive(false);
             hasThreeatThree = false;
         }else if(h3 == "baby 4"){
+            DoneBaby4.status = babyObj.status;
             inventory.InventorySystem.AddToInventory(DoneBaby4, 1);
             interactableMap.SetTile(new Vector3Int(-17, -6, 0), null);
             harvest3.gameObject.SetActive(false);
             hasFouratThree = false;
         }else if(h3 == "baby 5"){
+            DoneBaby5.status = babyObj.status;
             inventory.InventorySystem.AddToInventory(DoneBaby5, 1);
             interactableMap.SetTile(new Vector3Int(-17, -6, 0), null);
             harvest3.gameObject.SetActive(false);
             hasFiveatThree = false;
         }else if(h3 == "baby 6"){
+            DoneBaby6.status = babyObj.status;
             inventory.InventorySystem.AddToInventory(DoneBaby6, 1);
             interactableMap.SetTile(new Vector3Int(-17, -6, 0), null);
             harvest3.gameObject.SetActive(false);
@@ -509,31 +533,37 @@ public class Plant : MonoBehaviour
 
 
         if(h4 == "baby1"){
+            DoneBaby1.status = babyObj.status;
             inventory.InventorySystem.AddToInventory(DoneBaby1, 1);
             interactableMap.SetTile(new Vector3Int(-17, 1, 0), null);
             harvest4.gameObject.SetActive(false);
             hasOneatFour = false;
         }else if(h4 == "baby 2"){
+            DoneBaby2.status = babyObj.status;
             inventory.InventorySystem.AddToInventory(DoneBaby2, 1);
             interactableMap.SetTile(new Vector3Int(-17, 1, 0), null);
             harvest4.gameObject.SetActive(false);
             hasTwoatFour = false;
         }else if(h4 == "baby 3"){
+            DoneBaby3.status = babyObj.status;
             inventory.InventorySystem.AddToInventory(DoneBaby3, 1);
             interactableMap.SetTile(new Vector3Int(-17, 1, 0), null);
             harvest4.gameObject.SetActive(false);
             hasThreeatFour = false;
         }else if(h4 == "baby 4"){
+            DoneBaby4.status = babyObj.status;
             inventory.InventorySystem.AddToInventory(DoneBaby4, 1);
             interactableMap.SetTile(new Vector3Int(-17, 1, 0), null);
             harvest4.gameObject.SetActive(false);
             hasFouratFour = false;
         }else if(h4 == "baby 5"){
+            DoneBaby5.status = babyObj.status;
             inventory.InventorySystem.AddToInventory(DoneBaby5, 1);
             interactableMap.SetTile(new Vector3Int(-17, 1, 0), null);
             harvest4.gameObject.SetActive(false);
             hasFiveatFour = false;
         }else if(h4 == "baby 6"){
+            DoneBaby6.status = babyObj.status;
             inventory.InventorySystem.AddToInventory(DoneBaby6, 1);
             interactableMap.SetTile(new Vector3Int(-17, 1, 0), null);
             harvest4.gameObject.SetActive(false);
@@ -548,31 +578,37 @@ public class Plant : MonoBehaviour
 
 
         if(h5 == "baby1"){
+            DoneBaby1.status = babyObj.status;
             inventory.InventorySystem.AddToInventory(DoneBaby1, 1);
             interactableMap.SetTile(new Vector3Int(-11, 1, 0), null);
             harvest5.gameObject.SetActive(false);
             hasOneatFive = false;
         }else if(h5 == "baby 2"){
+            DoneBaby2.status = babyObj.status;
             inventory.InventorySystem.AddToInventory(DoneBaby2, 1);
             interactableMap.SetTile(new Vector3Int(-11, 1, 0), null);
             harvest5.gameObject.SetActive(false);
             hasTwoatFive = false;
         }else if(h5 == "baby 3"){
+            DoneBaby3.status = babyObj.status;
             inventory.InventorySystem.AddToInventory(DoneBaby3, 1);
             interactableMap.SetTile(new Vector3Int(-11, 1, 0), null);
             harvest5.gameObject.SetActive(false);
             hasThreeatFive = false;
         }else if(h5 == "baby 4"){
+            DoneBaby4.status = babyObj.status;
             inventory.InventorySystem.AddToInventory(DoneBaby4, 1);
             interactableMap.SetTile(new Vector3Int(-11, 1, 0), null);
             harvest5.gameObject.SetActive(false);
             hasFouratFive = false;
         }else if(h5 == "baby 5"){
+            DoneBaby5.status = babyObj.status;
             inventory.InventorySystem.AddToInventory(DoneBaby5, 1);
             interactableMap.SetTile(new Vector3Int(-11, 1, 0), null);
             harvest5.gameObject.SetActive(false);
             hasFiveatFive = false;
         }else if(h5 == "baby 6"){
+            DoneBaby6.status = babyObj.status;
             inventory.InventorySystem.AddToInventory(DoneBaby6, 1);
             interactableMap.SetTile(new Vector3Int(-11, 1, 0), null);
             harvest5.gameObject.SetActive(false);
@@ -588,32 +624,38 @@ public class Plant : MonoBehaviour
 
 
         if(h6 == "baby1"){
+            DoneBaby1.status = babyObj.status;
             inventory.InventorySystem.AddToInventory(DoneBaby1, 1);
             interactableMap.SetTile(new Vector3Int(-5, 1, 0), null);
             harvest6.gameObject.SetActive(false);
             hasOneatSix = false;
         }
         else if(h6 == "baby 2"){
+            DoneBaby2.status = babyObj.status;
             inventory.InventorySystem.AddToInventory(DoneBaby2, 1);
             interactableMap.SetTile(new Vector3Int(-5, 1, 0), null);
             harvest6.gameObject.SetActive(false);
             hasTwoatSix = false;
         }else if(h6 == "baby 3"){
+            DoneBaby3.status = babyObj.status;
             inventory.InventorySystem.AddToInventory(DoneBaby3, 1);
             interactableMap.SetTile(new Vector3Int(-5, 1, 0), null);
             harvest6.gameObject.SetActive(false);
             hasThreeatSix = false;
         }else if(h6 == "baby 4"){
+            DoneBaby4.status = babyObj.status;
             inventory.InventorySystem.AddToInventory(DoneBaby4, 1);
             interactableMap.SetTile(new Vector3Int(-5, 1, 0), null);
             harvest6.gameObject.SetActive(false);
             hasFouratSix = false;
         }else if(h6 == "baby 5"){
+            DoneBaby5.status = babyObj.status;
             inventory.InventorySystem.AddToInventory(DoneBaby5, 1);
             interactableMap.SetTile(new Vector3Int(-5, 1, 0), null);
             harvest6.gameObject.SetActive(false);
             hasFiveatSix = false;
         }else if(h6 == "baby 6"){
+            DoneBaby6.status = babyObj.status;
             inventory.InventorySystem.AddToInventory(DoneBaby6, 1);
             interactableMap.SetTile(new Vector3Int(-5, 1, 0), null);
             harvest6.gameObject.SetActive(false);
@@ -624,7 +666,12 @@ public class Plant : MonoBehaviour
 
     public void PlantBabySlot1(){
         if(MouseItemData.instance.hasItem){
-            if(InventoryDisplay.instance.babyName == "Baby 1"){
+
+            // get status of obj currently attached to mouse
+            babyObj = mouseObj.getCurrentMouseItem().ItemData; 
+            babyObj.status = mouseObj.getCurrentMouseItem().ItemData.status; 
+
+            if (InventoryDisplay.instance.babyName == "Baby 1"){
                 one.SetActive(true);
                 //interactableMap.SetTile(new Vector3Int(-5, -6, 0), sprout);
                 slot1.gameObject.SetActive(false);
@@ -672,7 +719,10 @@ public class Plant : MonoBehaviour
     }
 
     public void PlantBabySlot2(){
-        if(MouseItemData.instance.hasItem){
+        // get status of obj currently attached to mouse
+        babyObj = mouseObj.getCurrentMouseItem().ItemData;
+        babyObj.status = mouseObj.getCurrentMouseItem().ItemData.status;
+        if (MouseItemData.instance.hasItem){
             if(InventoryDisplay.instance.babyName == "Baby 1"){
                 two.SetActive(true);
                 //interactableMap.SetTile(new Vector3Int(-11, -6, 0), sprout);
@@ -720,7 +770,10 @@ public class Plant : MonoBehaviour
     }
 
     public void PlantBabySlot3(){
-        if(MouseItemData.instance.hasItem){
+        // get status of obj currently attached to mouse
+        babyObj = mouseObj.getCurrentMouseItem().ItemData;
+        babyObj.status = mouseObj.getCurrentMouseItem().ItemData.status;
+        if (MouseItemData.instance.hasItem){
             if(InventoryDisplay.instance.babyName == "Baby 1"){
                 three.SetActive(true);
                 //interactableMap.SetTile(new Vector3Int(-17, -6, 0), sprout);
@@ -768,7 +821,10 @@ public class Plant : MonoBehaviour
     }
 
     public void PlantBabySlot4(){
-        if(MouseItemData.instance.hasItem){
+        // get status of obj currently attached to mouse
+        babyObj = mouseObj.getCurrentMouseItem().ItemData;
+        babyObj.status = mouseObj.getCurrentMouseItem().ItemData.status;
+        if (MouseItemData.instance.hasItem){
             if(InventoryDisplay.instance.babyName == "Baby 1"){
                 four.SetActive(true);
                 //interactableMap.SetTile(new Vector3Int(-17, 1, 0), sprout);
@@ -816,7 +872,10 @@ public class Plant : MonoBehaviour
     }
 
     public void PlantBabySlot5(){
-        if(MouseItemData.instance.hasItem){
+        // get status of obj currently attached to mouse
+        babyObj = mouseObj.getCurrentMouseItem().ItemData;
+        babyObj.status = mouseObj.getCurrentMouseItem().ItemData.status;
+        if (MouseItemData.instance.hasItem){
             if(InventoryDisplay.instance.babyName == "Baby 1"){
                 five.SetActive(true);
                 //interactableMap.SetTile(new Vector3Int(-11, 1, 0), sprout);
@@ -865,7 +924,10 @@ public class Plant : MonoBehaviour
     }
 
     public void PlantBabySlot6(){
-        if(MouseItemData.instance.hasItem){
+        // get status of obj currently attached to mouse
+        babyObj = mouseObj.getCurrentMouseItem().ItemData;
+        babyObj.status = mouseObj.getCurrentMouseItem().ItemData.status;
+        if (MouseItemData.instance.hasItem){
             if(InventoryDisplay.instance.babyName == "Baby 1"){
                 six.SetActive(true);
                 //interactableMap.SetTile(new Vector3Int(-5, 1, 0), sprout);

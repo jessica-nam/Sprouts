@@ -36,8 +36,6 @@ public class SellItem : MonoBehaviour
         sellTemplate.descriptionTxt.text = data.description;
 
         // set cost based on status
-        Debug.Log(data.title);
-        Debug.Log(data.status);
         data.cost = SetSellPrice(data);
 
         // calc revenue and display
