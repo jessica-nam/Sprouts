@@ -3,25 +3,34 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 public class TimeManager : MonoBehaviour
 {
     //Variables for counting the days
     public int currentDay = 1;
     public int previousDay = 0;
-    public int dayLimit = 7;
+    public int dayLimit = 5;
     public bool gameEnd = false;
-    public int quota = 5;
+    public bool endingGood;
+    public int quota = 7;
 
     //variables for UI
     public TMP_Text currDay;
+    public TMP_Text ending;
     public GameObject TimeUI;
+    public GameObject StateUI;
     SpriteRenderer sprite;
-    public SellItem sellItem;
+    public ShopManager shopSell;
+    public Image win;
+    public Image lose;
+
+
     // Start is called before the first frame update
     void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
         TimeUI.SetActive(false);
+        
     }
 
     private void Update()
@@ -33,14 +42,26 @@ public class TimeManager : MonoBehaviour
         }
         if(gameEnd == true)
         {
-            if(sellItem.goodSold >= quota)
+            if(shopSell.sellMgr.goodSold >= quota)
             {
-                print("You win");
+                endingGood = true;
             }
             else
             {
-                print("You lose");
+                endingGood = false;
             }
+        }
+        if(gameEnd && endingGood)
+        {
+            StateUI.SetActive(true);
+            win.enabled = true;
+            lose.enabled = false;
+        }
+        else if(gameEnd && !endingGood)
+        {
+            StateUI.SetActive(true);
+            win.enabled = false;
+            lose.enabled = true;
         }
     }
 
@@ -73,6 +94,11 @@ public class TimeManager : MonoBehaviour
     private void OnMouseExit()
     {
         sprite.color = new Color(255, 255, 255, 1);
+    }
+
+    public void returnToMain()
+    {
+        SceneManager.LoadScene("Menu");
     }
 
 }

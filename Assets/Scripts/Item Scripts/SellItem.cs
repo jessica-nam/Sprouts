@@ -9,8 +9,8 @@ public class SellItem : MonoBehaviour
     private SellTemplate sellTemplate;
     GameObject SavedObjs;
     private CoinMgr coinMgr;
+    private int goodSoldTemp = 0;
     public int goodSold = 0;
-
     int totalRevenue;
     public GameObject instructions;
     public Button sellItemsButton;
@@ -46,7 +46,7 @@ public class SellItem : MonoBehaviour
 
         if(data.status == "good")
         {
-            goodSold += 1;
+            goodSoldTemp += 1;
         }
     }
 
@@ -69,6 +69,7 @@ public class SellItem : MonoBehaviour
 
         instructions.SetActive(true);
         sellItemsButton.gameObject.SetActive(false);
+        goodSold += goodSoldTemp;
     }
 
     public int SetSellPrice(ShopItemSO shopItem)
