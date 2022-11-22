@@ -1,14 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlantManager : MonoBehaviour
 {
 
     public static PlantManager instance;
 
+    [SerializeField] private Sprite itemSprite;
+
     bool isPlanted = false;
+    public bool readyForHarvest = false;
     public GameObject plant;
+    public GameObject baby;
+
 
     public ShopItemSO DoneBaby1;
 
@@ -45,25 +51,42 @@ public class PlantManager : MonoBehaviour
     private void OnMouseDown(){
         Debug.Log("Clicked");
         if(!isPlanted){
-            // Harvest();
             Plant();
-        }else if (isPlanted){
+        }
+
+        if(readyForHarvest){
             Harvest();
         }
-        // }else{
-        //     Plant();
-        //     mouseObj = null;
-        // }
     }
 
-    void Harvest(){
-        Debug.Log("Harvested");
-        var inventory = invHolder.GetComponent<InventoryHolder>();
-        DoneBaby1 = babyObj;
-        Debug.Log(DoneBaby1);
-        inventory.InventorySystem.AddToInventory(DoneBaby1, 1);
+    public void TurnOffAnim(){
+        plant.SetActive(false);
+    }
+
+    public void TurnOnAnim(){
+        plant.SetActive(true);
+    }
+
+    public void ReadyForHarvest(){
+        
         isPlanted = false;
         plant.SetActive(false);
+        readyForHarvest = true;
+        baby.SetActive(true);
+    }
+
+    public void Harvest(){
+        Debug.Log("Harvested");
+        var inventory = invHolder.GetComponent<InventoryHolder>();
+        Debug.Log("Baby Object before", babyObj);
+        Debug.Log("Done baby" , DoneBaby1);
+
+        babyObj = DoneBaby1;
+        Debug.Log("Baby Object after", babyObj);
+        inventory.InventorySystem.AddToInventory(babyObj, 1);
+        baby.SetActive(false);
+        readyForHarvest = false;
+        
     }
 
     void Plant(){
