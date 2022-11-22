@@ -29,12 +29,6 @@ public abstract class InventoryDisplay : MonoBehaviour
 
     }
 
-    void Update(){
-        if(Plant.instance.BabyPlanted==true){
-            MouseItemData.instance.ClearSlot();
-            Plant.instance.BabyPlanted = false;
-        }
-    }
 
     public abstract void AssignSlot(InventorySystem invToDisplay); // need to know which system slots correspond to UI slots
 
