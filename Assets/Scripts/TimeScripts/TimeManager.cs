@@ -6,6 +6,8 @@ using TMPro;
 using UnityEngine.SceneManagement;
 public class TimeManager : MonoBehaviour
 {
+    public static TimeManager instance;
+
     //Variables for counting the days
     public int currentDay = 1;
     public int previousDay = 0;
@@ -23,7 +25,14 @@ public class TimeManager : MonoBehaviour
     public ShopManager shopSell;
     public Image win;
     public Image lose;
+
+    public bool clickedYes = false;
+    public bool clickedNo = false;
+    public bool openWindow = false;
     
+    void Awake(){
+        instance = this;
+    }
 
 
     // Start is called before the first frame update
@@ -71,20 +80,25 @@ public class TimeManager : MonoBehaviour
     {
         //bring up canvas to make sure user wants to move to next day
         TimeUI.SetActive(true);
-        PlantManager.instance.TurnOffAnim();
+        openWindow = true;
+
     }
 
     public void selectNo()
     {
         TimeUI.SetActive(false);
+        clickedNo = true;
+
     }
 
     public void selectYes()
     {
+        clickedYes = true;
         TimeUI.SetActive(false);
         previousDay = currentDay;
         currentDay += 1;
-        PlantManager.instance.ReadyForHarvest();
+
+  
     }
     private void OnMouseOver()
     {
