@@ -2,24 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+using System.Linq;
 
 public class SellItem : MonoBehaviour
 {
-    private List<SellTemplate> templateList = new List<SellTemplate>();
+    private static List<SellTemplate> templateList = new List<SellTemplate>(); // templates (UI)
+    private static List<ShopItemSO> itemsToSell = new List<ShopItemSO>(); // actual data 
     private SellTemplate sellTemplate;
+
     GameObject SavedObjs;
     private CoinMgr coinMgr;
-    private int goodSoldTemp = 0;
-    public int goodSold = 0;
-    int totalRevenue;
+    private GameObject invHolder;
+    
     public GameObject instructions;
     public Button sellItemsButton;
 
+    private int goodSoldTemp = 0;
+    public int goodSold = 0;
+    int totalRevenue;
+    
     private void Start()
     {
         // instantiate saved objects
         SavedObjs = SaveObject.savedObjs;
         coinMgr = SavedObjs.gameObject.transform.Find("Coin UI").gameObject.GetComponent<CoinMgr>();
+        invHolder = SavedObjs.gameObject.transform.Find("Inventory Holder").gameObject;
     }
 
     public void UpdateItemToSell(ShopItemSO data, int amount, GameObject template)
@@ -27,8 +35,11 @@ public class SellItem : MonoBehaviour
         sellItemsButton.gameObject.SetActive(true); // will be called every time a new template is added -- not ideal
         sellTemplate = template.GetComponent<SellTemplate>();
 
-        // add to list of templates
+        // add to list of templates (UI)
         templateList.Add(sellTemplate);
+
+        // add to list of items (actual data)
+        itemsToSell.Add(data);
 
         sellTemplate.image.sprite = data.icon;
         sellTemplate.image.color = Color.white;
@@ -84,5 +95,18 @@ public class SellItem : MonoBehaviour
         }
 
         return shopItem.cost;
+    }
+
+    public void UndoTemplateCreation()
+    {
+        // get order in hierarchy -- should match order in global lists storing templates/data 
+        int index = gameObject.transform.GetSiblingIndex(); 
+
+        // add back to inventory
+        var inventory = invHolder.GetComponent<InventoryHolder>();
+        inventory.InventorySystem.AddToInventory(itemsToSell.ElementAt(index), 1);
+
+        // set sell template inactive
+        templateList.ElementAt(index).gameObject.SetActive(false);
     }
 }

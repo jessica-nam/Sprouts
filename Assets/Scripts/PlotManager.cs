@@ -10,7 +10,6 @@ public class PlotManager : MonoBehaviour
 
     public MouseItemData mouseObj;
     public ShopItemSO babyObj;
-    public InventorySlot slotData;
     private GameObject invHolder;
 
     public Button NextDay;
