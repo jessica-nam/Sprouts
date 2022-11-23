@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine.InputSystem;
 using Random = System.Random;
 using System.Linq;
+using UnityEngine.EventSystems;
 
 public class ShopManager : MonoBehaviour
 {
@@ -54,13 +55,13 @@ public class ShopManager : MonoBehaviour
     {
         CheckIfSelling();
     }
-
+    
     public void CheckIfSelling()
     {
         var results = mouseObj.getObjectsClickedOn();
         foreach (var result in results)
         {
-            if (result.gameObject.name == "Shop" && mouseObj.hasItem && Mouse.current.leftButton.wasPressedThisFrame) // if item on mouse and player clicks
+            if (result.gameObject.name == "Shop" && mouseObj.hasItem && Mouse.current.leftButton.wasPressedThisFrame) // if item on mouse and player clicks on shop canvas
             {
                 DisplayShopSell(); // swap to sell view
                 DisplayItemsToSell(); // add template for every item dragged onto sell view
@@ -68,7 +69,7 @@ public class ShopManager : MonoBehaviour
             }
         }
     }
-
+    
     public void DisplayShopSell()
     {
         // remove instructions text

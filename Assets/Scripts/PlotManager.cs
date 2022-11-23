@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class PlotManager : MonoBehaviour
 {
-
     public static PlotManager instance;
 
     public MouseItemData mouseObj;
@@ -21,6 +21,7 @@ public class PlotManager : MonoBehaviour
     GameObject SavedObjs;
 
     bool isPlanted = false;
+    bool clicked = false;
     SpriteRenderer plant;
 
     public Sprite[] plantStages;
@@ -41,18 +42,21 @@ public class PlotManager : MonoBehaviour
         mouseObj = SavedObjs.gameObject.transform.Find("Mouse Object").gameObject.GetComponent<MouseItemData>();
     }
 
-
     public void NextDayButtonYes()
     {
         if (plantStage < plantStages.Length - 1){
             plantStage+=1;
             UpdatePlant();
         }
-        
     }
 
     private void OnMouseDown()
     {
+        if (!EventSystem.current.IsPointerOverGameObject())
+        {
+            clicked = true; // fixes error where you can interact with plots through shop canvas
+        }
+
         if (isPlanted)
         {
             if (plantStage == plantStages.Length - 1)
@@ -72,32 +76,40 @@ public class PlotManager : MonoBehaviour
 
     void Harvest()
     {
+        if (clicked)
+        {
+            var inventory = invHolder.GetComponent<InventoryHolder>();
+            var clone = Instantiate(babyObj);
+            clone.icon = plant.sprite; // refers to serialize field at top
+            inventory.InventorySystem.AddToInventory(clone, 1);
 
-        var inventory = invHolder.GetComponent<InventoryHolder>();
-        var clone = Instantiate(babyObj);
-        clone.icon = plant.sprite; // refers to serialize field at top
-        inventory.InventorySystem.AddToInventory(clone, 1);
+            isPlanted = false;
+            plant.gameObject.SetActive(false);
+        }
 
-        isPlanted = false;
-        plant.gameObject.SetActive(false);
-
+        clicked = false;
     }
 
     void Plant()
     {
-        if (MouseItemData.instance.hasItem)
+        if (clicked)
         {
+            if (MouseItemData.instance.hasItem)
+            {
 
-            babyObj = mouseObj.getCurrentMouseItem().ItemData;
-            Debug.Log("Baby on mouse: ");
+                babyObj = mouseObj.getCurrentMouseItem().ItemData;
+                Debug.Log("Baby on mouse: ");
 
-            isPlanted = true;
-            plantStage = 0;
-            UpdatePlant();
-            plant.gameObject.SetActive(true);
+                isPlanted = true;
+                plantStage = 0;
+                UpdatePlant();
+                plant.gameObject.SetActive(true);
 
-            MouseItemData.instance.ClearSlot();
+                MouseItemData.instance.ClearSlot();
+            }
         }
+
+        clicked = false;
     }
 
     void UpdatePlant()
