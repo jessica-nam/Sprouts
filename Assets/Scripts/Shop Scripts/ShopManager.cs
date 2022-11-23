@@ -169,7 +169,7 @@ public class ShopManager : MonoBehaviour
             shopItemsSO[i].status = CalculateBabyStatus(shopItemsSO[i]);
 
             // cost based on status (good/bad)
-            shopPanels[i].costTxt.text = SetCosts(shopItemsSO[i]).ToString() + " coins";
+            shopPanels[i].costTxt.text = SetCosts(shopItemsSO[i]).ToString();
         }
     }
 

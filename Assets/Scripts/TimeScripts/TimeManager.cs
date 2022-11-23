@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.SceneManagement;
 public class TimeManager : MonoBehaviour
 {
     public static TimeManager instance;
@@ -33,14 +32,11 @@ public class TimeManager : MonoBehaviour
     void Awake(){
         instance = this;
     }
-
-
-    // Start is called before the first frame update
+    
     void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
         TimeUI.SetActive(false);
-        
     }
 
     private void Update()
@@ -81,7 +77,6 @@ public class TimeManager : MonoBehaviour
         //bring up canvas to make sure user wants to move to next day
         TimeUI.SetActive(true);
         openWindow = true;
-
     }
 
     public void selectNo()
@@ -97,22 +92,16 @@ public class TimeManager : MonoBehaviour
         TimeUI.SetActive(false);
         previousDay = currentDay;
         currentDay += 1;
-
-  
     }
+
     private void OnMouseOver()
     {
         //change sign color when hovered over.
         sprite.color = new Color(255, 0, 0, 1);
     }
+
     private void OnMouseExit()
     {
         sprite.color = new Color(255, 255, 255, 1);
     }
-
-    public void returnToMain()
-    {
-        SceneManager.LoadScene("Menu");
-    }
-
 }

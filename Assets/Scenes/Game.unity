@@ -4280,9 +4280,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 680588362}
-        m_TargetAssemblyTypeName: TimeManager, Assembly-CSharp
-        m_MethodName: returnToMain
+      - m_Target: {fileID: 999824493}
+        m_TargetAssemblyTypeName: SceneManagement, Assembly-CSharp
+        m_MethodName: Menu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

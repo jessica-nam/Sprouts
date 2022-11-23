@@ -41,7 +41,7 @@ public class SellItem : MonoBehaviour
         // calc revenue and display
         int revenue = data.cost * amount;
         totalRevenue += revenue;
-        sellTemplate.costTxt.text = revenue.ToString() + " coins";
+        sellTemplate.costTxt.text = revenue.ToString();
         sellTemplate.quantity.text = "x " + amount.ToString();
 
         if(data.status == "good")

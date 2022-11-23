@@ -17,9 +17,11 @@ public class SceneManagement : MonoBehaviour
     public void OpenShop(){
         SceneManager.LoadScene("Shop System");
     }
+
     public void BackToGame(){
         SceneManager.LoadScene("Game");
     }
+
     public void PlayGame(){
         //load game
         SceneManager.LoadScene("Game");
@@ -27,14 +29,15 @@ public class SceneManagement : MonoBehaviour
         if (Instance != null) // if not first time game run, like if player goes from menu -> game -> menu 
             Instance.gameObject.SetActive(true); 
     }
+
     public void Menu(){
         // back to menu
         SceneManager.LoadScene("Menu");
         SavedObjs.gameObject.SetActive(false); // deactivate persistent objs
     }
+
     public void QuitGame(){
         Debug.Log("Quit");
         Application.Quit();
-        
     }
 }
