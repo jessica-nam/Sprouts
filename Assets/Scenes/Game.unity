@@ -19671,6 +19671,12 @@ PrefabInstance:
       propertyPath: NextDay
       value: 
       objectReference: {fileID: 1891993728}
+    - target: {fileID: 1854014343154962265, guid: 2a09638f68d6b2b4da080397702d0746,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 25226b641ea246b4f9a500b4d4ba0c24,
+        type: 3}
     - target: {fileID: 1854014343154962266, guid: 2a09638f68d6b2b4da080397702d0746,
         type: 3}
       propertyPath: m_RootOrder
@@ -20909,6 +20915,12 @@ PrefabInstance:
       propertyPath: NextDay
       value: 
       objectReference: {fileID: 1891993728}
+    - target: {fileID: 1854014343154962265, guid: 2a09638f68d6b2b4da080397702d0746,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e099d1092a722e542a33660eebf55b2c,
+        type: 3}
     - target: {fileID: 1854014343154962266, guid: 2a09638f68d6b2b4da080397702d0746,
         type: 3}
       propertyPath: m_RootOrder
@@ -21705,6 +21717,12 @@ PrefabInstance:
       propertyPath: NextDay
       value: 
       objectReference: {fileID: 1891993728}
+    - target: {fileID: 1854014343154962265, guid: 2a09638f68d6b2b4da080397702d0746,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1603fc09815cf8247b552a75c8bdfe70,
+        type: 3}
     - target: {fileID: 1854014343154962266, guid: 2a09638f68d6b2b4da080397702d0746,
         type: 3}
       propertyPath: m_RootOrder
@@ -22452,6 +22470,12 @@ PrefabInstance:
       propertyPath: NextDay
       value: 
       objectReference: {fileID: 1891993728}
+    - target: {fileID: 1854014343154962265, guid: 2a09638f68d6b2b4da080397702d0746,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 25226b641ea246b4f9a500b4d4ba0c24,
+        type: 3}
     - target: {fileID: 1854014343154962266, guid: 2a09638f68d6b2b4da080397702d0746,
         type: 3}
       propertyPath: m_RootOrder
@@ -22506,6 +22530,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1854014343154962267, guid: 2a09638f68d6b2b4da080397702d0746,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 21.654408
+      objectReference: {fileID: 0}
+    - target: {fileID: 1854014343154962267, guid: 2a09638f68d6b2b4da080397702d0746,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 21.02
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
