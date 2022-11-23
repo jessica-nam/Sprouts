@@ -25,10 +25,6 @@ public class PlotManager : MonoBehaviour
 
     public Sprite[] plantStages;
     int plantStage = 0;
-    float timeBtwStages = 2f;
-    float timer;
-
-
 
     // Start is called before the first frame update
     void Start()
@@ -45,25 +41,10 @@ public class PlotManager : MonoBehaviour
         mouseObj = SavedObjs.gameObject.transform.Find("Mouse Object").gameObject.GetComponent<MouseItemData>();
     }
 
-    // Update is called once per frame
-    // void Update()
-    // {
-    //     if (isPlanted)
-    //     {
-    //         timer -= Time.deltaTime;
-
-    //         if (timer < 0 && plantStage < plantStages.Length - 1)
-    //         {
-                
-
-    //         }
-    //     }
-    // }
 
     public void NextDayButtonYes()
     {
         if (plantStage < plantStages.Length - 1){
-            //timer = timeBtwStages;
             plantStage+=1;
             UpdatePlant();
         }
@@ -94,7 +75,7 @@ public class PlotManager : MonoBehaviour
 
         var inventory = invHolder.GetComponent<InventoryHolder>();
         var clone = Instantiate(babyObj);
-        clone.icon = icon; // refers to serialize field at top
+        clone.icon = plant.sprite; // refers to serialize field at top
         inventory.InventorySystem.AddToInventory(clone, 1);
 
         isPlanted = false;
@@ -113,7 +94,6 @@ public class PlotManager : MonoBehaviour
             isPlanted = true;
             plantStage = 0;
             UpdatePlant();
-            timer = timeBtwStages;
             plant.gameObject.SetActive(true);
 
             MouseItemData.instance.ClearSlot();
