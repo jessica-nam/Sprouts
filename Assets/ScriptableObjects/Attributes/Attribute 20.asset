@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Attribute 20
   m_EditorClassIdentifier: 
   attributeName: Aggressive
-  weight: -1
+  weight: -5

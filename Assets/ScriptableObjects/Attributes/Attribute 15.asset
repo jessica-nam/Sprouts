@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Attribute 15
   m_EditorClassIdentifier: 
   attributeName: Manipulative
-  weight: -1
+  weight: -3

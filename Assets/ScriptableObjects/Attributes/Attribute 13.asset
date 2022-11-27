@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Attribute 13
   m_EditorClassIdentifier: 
   attributeName: Selfish
-  weight: -1
+  weight: -5

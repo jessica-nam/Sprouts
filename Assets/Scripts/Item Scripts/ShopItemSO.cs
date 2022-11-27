@@ -7,9 +7,17 @@ using UnityEngine.UI;
 public class ShopItemSO : ScriptableObject
 {
     public string title;
-    public string description;
     public int cost;
     public Sprite icon;
     public List<Attribute> attributes;
-    public string status;
+    public int score;
+
+    public void Reset()
+    {
+       // title = "";
+        cost = 0;
+        //icon = 
+        attributes.Clear();
+        score = 0;
+    }
 }

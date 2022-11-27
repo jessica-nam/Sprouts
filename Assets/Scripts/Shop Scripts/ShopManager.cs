@@ -14,12 +14,12 @@ public class ShopManager : MonoBehaviour
     public GameObject[] shopPanelsGO;
     public ShopTemplate[] shopPanels;
     public Button[] purchaseBtns;
-    public List<Sprite> possibleIcons;
     public GameObject sellTemplate;
 
     GameObject SavedObjs; 
     private GameObject invHolder;
     private CoinMgr coinMgr;
+    private ScoreMgr scoreMgr;
     private MouseItemData mouseObj;
     private GameObject hotbarBG;
 
@@ -30,6 +30,9 @@ public class ShopManager : MonoBehaviour
     Transform childFound = null;
 
     public List<Attribute> possibleAttrs;
+    public List<Sprite> possibleIcons;
+    HashSet<int> chosenAttrs = new HashSet<int>(); // hash sets don't allow duplicates
+    HashSet<int> chosenIcons = new HashSet<int>();
 
     private void Awake()
     {
@@ -39,12 +42,14 @@ public class ShopManager : MonoBehaviour
         invHolder = SavedObjs.gameObject.transform.Find("Inventory Holder").gameObject;
         coinMgr = SavedObjs.gameObject.transform.Find("Coin UI").gameObject.GetComponent<CoinMgr>();
         mouseObj = SavedObjs.gameObject.transform.Find("Mouse Object").gameObject.GetComponent<MouseItemData>();
+        scoreMgr = SavedObjs.gameObject.transform.Find("Score UI").gameObject.GetComponent<ScoreMgr>();
     }
 
     void Start()
     {
         for (int i = 0; i < shopItemsSO.Length; i++)
         {
+            shopItemsSO[i].Reset(); // reset all values
             shopPanelsGO[i].SetActive(true);
         }
         LoadPanels();
@@ -63,9 +68,9 @@ public class ShopManager : MonoBehaviour
         {
             if (result.gameObject.name == "Shop" && mouseObj.hasItem && Mouse.current.leftButton.wasPressedThisFrame) // if item on mouse and player clicks on shop canvas
             {
-                DisplayShopSell(); // swap to sell view
-                DisplayItemsToSell(); // add template for every item dragged onto sell view
-                mouseObj.ClearSlot(); // destroy item on mouse
+                DisplayShopSell();      // swap to sell view
+                DisplayItemsToSell();   // add template for every item dragged onto sell view
+                mouseObj.ClearSlot();   // destroy item on mouse
             }
         }
     }
@@ -86,7 +91,7 @@ public class ShopManager : MonoBehaviour
         if (parentTransform)
         {
             GameObject newItemToSell = Instantiate(sellTemplate, parentTransform); // instantiate new templates as children of that obj
-            sellMgr.UpdateItemToSell(mouseObj.getCurrentMouseItem().ItemData, mouseObj.getCurrentMouseItem().StackSize, newItemToSell);
+            sellMgr.UpdateItemToSell(mouseObj.getCurrentMouseItem().ItemData, newItemToSell);
         }
         else
         {
@@ -125,7 +130,7 @@ public class ShopManager : MonoBehaviour
     {
         for (int i = 0; i < shopItemsSO.Length; i++)
         {
-            if (coinMgr.coins >= shopItemsSO[i].cost) //if i have enough money
+            if (coinMgr.coins >= shopItemsSO[i].cost) // if player has enough money
                 purchaseBtns[i].interactable = true;
             else
                 purchaseBtns[i].interactable = false;
@@ -142,8 +147,8 @@ public class ShopManager : MonoBehaviour
             coinMgr.UpdateCoinUI();
 
             // add to player inventory
-            var inventory = invHolder.GetComponent<InventoryHolder>(); // get player inventory
-            inventory.InventorySystem.AddToInventory(shopItemsSO[btnNum], 1); // add item to it
+            var inventory = invHolder.GetComponent<InventoryHolder>();          // get player inventory
+            inventory.InventorySystem.AddToInventory(shopItemsSO[btnNum], 1);   // add item to it
 
             CheckPurchaseable();
         }
@@ -153,69 +158,62 @@ public class ShopManager : MonoBehaviour
     {
         for (int i = 0; i < shopItemsSO.Length; i++)
         {
-            // set in inspector
+            // these are set in inspector
             shopPanels[i].titleTxt.text = shopItemsSO[i].title;
-            //shopPanels[i].descriptionTxt.text = shopItemsSO[i].description;
 
             // randomly selected
             shopPanels[i].image.sprite = GetRandomIcon(shopItemsSO[i]);
 
             // get 3 random attributes
+            chosenAttrs.Clear();
             for (int j = 0; j < 3; j++)
             {
                 shopPanels[i].attributesTxt.text += PickRandomAttribute(shopItemsSO[i]) + System.Environment.NewLine;
+
+                // score is sum of attr weights 
+                shopItemsSO[i].score += shopItemsSO[i].attributes[j].weight;
             }
-
-            shopItemsSO[i].status = CalculateBabyStatus(shopItemsSO[i]);
-
-            // cost based on status (good/bad)
+            // cost is based on score
             shopPanels[i].costTxt.text = SetCosts(shopItemsSO[i]).ToString();
         }
     }
 
+  
     public string PickRandomAttribute(ShopItemSO shopItem)
     {        
         Random r = new Random();
-        int rInt = r.Next(0, possibleAttrs.Count - 1);
+        int rInt;
+
+        // pick rand num, making sure it's not already been chosen
+        do
+        {
+            rInt = r.Next(0, possibleAttrs.Count);
+        }
+        while (chosenAttrs.Contains(rInt));
+        chosenAttrs.Add(rInt);
         
         shopItem.attributes.Add(possibleAttrs[rInt]);
         
         return shopItem.attributes.LastOrDefault().attributeName;
     }
 
-    public string CalculateBabyStatus(ShopItemSO shopItem)
-    {
-        int totalWeight = 0;
-        foreach (Attribute attribute in shopItem.attributes)
-        {
-            totalWeight += attribute.weight; // calc total weight of attrs
-        }
-
-        if(totalWeight > 0)
-        {
-            shopItem.status = "good";
-        }
-        else if(totalWeight < 0)
-        {
-            shopItem.status = "bad";
-        }
-        else // = 0
-        {
-            Debug.Log("Error with calculating " + shopItem + " status; cannot equal 0");
-        }
-
-        return shopItem.status;
-    }
-
     public int SetCosts(ShopItemSO shopItem)
     {
-        if(shopItem.status == "good")
+        float goodFactor = 8;   // cost = score * 8
+        float badFactor = 100;  // cost = 100 / score
+        int roundTo = 5;        // costs will be rounded to closest mult of 5
+
+        Debug.Log(shopItem.title + " = " + shopItem.score);
+
+        // if good 
+        if(shopItem.score > 0)
         {
-            shopItem.cost = 75;
+            shopItem.cost = (int)(Mathf.Round((shopItem.score * goodFactor) / roundTo)) * roundTo;
         }
-        else if(shopItem.status == "bad")
+        // if bad 
+        else if(shopItem.score <= 0)
         {
-            shopItem.cost = 25;
+            shopItem.cost = (int)Mathf.Round((badFactor / Mathf.Abs(shopItem.score)) / roundTo) * roundTo;
         }
 
         return shopItem.cost;
@@ -224,8 +222,17 @@ public class ShopManager : MonoBehaviour
     public Sprite GetRandomIcon(ShopItemSO shopItem)
     {
         Random r = new Random();
-        int rInt = r.Next(0, possibleIcons.Count - 1);
+        int rInt;
 
+        // pick rand num, making sure it's not already been chosen
+        do
+        {
+            rInt = r.Next(0, possibleIcons.Count);
+        }
+        while (chosenIcons.Contains(rInt));
+        chosenIcons.Add(rInt);
+
+        // get icon at rand num
         shopItem.icon = possibleIcons[rInt];
 
         return shopItem.icon;
@@ -234,6 +241,8 @@ public class ShopManager : MonoBehaviour
     public void ResetShop()
     {
         // reset shop (randomize) each new day
+        chosenAttrs.Clear(); // reset for randomize
+        chosenIcons.Clear(); // reset for randomize
         LoadPanels();
         CheckPurchaseable();
     }

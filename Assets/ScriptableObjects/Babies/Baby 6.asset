@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eac48673ca37723488fab3b80c2caf88, type: 3}
   m_Name: Baby 6
   m_EditorClassIdentifier: 
-  title: Seed Bag 6
-  description: Description
-  cost: 0
-  icon: {fileID: 0}
-  attributes: []
-  status: 
+  title: Baby 6
+  description: 
+  cost: 15
+  icon: {fileID: 21300000, guid: ae2310399061e2d4385f0890ad9fbd33, type: 3}
+  attributes:
+  - {fileID: 11400000, guid: 05e19dc564077f94097c686b540bcfce, type: 2}
+  - {fileID: 11400000, guid: efe02e6619f6097418201b280d827163, type: 2}
+  - {fileID: 11400000, guid: 9d5e079a9ef881241a06bcf8e6dc94ba, type: 2}
+  score: 11

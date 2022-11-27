@@ -10,10 +10,10 @@ public class TimeManager : MonoBehaviour
     //Variables for counting the days
     public int currentDay = 1;
     public int previousDay = 0;
-    public int dayLimit = 5;
+    public int dayLimit = 10;
     public bool gameEnd = false;
     public bool endingGood = false;
-    public int quota = 7;
+    public int scoreGoal = 100;
 
     //variables for UI
     public TMP_Text currDay;
@@ -48,7 +48,7 @@ public class TimeManager : MonoBehaviour
         }
         if(gameEnd == true)
         {
-            if(shopSell.sellMgr.goodSold >= quota)
+            if(shopSell.sellMgr.goodSold >= scoreGoal)
             {
                 endingGood = true;
             }
@@ -83,7 +83,6 @@ public class TimeManager : MonoBehaviour
     {
         TimeUI.SetActive(false);
         clickedNo = true;
-
     }
 
     public void selectYes()

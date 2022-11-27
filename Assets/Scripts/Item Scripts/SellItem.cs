@@ -13,6 +13,7 @@ public class SellItem : MonoBehaviour
 
     GameObject SavedObjs;
     private CoinMgr coinMgr;
+    private ScoreMgr scoreMgr;
     private GameObject invHolder;
     
     public GameObject instructions;
@@ -21,16 +22,18 @@ public class SellItem : MonoBehaviour
     private int goodSoldTemp = 0;
     public int goodSold = 0;
     int totalRevenue;
-    
+    int totalScore;
+
     private void Start()
     {
         // instantiate saved objects
         SavedObjs = SaveObject.savedObjs;
         coinMgr = SavedObjs.gameObject.transform.Find("Coin UI").gameObject.GetComponent<CoinMgr>();
+        scoreMgr = SavedObjs.gameObject.transform.Find("Score UI").gameObject.GetComponent<ScoreMgr>();
         invHolder = SavedObjs.gameObject.transform.Find("Inventory Holder").gameObject;
     }
 
-    public void UpdateItemToSell(ShopItemSO data, int amount, GameObject template)
+    public void UpdateItemToSell(ShopItemSO data, GameObject template)
     {
         sellItemsButton.gameObject.SetActive(true); // will be called every time a new template is added -- not ideal
         sellTemplate = template.GetComponent<SellTemplate>();
@@ -44,27 +47,44 @@ public class SellItem : MonoBehaviour
         sellTemplate.image.sprite = data.icon;
         sellTemplate.image.color = Color.white;
         sellTemplate.titleTxt.text = data.title;
-        sellTemplate.descriptionTxt.text = data.description;
+        sellTemplate.descriptionTxt.text = GetAttributesText(data);
 
         // set cost based on status
         data.cost = SetSellPrice(data);
+        sellTemplate.costTxt.text = data.cost.ToString();
+        totalRevenue += data.cost;
 
-        // calc revenue and display
-        int revenue = data.cost * amount;
-        totalRevenue += revenue;
-        sellTemplate.costTxt.text = revenue.ToString();
-        sellTemplate.quantity.text = "x " + amount.ToString();
+        // calc val to add to score
+        if(data.score < 0)
+            sellTemplate.score.text = data.score.ToString();
+        else
+            sellTemplate.score.text = "+" + data.score;
+        totalScore += data.score;
 
-        if(data.status == "good")
+        //if(data.score == "good")
+        //{
+        //    goodSoldTemp += 1;
+        //}
+    }
+
+    public string GetAttributesText(ShopItemSO shopItem)
+    {
+        string attributesText = "";
+        foreach(var attr in shopItem.attributes)
         {
-            goodSoldTemp += 1;
+            attributesText += attr.attributeName + " ";
         }
+
+        return attributesText;
     }
 
     public void SellItems()
     {
         // update coin value
         coinMgr.AddCoins(totalRevenue);
+
+        // update score 
+        scoreMgr.AddScore(totalScore);
 
         // delete all templates
         foreach (var template in templateList)
@@ -75,8 +95,9 @@ public class SellItem : MonoBehaviour
         // reset template list
         templateList = new List<SellTemplate>();
 
-        // reset total revenue
+        // reset
         totalRevenue = 0;
+        totalScore = 0;
 
         instructions.SetActive(true);
         sellItemsButton.gameObject.SetActive(false);
@@ -85,13 +106,20 @@ public class SellItem : MonoBehaviour
 
     public int SetSellPrice(ShopItemSO shopItem)
     {
-        if (shopItem.status == "good")
+        // higher the score, lower the revenue 
+        int goodFactor = 100;   // cost = 100 / score 
+        int badFactor = 10;     // cost = score * 10
+        int roundTo = 5;        // prices will be rounded to closest mult of 5
+
+        // if good baby
+        if (shopItem.score > 0)
         {
-            shopItem.cost = 175;
+            shopItem.cost = (int)Mathf.Abs((Mathf.Round((goodFactor / shopItem.score)) / roundTo) * roundTo);
         }
-        else if (shopItem.status == "bad")
+        // if bad baby
+        else if (shopItem.score <= 0)
         {
-            shopItem.cost = 50;
+            shopItem.cost = (int)(Mathf.Round(Mathf.Abs(shopItem.score) * badFactor) / roundTo) * roundTo;
         }
 
         return shopItem.cost;

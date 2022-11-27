@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Attribute 5
   m_EditorClassIdentifier: 
   attributeName: Honest
-  weight: 1
+  weight: 3

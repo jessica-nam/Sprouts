@@ -7,8 +7,7 @@ public class CoinMgr : MonoBehaviour
 {
     public int coins;
     public TMP_Text coinUI;
-
-    private void Awake()
+    private void Start()
     {
         UpdateCoinUI();
     }

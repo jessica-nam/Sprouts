@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Attribute 3
   m_EditorClassIdentifier: 
   attributeName: Generous
-  weight: 1
+  weight: 5
