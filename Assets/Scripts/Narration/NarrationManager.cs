@@ -23,12 +23,16 @@ public class NarrationManager : MonoBehaviour
     //UI variables
     public GameObject NarationUI;
     public GameObject shop;
+    public GameObject shopUI;
     public Image closedL;
     public Image openL;
     public Image background;
     public Image paper;
     public TMP_Text letter;
-
+    private void Awake()
+    {
+        NarationUI.SetActive(true);
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -48,6 +52,7 @@ public class NarrationManager : MonoBehaviour
 
 
         shop.SetActive(false);
+        shopUI.SetActive(false);
         currentState = (int)narState.closedLetter;
     }
 
@@ -81,6 +86,7 @@ public class NarrationManager : MonoBehaviour
         NarationUI.SetActive(false);
         narration = false;
         shop.SetActive(true);
+        shopUI.SetActive(true);
     }
     public void pressedButton()
     {
