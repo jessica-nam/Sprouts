@@ -24,6 +24,9 @@ public class SellItem : MonoBehaviour
     int totalRevenue;
     int totalScore;
 
+    public AudioSource SellSFX;
+    public AudioClip sellSound;
+
     private void Start()
     {
         // instantiate saved objects
@@ -102,6 +105,9 @@ public class SellItem : MonoBehaviour
         instructions.SetActive(true);
         sellItemsButton.gameObject.SetActive(false);
         goodSold += goodSoldTemp;
+
+        //play sound for selling
+        SellSFX.PlayOneShot(sellSound);
     }
 
     public int SetSellPrice(ShopItemSO shopItem)

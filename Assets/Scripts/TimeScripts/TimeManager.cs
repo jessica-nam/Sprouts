@@ -14,22 +14,32 @@ public class TimeManager : MonoBehaviour
     public bool gameEnd = false;
     public bool endingGood = false;
     public int scoreGoal = 100;
+    public AudioSource musicPlayer;
+    public AudioSource UIAudio;
+    public AudioClip goodEndMusic;
+    public AudioClip badEndMusic;
+    public AudioClip selectSound;
 
     //variables for UI
     public TMP_Text currDay;
     public TMP_Text ending;
     public GameObject TimeUI;
     public GameObject StateUI;
+    public GameObject Shop;
     SpriteRenderer sprite;
     public ShopManager shopSell;
     public Image win;
     public Image lose;
+    public Image loseBG;
+    public Image winBG;
 
     public NarrationManager narrate;
 
     public bool clickedYes = false;
     public bool clickedNo = false;
     public bool openWindow = false;
+
+
     
     void Awake(){
         instance = this;
@@ -39,6 +49,9 @@ public class TimeManager : MonoBehaviour
     {
         sprite = GetComponent<SpriteRenderer>();
         TimeUI.SetActive(false);
+        UIAudio.clip = selectSound;
+        musicPlayer.loop = true;
+        UIAudio.volume = 0.5f;
     }
 
     private void Update()
@@ -63,13 +76,23 @@ public class TimeManager : MonoBehaviour
         {
             StateUI.SetActive(true);
             win.enabled = true;
+            winBG.enabled = true;
+            loseBG.enabled = false;
             lose.enabled = false;
+            swapSongEnd();
+            Shop.SetActive(false);
+
         }
         else if(gameEnd && !endingGood)
         {
             StateUI.SetActive(true);
             win.enabled = false;
             lose.enabled = true;
+            winBG.enabled = false;
+            loseBG.enabled = true;
+            swapSongEnd();
+            Shop.SetActive(false);
+
         }
     }
 
@@ -86,12 +109,14 @@ public class TimeManager : MonoBehaviour
 
     public void selectNo()
     {
+        UIAudio.PlayOneShot(selectSound);
         TimeUI.SetActive(false);
         clickedNo = true;
     }
 
     public void selectYes()
     {
+        UIAudio.PlayOneShot(selectSound);
         clickedYes = true;
         TimeUI.SetActive(false);
         previousDay = currentDay;
@@ -107,5 +132,22 @@ public class TimeManager : MonoBehaviour
     private void OnMouseExit()
     {
         sprite.color = new Color(255, 255, 255, 1);
+    }
+
+    private void swapSongEnd()
+    {
+        if(endingGood && musicPlayer.clip != goodEndMusic)
+        {
+            musicPlayer.Stop();
+            musicPlayer.clip = goodEndMusic;
+            musicPlayer.Play();
+        }
+        else if(!endingGood && musicPlayer.clip != badEndMusic)
+        {
+            musicPlayer.Stop();
+            musicPlayer.clip = badEndMusic;
+            musicPlayer.Play();
+        }
+
     }
 }

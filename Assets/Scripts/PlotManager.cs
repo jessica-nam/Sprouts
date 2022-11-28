@@ -26,6 +26,10 @@ public class PlotManager : MonoBehaviour
     public Sprite[] plantStages;
     int plantStage = 0;
 
+    public AudioSource plantHarvestSFX;
+    public AudioClip plantNoise;
+    public AudioClip harvestNoise;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -75,6 +79,8 @@ public class PlotManager : MonoBehaviour
 
     void Harvest()
     {
+        plantHarvestSFX.pitch = (Random.Range(0.6f, .9f));
+        plantHarvestSFX.PlayOneShot(harvestNoise);
         if (clicked)
         {
             var inventory = invHolder.GetComponent<InventoryHolder>();
@@ -91,6 +97,8 @@ public class PlotManager : MonoBehaviour
 
     void Plant()
     {
+        plantHarvestSFX.pitch = (Random.Range(0.6f, .9f));
+        plantHarvestSFX.PlayOneShot(plantNoise);
         if (clicked)
         {
             if (MouseItemData.instance.hasItem)

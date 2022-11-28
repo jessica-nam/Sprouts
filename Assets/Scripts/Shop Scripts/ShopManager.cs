@@ -34,6 +34,9 @@ public class ShopManager : MonoBehaviour
     HashSet<int> chosenAttrs = new HashSet<int>(); // hash sets don't allow duplicates
     HashSet<int> chosenIcons = new HashSet<int>();
 
+    public AudioSource shopSFX;
+    public AudioClip buySound;
+
     private void Awake()
     {
         // instantiate saved objects
@@ -151,6 +154,7 @@ public class ShopManager : MonoBehaviour
             inventory.InventorySystem.AddToInventory(shopItemsSO[btnNum], 1);   // add item to it
 
             CheckPurchaseable();
+            shopSFX.PlayOneShot(buySound);
         }
     }
 

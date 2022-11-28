@@ -7,9 +7,14 @@ public class OpenShop : MonoBehaviour
 {
     [SerializeField] Canvas ShopCanvas;
     [SerializeField] private GameObject nextDay;
+    [SerializeField] private AudioSource UIsfx;
+    [SerializeField] private AudioClip shopSelect;
+
+
     private void OnMouseDown()
     {
         ShopCanvas.gameObject.SetActive(true);
         nextDay.SetActive(false);
+        UIsfx.PlayOneShot(shopSelect);
     }
 }

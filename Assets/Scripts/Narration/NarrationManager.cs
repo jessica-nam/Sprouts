@@ -23,7 +23,6 @@ public class NarrationManager : MonoBehaviour
     //UI variables
     public GameObject NarationUI;
     public GameObject shop;
-    public GameObject shopUI;
     public Image closedL;
     public Image openL;
     public Image background;
@@ -52,7 +51,6 @@ public class NarrationManager : MonoBehaviour
 
 
         shop.SetActive(false);
-        shopUI.SetActive(false);
         currentState = (int)narState.closedLetter;
     }
 
@@ -86,7 +84,6 @@ public class NarrationManager : MonoBehaviour
         NarationUI.SetActive(false);
         narration = false;
         shop.SetActive(true);
-        shopUI.SetActive(true);
     }
     public void pressedButton()
     {
