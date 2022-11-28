@@ -25,6 +25,8 @@ public class TimeManager : MonoBehaviour
     public Image win;
     public Image lose;
 
+    public NarrationManager narrate;
+
     public bool clickedYes = false;
     public bool clickedNo = false;
     public bool openWindow = false;
@@ -75,8 +77,11 @@ public class TimeManager : MonoBehaviour
     private void OnMouseDown()
     {
         //bring up canvas to make sure user wants to move to next day
-        TimeUI.SetActive(true);
-        openWindow = true;
+        if (narrate.narration == false)
+        {
+            TimeUI.SetActive(true);
+            openWindow = true;
+        }
     }
 
     public void selectNo()
