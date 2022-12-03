@@ -646,7 +646,6 @@ GameObject:
   - component: {fileID: 849467316187860853}
   - component: {fileID: 3296527676332749104}
   - component: {fileID: 6176199079030260143}
-  - component: {fileID: 3619583276285501016}
   m_Layer: 5
   m_Name: Sell item template
   m_TagString: Untagged
@@ -750,24 +749,6 @@ MonoBehaviour:
   costTxt: {fileID: 2111169695404269964}
   image: {fileID: 989147265281768961}
   score: {fileID: 3297758854050867353}
---- !u!114 &3619583276285501016
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4423625687991795192}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8102e264174aae64d9ffeb8151b67d90, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UIObjs: {fileID: 0}
-  instructions: {fileID: 0}
-  sellItemsButton: {fileID: 0}
-  goodSold: 0
-  SellSFX: {fileID: 0}
-  sellSound: {fileID: 0}
 --- !u!1 &4800958790420289324
 GameObject:
   m_ObjectHideFlags: 0
@@ -891,7 +872,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3619583276285501016}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SellItem, Assembly-CSharp
         m_MethodName: UndoTemplateCreation
         m_Mode: 1
