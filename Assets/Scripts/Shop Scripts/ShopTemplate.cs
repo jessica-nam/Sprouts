@@ -12,4 +12,13 @@ public class ShopTemplate : MonoBehaviour
     public TMP_Text costTxt;
     public Image image;
     public TMP_Text attributesTxt;
+
+    public void Reset()
+    {
+        // titleTxt;
+        // descriptionTxt;
+        costTxt.text = string.Empty;
+        image.sprite = null;
+        attributesTxt.text = string.Empty;
+    }
 }

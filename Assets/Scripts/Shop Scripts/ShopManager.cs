@@ -247,6 +247,12 @@ public class ShopManager : MonoBehaviour
         // reset shop (randomize) each new day
         chosenAttrs.Clear(); // reset for randomize
         chosenIcons.Clear(); // reset for randomize
+        for (int i = 0; i < shopItemsSO.Length; i++)
+        {
+            shopItemsSO[i].Reset(); // reset all values
+            shopPanels[i].Reset();
+            shopPanelsGO[i].SetActive(true);
+        }
         LoadPanels();
         CheckPurchaseable();
     }
