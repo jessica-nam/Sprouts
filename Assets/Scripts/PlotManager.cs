@@ -12,6 +12,8 @@ public class PlotManager : MonoBehaviour
     private ShopItemSO babyObj;
     private GameObject invHolder;
 
+    public GameObject sproutAnim;
+
     public Button NextDay;
 
 
@@ -49,6 +51,7 @@ public class PlotManager : MonoBehaviour
         if (plantStage < plantStages.Length - 1){
             plantStage+=1;
             UpdatePlant();
+            sproutAnim.SetActive(false);
         }
     }
 
@@ -89,6 +92,7 @@ public class PlotManager : MonoBehaviour
 
             isPlanted = false;
             plant.gameObject.SetActive(false);
+            
         }
 
         clicked = false;
@@ -110,6 +114,7 @@ public class PlotManager : MonoBehaviour
                 plantStage = 0;
                 UpdatePlant();
                 plant.gameObject.SetActive(true);
+                sproutAnim.SetActive(true);
 
                 MouseItemData.instance.ClearSlot();
             }
