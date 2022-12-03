@@ -48,8 +48,9 @@ public class PlotManager : MonoBehaviour
 
     public void NextDayButtonYes()
     {
-        if (plantStage < plantStages.Length - 1){
-            plantStage+=1;
+        if (plantStage < plantStages.Length - 1)
+        {
+            plantStage += 1;
             UpdatePlant();
             sproutAnim.SetActive(false);
         }
@@ -69,7 +70,9 @@ public class PlotManager : MonoBehaviour
 
                 Harvest();
 
-            }else{
+            }
+            else
+            {
                 Debug.Log("Stop");
             }
         }
@@ -92,7 +95,7 @@ public class PlotManager : MonoBehaviour
 
             isPlanted = false;
             plant.gameObject.SetActive(false);
-            
+
         }
 
         clicked = false;
@@ -109,14 +112,28 @@ public class PlotManager : MonoBehaviour
 
                 babyObj = mouseObj.getCurrentMouseItem().ItemData;
                 Debug.Log("Baby on mouse: ");
+                Debug.Log(babyObj.name);
 
-                isPlanted = true;
-                plantStage = 0;
-                UpdatePlant();
-                plant.gameObject.SetActive(true);
-                sproutAnim.SetActive(true);
+                if (babyObj.name == "Baby 1" || babyObj.name == "Baby 2" || babyObj.name == "Baby 3" || babyObj.name == "Baby 4" || babyObj.name == "Baby 5" || babyObj.name == "Baby 6")
+                {
+                    isPlanted = true;
+                    plantStage = 0;
+                    UpdatePlant();
+                    plant.gameObject.SetActive(true);
+                    sproutAnim.SetActive(true);
 
-                MouseItemData.instance.ClearSlot();
+                    MouseItemData.instance.ClearSlot();
+                } else{
+                    Debug.Log("Cannot Plant");
+                }
+
+                // isPlanted = true;
+                // plantStage = 0;
+                // UpdatePlant();
+                // plant.gameObject.SetActive(true);
+                // sproutAnim.SetActive(true);
+
+                // MouseItemData.instance.ClearSlot();
             }
         }
 
