@@ -228,7 +228,8 @@ public class ShopManager : MonoBehaviour
             chosenAttrs.Clear();
             for (int j = 0; j < 3; j++)
             {
-                shopPanelsSeeds[i].attributesTxt.text += PickRandomAttribute(shopItemsSeeds[i]) + System.Environment.NewLine;
+                Attribute temp = PickRandomAttribute(shopItemsSeeds[i]);
+                shopPanelsSeeds[i].attributesTxt.text += temp.attributeName + " " + temp.weight + System.Environment.NewLine;
 
                 // score is sum of attr weights 
                 shopItemsSeeds[i].score += shopItemsSeeds[i].attributes[j].weight;
@@ -247,7 +248,7 @@ public class ShopManager : MonoBehaviour
     }
 
   
-    public string PickRandomAttribute(ShopItemSO shopItem)
+    public Attribute PickRandomAttribute(ShopItemSO shopItem)
     {        
         Random r = new Random();
         int rInt;
@@ -262,7 +263,7 @@ public class ShopManager : MonoBehaviour
         
         shopItem.attributes.Add(possibleAttrs[rInt]);
         
-        return shopItem.attributes.LastOrDefault().attributeName;
+        return shopItem.attributes.LastOrDefault();
     }
 
     public int SetCosts(ShopItemSO shopItem)
