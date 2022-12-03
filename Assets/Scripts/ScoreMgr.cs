@@ -24,4 +24,10 @@ public class ScoreMgr : MonoBehaviour
         score = score + amount;
         UpdateScoreUI();
     }
+
+    public void ResetScore()
+    {
+        score = 0;
+        UpdateScoreUI();
+    }
 }

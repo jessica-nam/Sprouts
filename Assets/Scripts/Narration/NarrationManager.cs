@@ -28,6 +28,10 @@ public class NarrationManager : MonoBehaviour
     public Image background;
     public Image paper;
     public TMP_Text letter;
+
+    // hot bar management
+    public GameObject UIObjs;
+
     private void Awake()
     {
         NarationUI.SetActive(true);
@@ -81,6 +85,9 @@ public class NarrationManager : MonoBehaviour
     }
     void beginGame()
     {
+        // hot bar
+        UIObjs.gameObject.SetActive(true);
+
         NarationUI.SetActive(false);
         narration = false;
         shop.SetActive(true);
@@ -92,6 +99,5 @@ public class NarrationManager : MonoBehaviour
         
         else if(currentState == (int)narState.openedLetter)
             beginGame();
-       
     }
 }

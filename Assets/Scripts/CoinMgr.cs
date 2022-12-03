@@ -22,4 +22,10 @@ public class CoinMgr : MonoBehaviour
         coins = coins + amount;
         UpdateCoinUI();
     }
+
+    public void ResetCoins()
+    {
+        coins = 0;
+        UpdateCoinUI();
+    }
 }

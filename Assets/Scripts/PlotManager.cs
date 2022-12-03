@@ -8,8 +8,8 @@ public class PlotManager : MonoBehaviour
 {
     public static PlotManager instance;
 
-    public MouseItemData mouseObj;
-    public ShopItemSO babyObj;
+    private MouseItemData mouseObj;
+    private ShopItemSO babyObj;
     private GameObject invHolder;
 
     public Button NextDay;
@@ -17,7 +17,7 @@ public class PlotManager : MonoBehaviour
 
     [SerializeField] private Sprite icon;
 
-    GameObject SavedObjs;
+    public GameObject UIObjs;
 
     bool isPlanted = false;
     bool clicked = false;
@@ -40,9 +40,8 @@ public class PlotManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        SavedObjs = SaveObject.savedObjs;
-        invHolder = SavedObjs.gameObject.transform.Find("Inventory Holder").gameObject;
-        mouseObj = SavedObjs.gameObject.transform.Find("Mouse Object").gameObject.GetComponent<MouseItemData>();
+        invHolder = UIObjs.gameObject.transform.Find("Inventory Holder").gameObject;
+        mouseObj = UIObjs.gameObject.transform.Find("Mouse Object").gameObject.GetComponent<MouseItemData>();
     }
 
     public void NextDayButtonYes()

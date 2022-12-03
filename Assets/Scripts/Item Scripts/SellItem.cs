@@ -11,7 +11,7 @@ public class SellItem : MonoBehaviour
     private static List<ShopItemSO> itemsToSell = new List<ShopItemSO>(); // actual data 
     private SellTemplate sellTemplate;
 
-    GameObject SavedObjs;
+    public GameObject UIObjs;
     private CoinMgr coinMgr;
     private ScoreMgr scoreMgr;
     private GameObject invHolder;
@@ -29,11 +29,10 @@ public class SellItem : MonoBehaviour
 
     private void Start()
     {
-        // instantiate saved objects
-        SavedObjs = SaveObject.savedObjs;
-        coinMgr = SavedObjs.gameObject.transform.Find("Coin UI").gameObject.GetComponent<CoinMgr>();
-        scoreMgr = SavedObjs.gameObject.transform.Find("Score UI").gameObject.GetComponent<ScoreMgr>();
-        invHolder = SavedObjs.gameObject.transform.Find("Inventory Holder").gameObject;
+        // instantiate UI objs
+        coinMgr = UIObjs.gameObject.transform.Find("Coin UI").gameObject.GetComponent<CoinMgr>();
+        scoreMgr = UIObjs.gameObject.transform.Find("Score UI").gameObject.GetComponent<ScoreMgr>();
+        invHolder = UIObjs.gameObject.transform.Find("Inventory Holder").gameObject;
     }
 
     public void UpdateItemToSell(ShopItemSO data, GameObject template)

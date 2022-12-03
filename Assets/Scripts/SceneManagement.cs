@@ -5,15 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class SceneManagement : MonoBehaviour
 {
-    GameObject SavedObjs;
-    SaveObject Instance;
-
-    private void Awake()
-    {
-        SavedObjs = SaveObject.savedObjs;
-        Instance = SaveObject.instance;
-    }
-
     public void OpenShop(){
         SceneManager.LoadScene("Shop System");
     }
@@ -22,18 +13,14 @@ public class SceneManagement : MonoBehaviour
         SceneManager.LoadScene("Game");
     }
 
-    public void PlayGame(){
-        //load game
+    public void StartGame(){
+        //load game from menu
         SceneManager.LoadScene("Game");
-        this.gameObject.SetActive(true); // activates persistent objs (first run of game) -- first need to create an instance of persistent objs before being able to access them
-        if (Instance != null) // if not first time game run, like if player goes from menu -> game -> menu 
-            Instance.gameObject.SetActive(true); 
     }
 
     public void Menu(){
         // back to menu
         SceneManager.LoadScene("Menu");
-        SavedObjs.gameObject.SetActive(false); // deactivate persistent objs
     }
 
     public void QuitGame(){

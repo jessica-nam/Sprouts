@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 using Random = System.Random;
 using System.Linq;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class ShopManager : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class ShopManager : MonoBehaviour
     public Button[] purchaseBtns;
     public GameObject sellTemplate;
 
-    GameObject SavedObjs; 
+    public GameObject UIObjs; 
     private GameObject invHolder;
     private CoinMgr coinMgr;
     private ScoreMgr scoreMgr;
@@ -44,13 +45,18 @@ public class ShopManager : MonoBehaviour
 
     private void Awake()
     {
-        // instantiate saved objects
-        SavedObjs = SaveObject.savedObjs; 
+        // instantiate UI objs
+        invHolder = UIObjs.gameObject.transform.Find("Inventory Holder").gameObject;
+        coinMgr = UIObjs.gameObject.transform.Find("Coin UI").gameObject.GetComponent<CoinMgr>();
+        mouseObj = UIObjs.gameObject.transform.Find("Mouse Object").gameObject.GetComponent<MouseItemData>();
+        scoreMgr = UIObjs.gameObject.transform.Find("Score UI").gameObject.GetComponent<ScoreMgr>();
+    }
 
-        invHolder = SavedObjs.gameObject.transform.Find("Inventory Holder").gameObject;
-        coinMgr = SavedObjs.gameObject.transform.Find("Coin UI").gameObject.GetComponent<CoinMgr>();
-        mouseObj = SavedObjs.gameObject.transform.Find("Mouse Object").gameObject.GetComponent<MouseItemData>();
-        scoreMgr = SavedObjs.gameObject.transform.Find("Score UI").gameObject.GetComponent<ScoreMgr>();
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // reset persistent values every time user replays game
+        coinMgr.ResetCoins();
+        scoreMgr.ResetScore();
     }
 
     void Start()
