@@ -17,7 +17,8 @@ public class ShopItemSO : ScriptableObject
        // title = "";
         cost = 0;
         //icon = 
-        attributes.Clear();
+        if(attributes != null)
+            attributes.Clear();
         score = 0;
     }
 }

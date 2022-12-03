@@ -13,7 +13,7 @@ public class TimeManager : MonoBehaviour
     public int dayLimit = 10;
     public bool gameEnd = false;
     public bool endingGood = false;
-    public int scoreGoal = 100;
+    public int scoreGoal = 50;
     public AudioSource musicPlayer;
     public AudioSource UIAudio;
     public AudioClip goodEndMusic;

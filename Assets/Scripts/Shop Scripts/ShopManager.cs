@@ -10,7 +10,8 @@ using UnityEngine.EventSystems;
 
 public class ShopManager : MonoBehaviour
 {
-    public ShopItemSO[] shopItemsSO;
+    public ShopItemSO[] shopItemsSeeds;
+    public ShopItemSO[] shopItemsUpgrades;
     public GameObject[] shopPanelsGO;
     public ShopTemplate[] shopPanels;
     public Button[] purchaseBtns;
@@ -26,6 +27,8 @@ public class ShopManager : MonoBehaviour
     public SellItem sellMgr;
     public Button buyBtn;
     public Button sellBtn;
+    public GameObject seedsContent;
+    public GameObject upgradesContent;
 
     Transform childFound = null;
 
@@ -50,9 +53,10 @@ public class ShopManager : MonoBehaviour
 
     void Start()
     {
-        for (int i = 0; i < shopItemsSO.Length; i++)
+        for (int i = 0; i < shopItemsSeeds.Length; i++)
         {
-            shopItemsSO[i].Reset(); // reset all values
+            shopItemsSeeds[i].Reset(); // reset all values
+            //shopItemsUpgrades[i].Reset();
             shopPanelsGO[i].SetActive(true);
         }
         LoadPanels();
@@ -131,54 +135,105 @@ public class ShopManager : MonoBehaviour
     // turns buttons off if not enough money to purchase item
     public void CheckPurchaseable()
     {
-        for (int i = 0; i < shopItemsSO.Length; i++)
+        // seeds
+        if (seedsContent.gameObject.activeSelf)
         {
-            if (coinMgr.coins >= shopItemsSO[i].cost) // if player has enough money
-                purchaseBtns[i].interactable = true;
-            else
-                purchaseBtns[i].interactable = false;
+            for (int i = 0; i < shopItemsSeeds.Length; i++)
+            {
+                if (coinMgr.coins >= shopItemsSeeds[i].cost) // if player has enough money
+                    purchaseBtns[i].interactable = true;
+                else
+                    purchaseBtns[i].interactable = false;
+            }
+        }
+
+        // upgrades
+        else if (upgradesContent.gameObject.activeSelf)
+        {
+            for (int i = 0; i < shopItemsUpgrades.Length; i++)
+            {
+                if (coinMgr.coins >= shopItemsUpgrades[i].cost) // if player has enough money
+                    purchaseBtns[i].interactable = true;
+                else
+                    purchaseBtns[i].interactable = false;
+            }
         }
     }
 
     // run when "purchase" bttns pressed
     public void PurchaseItem(int btnNum)
     {
-        if (coinMgr.coins >= shopItemsSO[btnNum].cost)
+        // seeds
+        if (seedsContent.gameObject.activeSelf)
         {
-            // update coin value
-            coinMgr.coins = coinMgr.coins - shopItemsSO[btnNum].cost;
-            coinMgr.UpdateCoinUI();
+            if (coinMgr.coins >= shopItemsSeeds[btnNum].cost)
+            {
+                // update coin value
+                coinMgr.coins = coinMgr.coins - shopItemsSeeds[btnNum].cost;
+                coinMgr.UpdateCoinUI();
 
-            // add to player inventory
-            var inventory = invHolder.GetComponent<InventoryHolder>();          // get player inventory
-            inventory.InventorySystem.AddToInventory(shopItemsSO[btnNum], 1);   // add item to it
+                // add to player inventory
+                var inventory = invHolder.GetComponent<InventoryHolder>();          // get player inventory
+                inventory.InventorySystem.AddToInventory(shopItemsSeeds[btnNum], 1);   // add item to it
 
-            CheckPurchaseable();
-            shopSFX.PlayOneShot(buySound);
+                CheckPurchaseable();
+                shopSFX.PlayOneShot(buySound);
+            }
         }
+       
+
+        // upgrades
+        else if (upgradesContent.gameObject.activeSelf)
+        {
+            if (coinMgr.coins >= shopItemsUpgrades[btnNum].cost)
+            {
+                // update coin value
+                coinMgr.coins = coinMgr.coins - shopItemsUpgrades[btnNum].cost;
+                coinMgr.UpdateCoinUI();
+
+                // add to player inventory
+                var inventory = invHolder.GetComponent<InventoryHolder>();          // get player inventory
+                inventory.InventorySystem.AddToInventory(shopItemsUpgrades[btnNum], 1);   // add item to it
+
+                CheckPurchaseable();
+                shopSFX.PlayOneShot(buySound);
+            }
+        }
+       
     }
 
     public void LoadPanels()
     {
-        for (int i = 0; i < shopItemsSO.Length; i++)
+        // seeds
+        for (int i = 0; i < shopItemsSeeds.Length; i++)
         {
             // these are set in inspector
-            shopPanels[i].titleTxt.text = shopItemsSO[i].title;
+            shopPanels[i].titleTxt.text = shopItemsSeeds[i].title;
 
             // randomly selected
-            shopPanels[i].image.sprite = GetRandomIcon(shopItemsSO[i]);
+            shopPanels[i].image.sprite = GetRandomIcon(shopItemsSeeds[i]);
 
             // get 3 random attributes
             chosenAttrs.Clear();
             for (int j = 0; j < 3; j++)
             {
-                shopPanels[i].attributesTxt.text += PickRandomAttribute(shopItemsSO[i]) + System.Environment.NewLine;
+                shopPanels[i].attributesTxt.text += PickRandomAttribute(shopItemsSeeds[i]) + System.Environment.NewLine;
 
                 // score is sum of attr weights 
-                shopItemsSO[i].score += shopItemsSO[i].attributes[j].weight;
+                shopItemsSeeds[i].score += shopItemsSeeds[i].attributes[j].weight;
             }
             // cost is based on score
-            shopPanels[i].costTxt.text = SetCosts(shopItemsSO[i]).ToString();
+            shopPanels[i].costTxt.text = SetCosts(shopItemsSeeds[i]).ToString();
+        }
+
+        // upgrades
+        for (int i = 0; i < shopItemsUpgrades.Length; i++)
+        {
+            // these are set in inspector
+            shopPanels[i].titleTxt.text = shopItemsUpgrades[i].title;
+            
+            // prices
+            //shopPanels[i].costTxt.text = SetCosts(shopItemsSeeds[i]).ToString();
         }
     }
 
@@ -242,17 +297,20 @@ public class ShopManager : MonoBehaviour
         return shopItem.icon;
     }
 
+    // reset shop (randomize) each new day
     public void ResetShop()
     {
-        // reset shop (randomize) each new day
         chosenAttrs.Clear(); // reset for randomize
         chosenIcons.Clear(); // reset for randomize
-        for (int i = 0; i < shopItemsSO.Length; i++)
+
+        // reset seeds only 
+        for (int i = 0; i < shopItemsSeeds.Length; i++)
         {
-            shopItemsSO[i].Reset(); // reset all values
+            shopItemsSeeds[i].Reset(); // reset all values
             shopPanels[i].Reset();
             shopPanelsGO[i].SetActive(true);
         }
+
         LoadPanels();
         CheckPurchaseable();
     }
