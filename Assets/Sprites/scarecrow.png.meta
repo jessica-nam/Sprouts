@@ -119,15 +119,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: scarecrow_0
+      name: scarecrow_1
       rect:
         serializedVersion: 2
-        x: 35
-        y: 11
+        x: 29
+        y: 12
         width: 600
-        height: 624
+        height: 600
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -140,7 +140,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: scarecrow_1
+      name: scarecrow_0
       rect:
         serializedVersion: 2
         x: 60
@@ -148,14 +148,14 @@ TextureImporter:
         width: 540
         height: 600
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8381f42cd14571848bdba2947caf3729
-      internalID: -1439316830
+      spriteID: 13f5ea44b8ea2d1428fc420c11f8a462
+      internalID: 2043677208
       vertices: []
       indices: 
       edges: []

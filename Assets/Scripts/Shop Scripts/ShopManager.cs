@@ -12,8 +12,10 @@ public class ShopManager : MonoBehaviour
 {
     public ShopItemSO[] shopItemsSeeds;
     public ShopItemSO[] shopItemsUpgrades;
-    public GameObject[] shopPanelsGO;
-    public ShopTemplate[] shopPanels;
+    public GameObject[] shopPanelsGO_Seeds;
+    public GameObject[] shopPanelsGO_Upgrades;
+    public ShopTemplate[] shopPanelsSeeds;
+    public ShopTemplate[] shopPanelsUpgrades;
     public Button[] purchaseBtns;
     public GameObject sellTemplate;
 
@@ -56,8 +58,11 @@ public class ShopManager : MonoBehaviour
         for (int i = 0; i < shopItemsSeeds.Length; i++)
         {
             shopItemsSeeds[i].Reset(); // reset all values
-            //shopItemsUpgrades[i].Reset();
-            shopPanelsGO[i].SetActive(true);
+            shopPanelsGO_Seeds[i].SetActive(true);
+        }
+        for(int i = 0; i < shopItemsUpgrades.Length; i++)
+        {
+            shopPanelsGO_Upgrades[i].SetActive(true);
         }
         LoadPanels();
         CheckPurchaseable();
@@ -208,32 +213,30 @@ public class ShopManager : MonoBehaviour
         for (int i = 0; i < shopItemsSeeds.Length; i++)
         {
             // these are set in inspector
-            shopPanels[i].titleTxt.text = shopItemsSeeds[i].title;
+            shopPanelsSeeds[i].titleTxt.text = shopItemsSeeds[i].title;
 
             // randomly selected
-            shopPanels[i].image.sprite = GetRandomIcon(shopItemsSeeds[i]);
+            shopPanelsSeeds[i].image.sprite = GetRandomIcon(shopItemsSeeds[i]);
 
             // get 3 random attributes
             chosenAttrs.Clear();
             for (int j = 0; j < 3; j++)
             {
-                shopPanels[i].attributesTxt.text += PickRandomAttribute(shopItemsSeeds[i]) + System.Environment.NewLine;
+                shopPanelsSeeds[i].attributesTxt.text += PickRandomAttribute(shopItemsSeeds[i]) + System.Environment.NewLine;
 
                 // score is sum of attr weights 
                 shopItemsSeeds[i].score += shopItemsSeeds[i].attributes[j].weight;
             }
             // cost is based on score
-            shopPanels[i].costTxt.text = SetCosts(shopItemsSeeds[i]).ToString();
+            shopPanelsSeeds[i].costTxt.text = SetCosts(shopItemsSeeds[i]).ToString();
         }
 
         // upgrades
         for (int i = 0; i < shopItemsUpgrades.Length; i++)
         {
             // these are set in inspector
-            shopPanels[i].titleTxt.text = shopItemsUpgrades[i].title;
-            
-            // prices
-            //shopPanels[i].costTxt.text = SetCosts(shopItemsSeeds[i]).ToString();
+            shopPanelsUpgrades[i].titleTxt.text = shopItemsUpgrades[i].title;
+            shopPanelsUpgrades[i].costTxt.text = shopItemsUpgrades[i].cost.ToString();
         }
     }
 
@@ -307,8 +310,8 @@ public class ShopManager : MonoBehaviour
         for (int i = 0; i < shopItemsSeeds.Length; i++)
         {
             shopItemsSeeds[i].Reset(); // reset all values
-            shopPanels[i].Reset();
-            shopPanelsGO[i].SetActive(true);
+            shopPanelsSeeds[i].Reset();
+            shopPanelsGO_Seeds[i].SetActive(true);
         }
 
         LoadPanels();

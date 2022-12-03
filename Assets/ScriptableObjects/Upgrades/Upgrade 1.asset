@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Upgrade 1
   m_EditorClassIdentifier: 
   title: Umbrella
-  cost: 0
+  cost: 50
   icon: {fileID: 21300000, guid: 0f8d6b0862d95a847b90c19dfeaf4a92, type: 3}
   attributes: []
   score: 0
