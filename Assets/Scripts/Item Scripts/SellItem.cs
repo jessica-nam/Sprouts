@@ -11,11 +11,12 @@ public class SellItem : MonoBehaviour
     private static List<ShopItemSO> itemsToSell = new List<ShopItemSO>(); // actual data 
     private SellTemplate sellTemplate;
 
-    public GameObject UIObjs;
+    [SerializeField] GameObject UIObjs;
     private CoinMgr coinMgr;
     private ScoreMgr scoreMgr;
     private GameObject invHolder;
-    
+    private MouseItemData mouseObj;
+
     public GameObject instructions;
     public Button sellItemsButton;
 
@@ -30,10 +31,29 @@ public class SellItem : MonoBehaviour
     private void Start()
     {
         // instantiate UI objs
-        
         coinMgr = UIObjs.gameObject.transform.Find("Coin UI").gameObject.GetComponent<CoinMgr>();
         scoreMgr = UIObjs.gameObject.transform.Find("Score UI").gameObject.GetComponent<ScoreMgr>();
         invHolder = UIObjs.gameObject.transform.Find("Inventory Holder").gameObject;
+        mouseObj = UIObjs.gameObject.transform.Find("Mouse Object").gameObject.GetComponent<MouseItemData>();
+    }
+
+    public void CreateNewSellItem(GameObject sellTemplate, Transform parentTransform)
+    {
+        GameObject newItemTemplate = Instantiate(sellTemplate, parentTransform); // instantiate new templates as children of that obj
+        // enable undo functionality
+        newItemTemplate = SetUndo(newItemTemplate);
+        // combine data from mouse item with newly created template
+        UpdateItemToSell(mouseObj.getCurrentMouseItem().ItemData, newItemTemplate);
+    }
+
+    Button undoBtn;
+    public GameObject SetUndo(GameObject newItem)
+    {
+        undoBtn = newItem.transform.Find("Undo Btn").GetComponent<Button>();
+        // attach undo bttn to undo function
+        // have to do this in code instead of inspector because script is on object that prefab doesn't have access to until runtime
+        undoBtn.onClick.AddListener(delegate { UndoTemplateCreation(newItem); });
+        return newItem;
     }
 
     public void UpdateItemToSell(ShopItemSO data, GameObject template)
@@ -43,7 +63,7 @@ public class SellItem : MonoBehaviour
 
         // add to list of templates (UI)
         templateList.Add(sellTemplate);
-
+        
         // add to list of items (actual data)
         itemsToSell.Add(data);
 
@@ -132,10 +152,10 @@ public class SellItem : MonoBehaviour
         return shopItem.cost;
     }
 
-    public void UndoTemplateCreation()
+    public void UndoTemplateCreation(GameObject thisItem)
     {
         // get order in hierarchy -- should match order in global lists storing templates/data 
-        int index = gameObject.transform.GetSiblingIndex(); 
+        int index = thisItem.transform.GetSiblingIndex();
 
         // add back to inventory
         var inventory = invHolder.GetComponent<InventoryHolder>();

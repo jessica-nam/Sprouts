@@ -49,10 +49,10 @@ public abstract class InventoryDisplay : MonoBehaviour
         // clicked slot has an item, mouse doesn't have item -- pick up item
         if (clickedUISlot.AssignedInvSlot.ItemData != null && mouseInventoryItem.AssignedInvSlot.ItemData == null)
         {
-            Debug.Log(mouseInventoryItem.AssignedInvSlot.ItemData);
+           // Debug.Log(mouseInventoryItem.AssignedInvSlot.ItemData);
             mouseInventoryItem.UpdateMouseSlot(clickedUISlot.AssignedInvSlot);
             babyName = mouseInventoryItem.AssignedInvSlot.ItemData.name;
-            Debug.Log(babyName);
+           // Debug.Log(babyName);
             clickedUISlot.ClearSlot();
             return;
         }

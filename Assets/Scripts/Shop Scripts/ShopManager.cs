@@ -108,8 +108,7 @@ public class ShopManager : MonoBehaviour
         Transform parentTransform = CustomFindChild("Templates Container", this.transform);
         if (parentTransform)
         {
-            GameObject newItemToSell = Instantiate(sellTemplate, parentTransform); // instantiate new templates as children of that obj
-            sellMgr.UpdateItemToSell(mouseObj.getCurrentMouseItem().ItemData, newItemToSell);
+            sellMgr.CreateNewSellItem(sellTemplate, parentTransform);
         }
         else
         {
@@ -292,7 +291,7 @@ public class ShopManager : MonoBehaviour
             temp = (temp / roundTo) * roundTo; // round to upper mult of 5
             shopItem.cost = (int)temp;
         }
-        Debug.Log(shopItem.title + " " + shopItem.score + ", " + shopItem.cost);
+       // Debug.Log(shopItem.title + " " + shopItem.score + ", " + shopItem.cost);
 
         return shopItem.cost;
     }
