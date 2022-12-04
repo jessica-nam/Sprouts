@@ -35,6 +35,8 @@ public class PlotManager : MonoBehaviour
     bool isRain = false;
     SpriteRenderer plant;
 
+    int daycount = 1;
+
     public Sprite[] plantStages;
     int plantStage = 0;
 
@@ -60,11 +62,24 @@ public class PlotManager : MonoBehaviour
     {
         if (plantStage < plantStages.Length - 1)
         {
+            //if good baby
+            //daycount+=1
+
+            // else
             plantStage += 1;
             UpdatePlant();
             sproutAnim.SetActive(false);
-            umbrella.SetActive(false);
+            
             scarecrow.SetActive(false);
+
+            // if(daycount == 3){
+            //     plantStage += 1;
+            //     UpdatePlant();
+            //     sproutAnim.SetActive(false);
+            
+            //     scarecrow.SetActive(false);
+
+            // }
             
             Debug.Log(Weather.instance.isRaining);
             if(Weather.instance.isRaining){
@@ -110,9 +125,9 @@ public class PlotManager : MonoBehaviour
         }
         
         else
-        {
+        { 
             Plant();
-            
+
         }
     }
 
@@ -129,13 +144,14 @@ public class PlotManager : MonoBehaviour
 
             isPlanted = false;
             plant.gameObject.SetActive(false);
+            umbrella.SetActive(false);
 
         }
 
         clicked = false;
     }
 
-    void Plant()
+    void Plant() // regular 1 day baby
     {
         plantHarvestSFX.pitch = (Random.Range(0.6f, .9f));
         plantHarvestSFX.PlayOneShot(plantNoise);
@@ -147,6 +163,10 @@ public class PlotManager : MonoBehaviour
                 babyObj = mouseObj.getCurrentMouseItem().ItemData;
                 Debug.Log("Baby on mouse: ");
                 Debug.Log(babyObj.name);
+
+                // if baby net positive == good baby
+                //  good baby is true
+                
 
                 if (babyObj.name == "Baby 1" || babyObj.name == "Baby 2" || babyObj.name == "Baby 3" || babyObj.name == "Baby 4" || babyObj.name == "Baby 5" || babyObj.name == "Baby 6")
                 {
@@ -172,6 +192,7 @@ public class PlotManager : MonoBehaviour
 
         clicked = false;
     }
+
 
     void Upgrade()
     {
@@ -199,7 +220,7 @@ public class PlotManager : MonoBehaviour
             MouseItemData.instance.ClearSlot();
             canPlantUpgrade = true;
             scarecrow.SetActive(true);
-            gameObject.tag = "Protected";
+            //gameObject.tag = "Protected";
 
 
         }

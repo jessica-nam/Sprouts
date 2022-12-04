@@ -1106,6 +1106,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 250361396}
   m_CullTransparentMesh: 1
+--- !u!1 &276579517 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3548657278702612128, guid: 2a09638f68d6b2b4da080397702d0746,
+    type: 3}
+  m_PrefabInstance: {fileID: 1839064257}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &277334076
 GameObject:
   m_ObjectHideFlags: 0
@@ -2144,6 +2150,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Plot (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 1854014343154962264, guid: 2a09638f68d6b2b4da080397702d0746,
+        type: 3}
+      propertyPath: dead
+      value: 
+      objectReference: {fileID: 930198896}
     - target: {fileID: 1854014343154962264, guid: 2a09638f68d6b2b4da080397702d0746,
         type: 3}
       propertyPath: UIObjs
@@ -4972,6 +4983,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 891663326}
   m_CullTransparentMesh: 1
+--- !u!1 &930198896 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3548657278702612128, guid: 2a09638f68d6b2b4da080397702d0746,
+    type: 3}
+  m_PrefabInstance: {fileID: 496949658}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &937258378
 GameObject:
   m_ObjectHideFlags: 0
@@ -5945,6 +5962,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Plot (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1854014343154962264, guid: 2a09638f68d6b2b4da080397702d0746,
+        type: 3}
+      propertyPath: dead
+      value: 
+      objectReference: {fileID: 1707063389}
     - target: {fileID: 1854014343154962264, guid: 2a09638f68d6b2b4da080397702d0746,
         type: 3}
       propertyPath: UIObjs
@@ -23033,6 +23055,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1854014343154962264, guid: 2a09638f68d6b2b4da080397702d0746,
         type: 3}
+      propertyPath: dead
+      value: 
+      objectReference: {fileID: 1581253485}
+    - target: {fileID: 1854014343154962264, guid: 2a09638f68d6b2b4da080397702d0746,
+        type: 3}
       propertyPath: UIObjs
       value: 
       objectReference: {fileID: 65597449}
@@ -28821,6 +28848,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1576472460}
   m_CullTransparentMesh: 1
+--- !u!1 &1581253485 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3548657278702612128, guid: 2a09638f68d6b2b4da080397702d0746,
+    type: 3}
+  m_PrefabInstance: {fileID: 1424038443}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1583524753 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1854014343154962247, guid: 2a09638f68d6b2b4da080397702d0746,
@@ -29251,6 +29284,12 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -107.5}
   m_SizeDelta: {x: 1600, y: 215}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1641759716 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3548657278702612128, guid: 2a09638f68d6b2b4da080397702d0746,
+    type: 3}
+  m_PrefabInstance: {fileID: 1854014342599472936}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1648606911
 GameObject:
   m_ObjectHideFlags: 0
@@ -29486,6 +29525,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88b074c96e84cfb44b64c8010c916160, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1679882208 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3548657278702612128, guid: 2a09638f68d6b2b4da080397702d0746,
+    type: 3}
+  m_PrefabInstance: {fileID: 2079921950}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1691868351
 GameObject:
   m_ObjectHideFlags: 0
@@ -29831,6 +29876,12 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8861660935986975115, guid: 6d3261781a4aaaa439e0f17a862b77dd,
     type: 3}
   m_PrefabInstance: {fileID: 1694031041}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1707063389 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3548657278702612128, guid: 2a09638f68d6b2b4da080397702d0746,
+    type: 3}
+  m_PrefabInstance: {fileID: 1111669523}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1715391019
 GameObject:
@@ -30616,6 +30667,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Plot (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 1854014343154962264, guid: 2a09638f68d6b2b4da080397702d0746,
+        type: 3}
+      propertyPath: dead
+      value: 
+      objectReference: {fileID: 276579517}
     - target: {fileID: 1854014343154962264, guid: 2a09638f68d6b2b4da080397702d0746,
         type: 3}
       propertyPath: UIObjs
@@ -31954,6 +32010,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1854014343154962264, guid: 2a09638f68d6b2b4da080397702d0746,
         type: 3}
+      propertyPath: dead
+      value: 
+      objectReference: {fileID: 1679882208}
+    - target: {fileID: 1854014343154962264, guid: 2a09638f68d6b2b4da080397702d0746,
+        type: 3}
       propertyPath: UIObjs
       value: 
       objectReference: {fileID: 65597449}
@@ -32981,6 +33042,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Plot
       objectReference: {fileID: 0}
+    - target: {fileID: 1854014343154962264, guid: 2a09638f68d6b2b4da080397702d0746,
+        type: 3}
+      propertyPath: dead
+      value: 
+      objectReference: {fileID: 1641759716}
     - target: {fileID: 1854014343154962264, guid: 2a09638f68d6b2b4da080397702d0746,
         type: 3}
       propertyPath: UIObjs
