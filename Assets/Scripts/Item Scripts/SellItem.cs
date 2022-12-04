@@ -112,21 +112,22 @@ public class SellItem : MonoBehaviour
 
     public int SetSellPrice(ShopItemSO shopItem)
     {
-        // higher the score, lower the revenue 
-        int goodFactor = 100;   // cost = 100 / score 
-        int badFactor = 10;     // cost = score * 10
-        int roundTo = 5;        // prices will be rounded to closest mult of 5
+        //int goodFactor = 100;   // cost = 100 / score 
+        //int badFactor = 10;     // cost = score * 10
+        //int roundTo = 5;        // prices will be rounded to closest mult of 5
 
-        // if good baby
-        if (shopItem.score > 0)
-        {
-            shopItem.cost = (int)Mathf.Abs((Mathf.Round((goodFactor / shopItem.score)) / roundTo) * roundTo);
-        }
-        // if bad baby
-        else if (shopItem.score <= 0)
-        {
-            shopItem.cost = (int)(Mathf.Round(Mathf.Abs(shopItem.score) * badFactor) / roundTo) * roundTo;
-        }
+        //// if good baby
+        //if (shopItem.score > 0)
+        //{
+        //    shopItem.cost = (int)Mathf.Abs((Mathf.Round((goodFactor / shopItem.score)) / roundTo) * roundTo);
+        //}
+        //// if bad baby
+        //else if (shopItem.score <= 0)
+        //{
+        //    shopItem.cost = (int)(Mathf.Round(Mathf.Abs(shopItem.score) * badFactor) / roundTo) * roundTo;
+        //}
+
+        shopItem.cost += 20;
 
         return shopItem.cost;
     }

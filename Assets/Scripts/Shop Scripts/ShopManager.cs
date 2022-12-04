@@ -277,7 +277,7 @@ public class ShopManager : MonoBehaviour
         //Debug.Log(shopItem.title + " = " + shopItem.score);
 
         // if good 
-        if(shopItem.score > 0)
+        if(shopItem.score >= 0)
         {
             float temp = 0;
             temp = Mathf.Round((shopItem.score * goodFactor) + goodAdder);
@@ -285,7 +285,7 @@ public class ShopManager : MonoBehaviour
             shopItem.cost = (int)temp;
         }
         // if bad 
-        else if(shopItem.score <= 0)
+        else if(shopItem.score < 0)
         {
             float temp = 0;
             temp = Mathf.Round((shopItem.score * badFactor) + badAdder);
