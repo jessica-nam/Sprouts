@@ -27,7 +27,7 @@ public class Ticker : MonoBehaviour
     {
         width = GetComponent<RectTransform>().rect.width;
         pixelsPerSecond = width / itemDuration;
-        AddTickerItem("Welcome to Sprouts!     ");
+        AddTickerItem(" Welcome to Sprouts!     ");
     }
 
     // Update is called once per frame
@@ -65,8 +65,9 @@ public class Ticker : MonoBehaviour
     }
     public void DestroyTickerItem()
     {
-   
-        Destroy(currentItem);
+        
+    
+        currentItem.Delete();
         
 
     }

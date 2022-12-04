@@ -31,6 +31,13 @@ public class TickerItem : MonoBehaviour
         
     }
 
+    public void Delete(){
+        this.tickerWidth = 0;
+        this.pixelsPerSecond = 0;
+        rt = GetComponent<RectTransform>();
+        GetComponent<TextMeshProUGUI>().text = " ";
+    }
+
     // Update is called once per frame
     void Update()
     {

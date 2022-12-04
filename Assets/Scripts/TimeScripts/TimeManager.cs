@@ -137,7 +137,7 @@ public class TimeManager : MonoBehaviour
         int rainPercent = Weather.instance.rain();
         Weather.instance.ProbabilityCheck(rainPercent);
         Ticker.instance.DestroyTickerItem();
-        Ticker.instance.AddTickerItem("Day " + currentDay);
+        Ticker.instance.AddTickerItem("Day " + currentDay + "   ");
 
         
 
