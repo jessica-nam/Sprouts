@@ -23,6 +23,10 @@ public class NarrationManager : MonoBehaviour
     //UI variables
     public GameObject NarationUI;
     public GameObject shop;
+
+    public GameObject WeatherWindow;
+    public GameObject weather;
+
     public Image closedL;
     public Image openL;
     public Image background;
@@ -91,6 +95,8 @@ public class NarrationManager : MonoBehaviour
         NarationUI.SetActive(false);
         narration = false;
         shop.SetActive(true);
+        WeatherWindow.SetActive(true);
+        weather.SetActive(true);
     }
     public void pressedButton()
     {
@@ -99,5 +105,6 @@ public class NarrationManager : MonoBehaviour
         
         else if(currentState == (int)narState.openedLetter)
             beginGame();
+            
     }
 }
