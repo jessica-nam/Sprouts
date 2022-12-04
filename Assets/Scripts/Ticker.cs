@@ -40,11 +40,11 @@ public class Ticker : MonoBehaviour
                 if (Weather.instance.isRaining)
                 {
 
-                    AddTickerItem("There's a " + Weather.instance.rainPercent + "% chance of rain tomorrow! Time to take out those umbrellas.     ");
+                    AddTickerItem("     There's a " + Weather.instance.rainPercent + "% chance of rain tomorrow! Time to take out those umbrellas.     ");
                 }
                 else
                 {
-                    AddTickerItem("It is a beautiful day on Sprouts Farm!     Tomorrow's forecast: sunshine, rainbows and babies!     ");
+                    AddTickerItem("     It is a beautiful day on Sprouts Farm!     Tomorrow's forecast: sunshine, rainbows and babies!     ");
 
                 }
 
