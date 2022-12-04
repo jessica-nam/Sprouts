@@ -39,6 +39,9 @@ public class TimeManager : MonoBehaviour
     public bool clickedNo = false;
     public bool openWindow = false;
 
+    public GameObject NextDay;
+    public GameObject WeatherWindow;
+
 
     
     void Awake(){
@@ -104,6 +107,8 @@ public class TimeManager : MonoBehaviour
         {
             TimeUI.SetActive(true);
             openWindow = true;
+            NextDay.SetActive(false);
+            WeatherWindow.SetActive(false);
         }
     }
 
@@ -112,6 +117,8 @@ public class TimeManager : MonoBehaviour
         UIAudio.PlayOneShot(selectSound);
         TimeUI.SetActive(false);
         clickedNo = true;
+        NextDay.SetActive(true);
+        WeatherWindow.SetActive(true);
     }
 
     public void selectYes()
@@ -121,6 +128,8 @@ public class TimeManager : MonoBehaviour
         TimeUI.SetActive(false);
         previousDay = currentDay;
         currentDay += 1;
+        NextDay.SetActive(true);
+        WeatherWindow.SetActive(true);
     }
 
     private void OnMouseOver()
