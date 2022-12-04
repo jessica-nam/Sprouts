@@ -27,6 +27,8 @@ public class PlotManager : MonoBehaviour
 
     public GameObject UIObjs;
 
+    public GameObject dead;
+
     bool isPlanted = false;
     bool clicked = false;
     bool canHarvest = false;
@@ -69,6 +71,9 @@ public class PlotManager : MonoBehaviour
                 isRain = true;
                 if(gameObject.tag == "Protected"){
                     canHarvest = true;
+                }else if (gameObject.tag == "WillDie"){
+                    plant.gameObject.SetActive(false);
+                    dead.SetActive(true);
                 }
             }
         }
@@ -151,6 +156,10 @@ public class PlotManager : MonoBehaviour
                     plant.gameObject.SetActive(true);
                     sproutAnim.SetActive(true);
 
+                    if(Weather.instance.isRaining){
+                        gameObject.tag = "WillDie";
+                    }
+
                     MouseItemData.instance.ClearSlot();
                 }
                 else
@@ -180,6 +189,8 @@ public class PlotManager : MonoBehaviour
             umbrella.SetActive(true);
             gameObject.tag = "Protected";
 
+        }else{
+            gameObject.tag = "WillDie";
         }
         if
          (isPlanted && upgradeName == "Upgrade 2")
