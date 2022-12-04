@@ -12,6 +12,9 @@ public class Weather : MonoBehaviour
     public string rainChance;
     public int rainPercent;
     public bool isRaining = false;
+
+    public GameObject rainParticles;
+
     // Start is called before the first frame update
 
     void Awake(){
@@ -34,10 +37,12 @@ public class Weather : MonoBehaviour
         Debug.Log(rnd);
         if (rnd <= itemProbability){
             isRaining = false;
+            rainParticles.SetActive(false);
             
             return false;
         }else{
             isRaining = true;
+            rainParticles.SetActive(true);
 
             return true;
         }

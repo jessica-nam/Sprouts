@@ -33,7 +33,6 @@ public class Ticker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(TickerItem.instance.destroyed);
         
             if (currentItem.GetXPosition <= -currentItem.GetWidth)
             {
@@ -48,11 +47,10 @@ public class Ticker : MonoBehaviour
 
                 }
 
-        }
-        else
-        {
-            Debug.Log("Cannot");
-        }
+            }else{
+                int temp = 2;
+            }
+        
     }
 
 

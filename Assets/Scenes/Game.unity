@@ -6627,7 +6627,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1236949250
 RectTransform:
   m_ObjectHideFlags: 0
@@ -23517,7 +23517,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!199 &1514371671
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -29705,7 +29705,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbabb53a5aa9e9e4b8273f9e51f9566f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WeatherDisplay: {fileID: 0}
+  WeatherDisplay: {fileID: 1514371670}
   tickerItemPrefab: {fileID: 2369221020201731068, guid: 381a6c4623ac57d40a7d93d7b2803039,
     type: 3}
   itemDuration: 150
@@ -29762,6 +29762,7 @@ MonoBehaviour:
   rainChance: 
   rainPercent: 0
   isRaining: 0
+  rainParticles: {fileID: 1514371670}
 --- !u!1001 &1766327971
 PrefabInstance:
   m_ObjectHideFlags: 0
