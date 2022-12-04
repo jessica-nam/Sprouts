@@ -17,6 +17,7 @@ public class PlotManager : MonoBehaviour
     public bool canPlantUpgrade = false;
 
     public GameObject sproutAnim;
+    public GameObject umbrella;
 
     public Button NextDay;
 
@@ -57,6 +58,7 @@ public class PlotManager : MonoBehaviour
             plantStage += 1;
             UpdatePlant();
             sproutAnim.SetActive(false);
+            umbrella.SetActive(false);
         }
     }
 
@@ -155,6 +157,7 @@ public class PlotManager : MonoBehaviour
             Debug.Log("Can plant because it is an upgrade");
             MouseItemData.instance.ClearSlot();
             canPlantUpgrade = true;
+            umbrella.SetActive(true);
 
         }
     }
