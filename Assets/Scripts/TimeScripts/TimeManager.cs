@@ -42,6 +42,7 @@ public class TimeManager : MonoBehaviour
     public GameObject NextDay;
     public GameObject WeatherWindow;
     public GameObject shop;
+    public GameObject rainParticles;
 
     
     void Awake(){
@@ -125,6 +126,12 @@ public class TimeManager : MonoBehaviour
 
     public void selectYes()
     {
+        if(Weather.instance.isRaining){
+            rainParticles.SetActive(true);
+        }else{
+            rainParticles.SetActive(false);
+        }
+
         UIAudio.PlayOneShot(selectSound);
         clickedYes = true;
         TimeUI.SetActive(false);
@@ -134,10 +141,14 @@ public class TimeManager : MonoBehaviour
         WeatherWindow.SetActive(true);
         shop.SetActive(true);
 
-        int rainPercent = Weather.instance.rain();
-        Weather.instance.ProbabilityCheck(rainPercent);
         Ticker.instance.DestroyTickerItem();
         Ticker.instance.AddTickerItem("Day " + currentDay + "     ");
+
+        Debug.Log("Is it raining?");
+        Debug.Log(Weather.instance.isRaining);
+
+        int rainPercent = Weather.instance.rain();
+        Weather.instance.ProbabilityCheck(rainPercent);
 
         
 

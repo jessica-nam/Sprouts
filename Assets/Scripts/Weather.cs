@@ -35,16 +35,21 @@ public class Weather : MonoBehaviour
         float rnd = Random.Range(1, 101);
         Debug.Log("Random chance ");
         Debug.Log(rnd);
+        if(TimeManager.instance.currentDay == 1){
+            rnd = 0;
+        }
         if (rnd <= itemProbability){
-            isRaining = false;
-            rainParticles.SetActive(false);
-            
-            return false;
-        }else{
             isRaining = true;
-            rainParticles.SetActive(true);
-
+            Debug.Log("Is rain is truw for tmrw");
+            //rainParticles.SetActive(false);
+            
             return true;
+        }else{
+            isRaining = false;
+            Debug.Log("Is rain is false");
+            //rainParticles.SetActive(true);
+
+            return false;
         }
             
     

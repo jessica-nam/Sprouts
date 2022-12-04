@@ -2949,6 +2949,7 @@ MonoBehaviour:
   NextDay: {fileID: 937258378}
   WeatherWindow: {fileID: 1734534104}
   shop: {fileID: 277334076}
+  rainParticles: {fileID: 1514371670}
 --- !u!212 &680588363
 SpriteRenderer:
   m_ObjectHideFlags: 0
