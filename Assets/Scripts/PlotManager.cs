@@ -18,6 +18,7 @@ public class PlotManager : MonoBehaviour
 
     public GameObject sproutAnim;
     public GameObject umbrella;
+    public GameObject scarecrow;
 
     public Button NextDay;
 
@@ -59,6 +60,7 @@ public class PlotManager : MonoBehaviour
             UpdatePlant();
             sproutAnim.SetActive(false);
             umbrella.SetActive(false);
+            scarecrow.SetActive(false);
         }
     }
 
