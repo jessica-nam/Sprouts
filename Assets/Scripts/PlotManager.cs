@@ -181,6 +181,17 @@ public class PlotManager : MonoBehaviour
             gameObject.tag = "Protected";
 
         }
+        if
+         (isPlanted && upgradeName == "Upgrade 2")
+        {
+            Debug.Log("Can plant because it is an upgrade");
+            MouseItemData.instance.ClearSlot();
+            canPlantUpgrade = true;
+            scarecrow.SetActive(true);
+            gameObject.tag = "Protected";
+
+
+        }
     }
 
     void UpdatePlant()
