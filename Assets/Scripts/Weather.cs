@@ -9,8 +9,9 @@ public class Weather : MonoBehaviour
 
     public static Weather instance;
 
-    private string rainChance;
-    private int rainPercent;
+    public string rainChance;
+    public int rainPercent;
+    public bool isRaining = false;
     // Start is called before the first frame update
 
     void Awake(){
@@ -32,13 +33,13 @@ public class Weather : MonoBehaviour
         Debug.Log("Random chance ");
         Debug.Log(rnd);
         if (rnd <= itemProbability){
-            rainChance = "There's a " + itemProbability.ToString() +"% chance of rain tomorrow! Time to take out those umbrellas.";
-            Ticker.instance.AddTickerItem(rainChance);
-            Debug.Log("true");
-            return true;
-        }else{
-            Debug.Log("false");
+            isRaining = false;
+            
             return false;
+        }else{
+            isRaining = true;
+
+            return true;
         }
             
     

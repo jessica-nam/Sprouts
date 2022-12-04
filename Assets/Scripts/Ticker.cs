@@ -11,13 +11,13 @@ public class Ticker : MonoBehaviour
     public TickerItem tickerItemPrefab;
     [Range(1f, 200f)]
     public float itemDuration = 3.0f;
-    public string[] fillerItems;
 
     float width;
     float pixelsPerSecond;
     TickerItem currentItem;
 
-    void Awake(){
+    void Awake()
+    {
         instance = this;
     }
 
@@ -26,17 +26,35 @@ public class Ticker : MonoBehaviour
     {
         width = GetComponent<RectTransform>().rect.width;
         pixelsPerSecond = width / itemDuration;
-        AddTickerItem(fillerItems[0]);
+        AddTickerItem("Welcome to Sprouts!     ");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (currentItem.GetXPosition <= -currentItem.GetWidth + 10f)
+        Debug.Log(TickerItem.instance.destroyed);
+        
+            if (currentItem.GetXPosition <= -currentItem.GetWidth)
+            {
+                if (Weather.instance.isRaining)
+                {
+
+                    AddTickerItem("There's a " + Weather.instance.rainPercent + "% chance of rain tomorrow! Time to take out those umbrellas.     ");
+                }
+                else
+                {
+                    AddTickerItem("It is a beautiful day on Sprouts Farm!     Tomorrow's forecast: sunshine, rainbows and babies!     ");
+
+                }
+
+        }
+        else
         {
-            AddTickerItem(fillerItems[Random.Range(0, fillerItems.Length)]);
+            Debug.Log("Cannot");
         }
     }
+
+
 
 
     public void AddTickerItem(string message)
@@ -44,10 +62,19 @@ public class Ticker : MonoBehaviour
         currentItem = Instantiate(tickerItemPrefab, transform);
         currentItem.Initialize(width, pixelsPerSecond, message);
     }
-
-    IEnumerator wait()
+    public void DestroyTickerItem()
     {
-        yield return new WaitForSeconds(3f);
+   
+        Destroy(currentItem);
+        currentItem = null;
+        
+ 
+    }
+
+    IEnumerator waitIdle()
+    {
+        yield return new WaitForSeconds(6f);
+
 
     }
 

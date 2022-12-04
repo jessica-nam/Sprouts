@@ -43,7 +43,6 @@ public class TimeManager : MonoBehaviour
     public GameObject WeatherWindow;
     public GameObject shop;
 
-
     
     void Awake(){
         instance = this;
@@ -137,6 +136,11 @@ public class TimeManager : MonoBehaviour
 
         int rainPercent = Weather.instance.rain();
         Weather.instance.ProbabilityCheck(rainPercent);
+        Ticker.instance.DestroyTickerItem();
+        Ticker.instance.AddTickerItem("Day " + currentDay);
+
+        
+
     }
 
     private void OnMouseOver()
