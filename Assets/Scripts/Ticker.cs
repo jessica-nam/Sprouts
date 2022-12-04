@@ -6,6 +6,7 @@ using TMPro;
 public class Ticker : MonoBehaviour
 {
     public static Ticker instance;
+    public GameObject WeatherDisplay;
 
     private TextMeshProUGUI text;
     public TickerItem tickerItemPrefab;
@@ -66,9 +67,8 @@ public class Ticker : MonoBehaviour
     {
    
         Destroy(currentItem);
-        currentItem = null;
         
- 
+
     }
 
     IEnumerator waitIdle()
