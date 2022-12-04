@@ -5,6 +5,8 @@ using TMPro;
 
 public class Ticker : MonoBehaviour
 {
+    public static Ticker instance;
+
     private TextMeshProUGUI text;
     public TickerItem tickerItemPrefab;
     [Range(1f, 200f)]
@@ -14,6 +16,10 @@ public class Ticker : MonoBehaviour
     float width;
     float pixelsPerSecond;
     TickerItem currentItem;
+
+    void Awake(){
+        instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +38,8 @@ public class Ticker : MonoBehaviour
         }
     }
 
-    void AddTickerItem(string message)
+
+    public void AddTickerItem(string message)
     {
         currentItem = Instantiate(tickerItemPrefab, transform);
         currentItem.Initialize(width, pixelsPerSecond, message);

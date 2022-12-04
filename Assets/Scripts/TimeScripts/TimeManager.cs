@@ -41,6 +41,7 @@ public class TimeManager : MonoBehaviour
 
     public GameObject NextDay;
     public GameObject WeatherWindow;
+    public GameObject shop;
 
 
     
@@ -109,6 +110,7 @@ public class TimeManager : MonoBehaviour
             openWindow = true;
             NextDay.SetActive(false);
             WeatherWindow.SetActive(false);
+            shop.SetActive(false);
         }
     }
 
@@ -119,6 +121,7 @@ public class TimeManager : MonoBehaviour
         clickedNo = true;
         NextDay.SetActive(true);
         WeatherWindow.SetActive(true);
+        shop.SetActive(true);
     }
 
     public void selectYes()
@@ -130,6 +133,10 @@ public class TimeManager : MonoBehaviour
         currentDay += 1;
         NextDay.SetActive(true);
         WeatherWindow.SetActive(true);
+        shop.SetActive(true);
+
+        int rainPercent = Weather.instance.rain();
+        Weather.instance.ProbabilityCheck(rainPercent);
     }
 
     private void OnMouseOver()
