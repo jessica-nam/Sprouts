@@ -30,6 +30,7 @@ public class SellItem : MonoBehaviour
     private void Start()
     {
         // instantiate UI objs
+        
         coinMgr = UIObjs.gameObject.transform.Find("Coin UI").gameObject.GetComponent<CoinMgr>();
         scoreMgr = UIObjs.gameObject.transform.Find("Score UI").gameObject.GetComponent<ScoreMgr>();
         invHolder = UIObjs.gameObject.transform.Find("Inventory Holder").gameObject;

@@ -268,22 +268,31 @@ public class ShopManager : MonoBehaviour
 
     public int SetCosts(ShopItemSO shopItem)
     {
-        float goodFactor = 8;   // cost = score * 8
-        float badFactor = 100;  // cost = 100 / score
+        float goodFactor = 3.5f;   // cost = score * 3.5 + 25
+        float goodAdder = 25;
+        float badFactor = 0.7f;  // cost = 0.7 * score + 20
+        float badAdder = 20;
         int roundTo = 5;        // costs will be rounded to closest mult of 5
 
-        Debug.Log(shopItem.title + " = " + shopItem.score);
+        //Debug.Log(shopItem.title + " = " + shopItem.score);
 
         // if good 
         if(shopItem.score > 0)
         {
-            shopItem.cost = (int)(Mathf.Round((shopItem.score * goodFactor) / roundTo)) * roundTo;
+            float temp = 0;
+            temp = Mathf.Round((shopItem.score * goodFactor) + goodAdder);
+            temp = (temp / roundTo) * roundTo; // round to upper mult of 5
+            shopItem.cost = (int)temp;
         }
         // if bad 
         else if(shopItem.score <= 0)
         {
-            shopItem.cost = (int)Mathf.Round((badFactor / Mathf.Abs(shopItem.score)) / roundTo) * roundTo;
+            float temp = 0;
+            temp = Mathf.Round((shopItem.score * badFactor) + badAdder);
+            temp = (temp / roundTo) * roundTo; // round to upper mult of 5
+            shopItem.cost = (int)temp;
         }
+        Debug.Log(shopItem.title + " " + shopItem.score + ", " + shopItem.cost);
 
         return shopItem.cost;
     }
