@@ -29,6 +29,8 @@ public class PlotManager : MonoBehaviour
 
     bool isPlanted = false;
     bool clicked = false;
+    bool canHarvest = false;
+    bool isRain = false;
     SpriteRenderer plant;
 
     public Sprite[] plantStages;
@@ -61,6 +63,14 @@ public class PlotManager : MonoBehaviour
             sproutAnim.SetActive(false);
             umbrella.SetActive(false);
             scarecrow.SetActive(false);
+            
+            Debug.Log(Weather.instance.isRaining);
+            if(Weather.instance.isRaining){
+                isRain = true;
+                if(gameObject.tag == "Protected"){
+                    canHarvest = true;
+                }
+            }
         }
     }
 
@@ -75,8 +85,16 @@ public class PlotManager : MonoBehaviour
         {
             if (plantStage == plantStages.Length - 1)
             {
-
-                Harvest();
+                if(isRain){
+                    if(canHarvest){
+                        Harvest();
+                    }else{
+                        Debug.Log("Baby died no umb");
+                    }
+                }else{
+                    Harvest();
+                }
+                
 
             }
             else
@@ -160,6 +178,7 @@ public class PlotManager : MonoBehaviour
             MouseItemData.instance.ClearSlot();
             canPlantUpgrade = true;
             umbrella.SetActive(true);
+            gameObject.tag = "Protected";
 
         }
     }
