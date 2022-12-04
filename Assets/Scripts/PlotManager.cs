@@ -10,7 +10,11 @@ public class PlotManager : MonoBehaviour
 
     private MouseItemData mouseObj;
     private ShopItemSO babyObj;
+    private ShopItemSO upgradeObj;
     private GameObject invHolder;
+
+    public string upgradeName;
+    public bool canPlantUpgrade = false;
 
     public GameObject sproutAnim;
 
@@ -73,12 +77,15 @@ public class PlotManager : MonoBehaviour
             }
             else
             {
+                Upgrade();
                 Debug.Log("Stop");
             }
         }
+        
         else
         {
             Plant();
+            
         }
     }
 
@@ -123,21 +130,33 @@ public class PlotManager : MonoBehaviour
                     sproutAnim.SetActive(true);
 
                     MouseItemData.instance.ClearSlot();
-                } else{
+                }
+                else
+                {
                     Debug.Log("Cannot Plant");
                 }
 
-                // isPlanted = true;
-                // plantStage = 0;
-                // UpdatePlant();
-                // plant.gameObject.SetActive(true);
-                // sproutAnim.SetActive(true);
-
-                // MouseItemData.instance.ClearSlot();
             }
         }
 
         clicked = false;
+    }
+
+    void Upgrade()
+    {
+        if (MouseItemData.instance.hasItem)
+        {
+
+            upgradeObj = mouseObj.getCurrentMouseItem().ItemData;
+            upgradeName = upgradeObj.name;
+        }
+        if (isPlanted && upgradeName == "Upgrade 1")
+        {
+            Debug.Log("Can plant because it is an upgrade");
+            MouseItemData.instance.ClearSlot();
+            canPlantUpgrade = true;
+
+        }
     }
 
     void UpdatePlant()
