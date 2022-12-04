@@ -7,7 +7,7 @@ public class Ticker : MonoBehaviour
 {
     private TextMeshProUGUI text;
     public TickerItem tickerItemPrefab;
-    [Range(1f, 100f)]
+    [Range(1f, 200f)]
     public float itemDuration = 3.0f;
     public string[] fillerItems;
 
