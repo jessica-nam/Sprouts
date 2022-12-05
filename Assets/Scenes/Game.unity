@@ -2304,6 +2304,11 @@ PrefabInstance:
       objectReference: {fileID: 1891993728}
     - target: {fileID: 1854014343154962264, guid: 2a09638f68d6b2b4da080397702d0746,
         type: 3}
+      propertyPath: Weather
+      value: 
+      objectReference: {fileID: 1734534109}
+    - target: {fileID: 1854014343154962264, guid: 2a09638f68d6b2b4da080397702d0746,
+        type: 3}
       propertyPath: umbrella
       value: 
       objectReference: {fileID: 496949660}
@@ -6121,6 +6126,11 @@ PrefabInstance:
       propertyPath: NextDay
       value: 
       objectReference: {fileID: 1891993728}
+    - target: {fileID: 1854014343154962264, guid: 2a09638f68d6b2b4da080397702d0746,
+        type: 3}
+      propertyPath: Weather
+      value: 
+      objectReference: {fileID: 1734534109}
     - target: {fileID: 1854014343154962264, guid: 2a09638f68d6b2b4da080397702d0746,
         type: 3}
       propertyPath: umbrella
@@ -23214,6 +23224,11 @@ PrefabInstance:
       objectReference: {fileID: 1891993728}
     - target: {fileID: 1854014343154962264, guid: 2a09638f68d6b2b4da080397702d0746,
         type: 3}
+      propertyPath: Weather
+      value: 
+      objectReference: {fileID: 1734534109}
+    - target: {fileID: 1854014343154962264, guid: 2a09638f68d6b2b4da080397702d0746,
+        type: 3}
       propertyPath: umbrella
       value: 
       objectReference: {fileID: 1424038445}
@@ -30840,6 +30855,11 @@ PrefabInstance:
       objectReference: {fileID: 1891993728}
     - target: {fileID: 1854014343154962264, guid: 2a09638f68d6b2b4da080397702d0746,
         type: 3}
+      propertyPath: Weather
+      value: 
+      objectReference: {fileID: 1734534109}
+    - target: {fileID: 1854014343154962264, guid: 2a09638f68d6b2b4da080397702d0746,
+        type: 3}
       propertyPath: umbrella
       value: 
       objectReference: {fileID: 1839064259}
@@ -32181,6 +32201,11 @@ PrefabInstance:
       objectReference: {fileID: 1891993728}
     - target: {fileID: 1854014343154962264, guid: 2a09638f68d6b2b4da080397702d0746,
         type: 3}
+      propertyPath: Weather
+      value: 
+      objectReference: {fileID: 1734534109}
+    - target: {fileID: 1854014343154962264, guid: 2a09638f68d6b2b4da080397702d0746,
+        type: 3}
       propertyPath: umbrella
       value: 
       objectReference: {fileID: 2079921952}
@@ -33213,6 +33238,11 @@ PrefabInstance:
       propertyPath: NextDay
       value: 
       objectReference: {fileID: 1891993728}
+    - target: {fileID: 1854014343154962264, guid: 2a09638f68d6b2b4da080397702d0746,
+        type: 3}
+      propertyPath: Weather
+      value: 
+      objectReference: {fileID: 1734534109}
     - target: {fileID: 1854014343154962264, guid: 2a09638f68d6b2b4da080397702d0746,
         type: 3}
       propertyPath: umbrella

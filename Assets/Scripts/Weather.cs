@@ -44,8 +44,7 @@ public class Weather : MonoBehaviour
 
             return false;
         }
-            
-    
+          
     }
 
     public int rain()
