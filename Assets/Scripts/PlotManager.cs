@@ -20,6 +20,7 @@ public class PlotManager : MonoBehaviour
     public GameObject umbrella;
     public GameObject scarecrow;
 
+
     public Button NextDay;
 
 
@@ -33,6 +34,7 @@ public class PlotManager : MonoBehaviour
     bool clicked = false;
     bool canHarvest = false;
     bool isRain = false;
+    public bool scareCrowOut = false;
     SpriteRenderer plant;
 
     int daycount = 1;
@@ -60,6 +62,7 @@ public class PlotManager : MonoBehaviour
 
     public void NextDayButtonYes()
     {
+        CrowManager.instance.ProceedDay();
         if (plantStage < plantStages.Length - 1)
         {
             //if good baby
@@ -210,20 +213,22 @@ public class PlotManager : MonoBehaviour
             umbrella.SetActive(true);
             gameObject.tag = "Protected";
 
-        }else{
+        }
+        else
+        {
             gameObject.tag = "WillDie";
         }
-        if
-         (isPlanted && upgradeName == "Upgrade 2")
+        
+         if(isPlanted && upgradeName == "Upgrade 2")
         {
             Debug.Log("Can plant because it is an upgrade");
             MouseItemData.instance.ClearSlot();
             canPlantUpgrade = true;
             scarecrow.SetActive(true);
-            //gameObject.tag = "Protected";
-
-
+            scareCrowOut = true;
         }
+            
+        
     }
 
     void UpdatePlant()
