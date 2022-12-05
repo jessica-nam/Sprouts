@@ -19,11 +19,9 @@ public class PlotManager : MonoBehaviour
     public GameObject sproutAnim;
     public GameObject umbrella;
     public GameObject scarecrow;
-
-
+    public Weather Weather;
     public Button NextDay;
-
-
+    
     [SerializeField] private Sprite icon;
 
     public GameObject UIObjs;
@@ -60,6 +58,16 @@ public class PlotManager : MonoBehaviour
         mouseObj = UIObjs.gameObject.transform.Find("Mouse Object").gameObject.GetComponent<MouseItemData>();
     }
 
+    private void Update()
+    {
+        Debug.Log(Weather.isRaining);
+
+        if (Weather.isRaining)
+            isRain = true;
+        else
+            isRain = false;
+    }
+
     public void NextDayButtonYes()
     {
         CrowManager.instance.ProceedDay();
@@ -79,17 +87,20 @@ public class PlotManager : MonoBehaviour
             //     plantStage += 1;
             //     UpdatePlant();
             //     sproutAnim.SetActive(false);
-            
+
             //     scarecrow.SetActive(false);
 
             // }
-            
-            Debug.Log(Weather.instance.isRaining);
-            if(Weather.instance.isRaining){
-                isRain = true;
-                if(gameObject.tag == "Protected"){
+
+            if (isRain)
+            {
+                Debug.Log("tag = " + gameObject.tag);
+                if (gameObject.tag == "Protected")
+                {
                     canHarvest = true;
-                }else if (gameObject.tag == "WillDie"){
+                }
+                else if (gameObject.tag == "WillDie")
+                {
                     plant.gameObject.SetActive(false);
                     dead.SetActive(true);
                 }
@@ -164,8 +175,8 @@ public class PlotManager : MonoBehaviour
             {
 
                 babyObj = mouseObj.getCurrentMouseItem().ItemData;
-                Debug.Log("Baby on mouse: ");
-                Debug.Log(babyObj.name);
+                //Debug.Log("Baby on mouse: ");
+               // Debug.Log(babyObj.name);
 
                 // if baby net positive == good baby
                 //  good baby is true
@@ -201,25 +212,23 @@ public class PlotManager : MonoBehaviour
     {
         if (MouseItemData.instance.hasItem)
         {
-
             upgradeObj = mouseObj.getCurrentMouseItem().ItemData;
-            upgradeName = upgradeObj.name;
+            upgradeName = upgradeObj.title;
         }
-        if (isPlanted && upgradeName == "Upgrade 1")
+        if (isPlanted && upgradeName == "Umbrella")
         {
             Debug.Log("Can plant because it is an upgrade");
             MouseItemData.instance.ClearSlot();
             canPlantUpgrade = true;
             umbrella.SetActive(true);
             gameObject.tag = "Protected";
-
         }
         else
         {
             gameObject.tag = "WillDie";
         }
         
-         if(isPlanted && upgradeName == "Upgrade 2")
+         if(isPlanted && upgradeName == "Scarecrow")
         {
             Debug.Log("Can plant because it is an upgrade");
             MouseItemData.instance.ClearSlot();
