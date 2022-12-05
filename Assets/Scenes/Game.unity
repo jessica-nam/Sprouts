@@ -3150,7 +3150,7 @@ MonoBehaviour:
   dayLimit: 10
   gameEnd: 0
   endingGood: 0
-  scoreGoal: 100
+  scoreGoal: 20
   musicPlayer: {fileID: 1349092905}
   UIAudio: {fileID: 3721212}
   goodEndMusic: {fileID: 8300000, guid: 37e8fa1c80c0f794c941ecfbdee76fe1, type: 3}
@@ -29746,7 +29746,7 @@ MonoBehaviour:
     heart.\r\nBefore you assume your new position as Sprout Farmer, we shall see
     how you perform in a trial run.\r\nI will give you 10 days to prove that you\u2019re
     ready, and I\u2019ll be scoring you on how the babies turn out.\r\n\nBy the end
-    of this time, I expect that you can produce a score of 100 from the qualities
+    of this time, I expect that you can produce a score of 20 from the qualities
     of your sprouts.\r\nTake care and the best of luck in your endeavors.\r\n\nRegards,\r\nYour
     Sprout Farming Predecessor"
   m_isRightToLeft: 0
