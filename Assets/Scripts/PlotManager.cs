@@ -70,7 +70,7 @@ public class PlotManager : MonoBehaviour
 
     public void NextDayButtonYes()
     {
-        CrowManager.instance.ProceedDay();
+        
         if (plantStage < plantStages.Length - 1)
         {
             //if good baby
@@ -227,15 +227,7 @@ public class PlotManager : MonoBehaviour
         {
             gameObject.tag = "WillDie";
         }
-        
-         if(isPlanted && upgradeName == "Scarecrow")
-        {
-            Debug.Log("Can plant because it is an upgrade");
-            MouseItemData.instance.ClearSlot();
-            canPlantUpgrade = true;
-            scarecrow.SetActive(true);
-            scareCrowOut = true;
-        }
+       
             
         
     }
