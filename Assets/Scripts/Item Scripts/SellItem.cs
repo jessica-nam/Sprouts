@@ -7,9 +7,9 @@ using System.Linq;
 
 public class SellItem : MonoBehaviour
 {
-    private static List<SellTemplate> templateList = new List<SellTemplate>(); // templates (UI)
+    private static List<ContainerTemplate> containersList = new List<ContainerTemplate>(); // templates (UI)
     private static List<ShopItemSO> itemsToSell = new List<ShopItemSO>(); // actual data 
-    private SellTemplate sellTemplate;
+    public ContainerTemplate containerTemplate;
 
     [SerializeField] GameObject UIObjs;
     private CoinMgr coinMgr;
@@ -19,6 +19,7 @@ public class SellItem : MonoBehaviour
 
     public GameObject instructions;
     public Button sellItemsButton;
+    private Button undoBtn;
 
     private int goodSoldTemp = 0;
     public int goodSold = 0;
@@ -37,57 +38,79 @@ public class SellItem : MonoBehaviour
         mouseObj = UIObjs.gameObject.transform.Find("Mouse Object").gameObject.GetComponent<MouseItemData>();
     }
 
-    public void CreateNewSellItem(GameObject sellTemplate, Transform parentTransform)
+    private void Update()
     {
-        GameObject newItemTemplate = Instantiate(sellTemplate, parentTransform); // instantiate new templates as children of that obj
-        // enable undo functionality
-        newItemTemplate = SetUndo(newItemTemplate);
-        // combine data from mouse item with newly created template
-        UpdateItemToSell(mouseObj.getCurrentMouseItem().ItemData, newItemTemplate);
+        if(totalRevenue > 0)
+            sellItemsButton.interactable = true;
+        else
+            sellItemsButton.interactable = false;
     }
 
-    Button undoBtn;
+    public void UpdateSellScreen(Transform parentTransform)
+    {
+        ShopItemSO thisItem = mouseObj.getCurrentMouseItem().ItemData;
+        if (thisItem.sellIndex > -1) // has already been assigned to a container
+        {
+            // set container at that index to active
+            containersList[thisItem.sellIndex].gameObject.SetActive(true);
+            UpdateUIValues(thisItem);
+        }
+        else 
+        {
+            // create new container and add to list
+            GameObject newContainerGO = Instantiate(containerTemplate.gameObject, parentTransform);
+            // enable undo functionality
+            newContainerGO = SetUndo(newContainerGO);
+
+            ContainerTemplate newContainer = newContainerGO.GetComponent<ContainerTemplate>();
+            // add to list of containers (UI)
+            containersList.Add(newContainer);
+            // add to list of items (actual data)
+            itemsToSell.Add(thisItem);
+            // update indices of container and data -- can be used as ID
+            newContainer.index = containersList.Count - 1;
+            thisItem.sellIndex = itemsToSell.Count - 1;
+            // combine data from mouse item with newly created container
+            CreateItemToSell(thisItem, newContainer);
+        }
+        
+    }
+
+ 
     public GameObject SetUndo(GameObject newItem)
     {
         undoBtn = newItem.transform.Find("Undo Btn").GetComponent<Button>();
         // attach undo bttn to undo function
         // have to do this in code instead of inspector because script is on object that prefab doesn't have access to until runtime
-        undoBtn.onClick.AddListener(delegate { UndoTemplateCreation(newItem); });
+        undoBtn.onClick.AddListener(delegate { UndoContainerCreation(newItem); });
         return newItem;
     }
 
-    public void UpdateItemToSell(ShopItemSO data, GameObject template)
+    public void CreateItemToSell(ShopItemSO data, ContainerTemplate thisContainer)
     {
-        sellItemsButton.gameObject.SetActive(true); // will be called every time a new template is added -- not ideal
-        sellTemplate = template.GetComponent<SellTemplate>();
-
-        // add to list of templates (UI)
-        templateList.Add(sellTemplate);
-        
-        // add to list of items (actual data)
-        itemsToSell.Add(data);
-
-        sellTemplate.image.sprite = data.icon;
-        sellTemplate.image.color = Color.white;
-        sellTemplate.titleTxt.text = data.title;
-        sellTemplate.descriptionTxt.text = GetAttributesText(data);
-
-        // set cost based on status
+        // fill container fields w/data 
+        thisContainer.image.sprite = data.icon;
+        thisContainer.image.color = Color.white;
+        thisContainer.titleTxt.text = data.title;
+        thisContainer.descriptionTxt.text = GetAttributesText(data);
+        // set cost based on baby's status (good/bad)
         data.cost = SetSellPrice(data);
-        sellTemplate.costTxt.text = data.cost.ToString();
-        totalRevenue += data.cost;
-
+        thisContainer.costTxt.text = data.cost.ToString();
         // calc val to add to score
-        if(data.score < 0)
-            sellTemplate.score.text = data.score.ToString();
+        if (data.score < 0)
+            thisContainer.score.text = data.score.ToString();
         else
-            sellTemplate.score.text = "+" + data.score;
-        totalScore += data.score;
+            thisContainer.score.text = "+" + data.score;
 
-        //if(data.score == "good")
-        //{
-        //    goodSoldTemp += 1;
-        //}
+        UpdateUIValues(data);
+    }
+
+    public void UpdateUIValues(ShopItemSO thisItem)
+    {
+        // update val to be added to user's coins
+        totalRevenue += thisItem.cost;
+        // update val to be added to user's score
+        totalScore += thisItem.score;
     }
 
     public string GetAttributesText(ShopItemSO shopItem)
@@ -110,20 +133,20 @@ public class SellItem : MonoBehaviour
         scoreMgr.AddScore(totalScore);
 
         // delete all templates
-        foreach (var template in templateList)
+        foreach (var container in containersList)
         {
-            Destroy(template.gameObject);
+            Destroy(container.gameObject);
         }
 
-        // reset template list
-        templateList = new List<SellTemplate>();
+        // reset container list
+        containersList = new List<ContainerTemplate>();
 
         // reset
         totalRevenue = 0;
         totalScore = 0;
 
         instructions.SetActive(true);
-        sellItemsButton.gameObject.SetActive(false);
+        //sellItemsButton.gameObject.SetActive(false);
         goodSold += goodSoldTemp;
 
         //play sound for selling
@@ -132,45 +155,26 @@ public class SellItem : MonoBehaviour
 
     public int SetSellPrice(ShopItemSO shopItem)
     {
-        //int goodFactor = 100;   // cost = 100 / score 
-        //int badFactor = 10;     // cost = score * 10
-        //int roundTo = 5;        // prices will be rounded to closest mult of 5
-
-        //// if good baby
-        //if (shopItem.score > 0)
-        //{
-        //    shopItem.cost = (int)Mathf.Abs((Mathf.Round((goodFactor / shopItem.score)) / roundTo) * roundTo);
-        //}
-        //// if bad baby
-        //else if (shopItem.score <= 0)
-        //{
-        //    shopItem.cost = (int)(Mathf.Round(Mathf.Abs(shopItem.score) * badFactor) / roundTo) * roundTo;
-        //}
-
         shopItem.cost += 20;
 
         return shopItem.cost;
     }
 
-    public void UndoTemplateCreation(GameObject thisItem)
+    public void UndoContainerCreation(GameObject thisGO)
     {
-        // get order in hierarchy -- should match order in global lists storing templates/data 
-        int index = thisItem.transform.GetSiblingIndex();
+        var thisContainer = thisGO.GetComponent<ContainerTemplate>();
 
         // get actual shopItem (data)
-        ShopItemSO data = itemsToSell[index];
-
-        // get template storing that data 
-        SellTemplate template = templateList[index];
-
-        // add back to inventory
-        var inventory = invHolder.GetComponent<InventoryHolder>();
-        inventory.InventorySystem.AddToInventory(itemsToSell.ElementAt(index), 1);
+        ShopItemSO data = itemsToSell[thisContainer.index];
 
         // subtract undone item's revenue from total
         totalRevenue -= data.cost;
 
+        // add back to inventory
+        var inventory = invHolder.GetComponent<InventoryHolder>();
+        inventory.InventorySystem.AddToInventory(data);
+
         // set sell template inactive
-        template.gameObject.SetActive(false);
+        thisContainer.gameObject.SetActive(false);
     }
 }

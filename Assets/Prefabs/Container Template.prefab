@@ -647,7 +647,7 @@ GameObject:
   - component: {fileID: 3296527676332749104}
   - component: {fileID: 6176199079030260143}
   m_Layer: 5
-  m_Name: Sell item template
+  m_Name: Container Template
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -18,7 +18,7 @@ public class ShopManager : MonoBehaviour
     public ShopTemplate[] shopPanelsSeeds;
     public ShopTemplate[] shopPanelsUpgrades;
     public Button[] purchaseBtns;
-    public GameObject sellTemplate;
+   // public GameObject sellTemplate;
 
     public GameObject UIObjs; 
     private GameObject invHolder;
@@ -109,7 +109,7 @@ public class ShopManager : MonoBehaviour
         Transform parentTransform = CustomFindChild("Templates Container", this.transform);
         if (parentTransform)
         {
-            sellMgr.CreateNewSellItem(sellTemplate, parentTransform);
+            sellMgr.UpdateSellScreen(parentTransform);
         }
         else
         {
@@ -185,7 +185,7 @@ public class ShopManager : MonoBehaviour
 
                 // add to player inventory
                 var inventory = invHolder.GetComponent<InventoryHolder>();          // get player inventory
-                inventory.InventorySystem.AddToInventory(shopItemsSeeds[btnNum], 1);   // add item to it
+                inventory.InventorySystem.AddToInventory(shopItemsSeeds[btnNum]);   // add item to it
 
                 CheckPurchaseable();
                 shopSFX.PlayOneShot(buySound);
@@ -204,7 +204,7 @@ public class ShopManager : MonoBehaviour
 
                 // add to player inventory
                 var inventory = invHolder.GetComponent<InventoryHolder>();          // get player inventory
-                inventory.InventorySystem.AddToInventory(shopItemsUpgrades[btnNum], 1);   // add item to it
+                inventory.InventorySystem.AddToInventory(shopItemsUpgrades[btnNum]);   // add item to it
 
                 CheckPurchaseable();
                 shopSFX.PlayOneShot(buySound);

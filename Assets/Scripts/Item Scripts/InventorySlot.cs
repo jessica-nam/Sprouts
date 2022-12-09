@@ -16,10 +16,10 @@ public class InventorySlot : ItemSlot
         ClearSlot();
     }
 
-    public void UpdateInventorySlot(ShopItemSO data, int amount)
+    public void UpdateInventorySlot(ShopItemSO data)
     {
         itemData = data;
-        stackSize = amount;
+        //stackSize = amount;
     }
 
     public void AssignItem(InventorySlot invSlot)

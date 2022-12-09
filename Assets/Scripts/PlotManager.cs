@@ -151,7 +151,7 @@ public class PlotManager : MonoBehaviour
             var clone = Instantiate(babyObj);
             clone.icon = plant.sprite; // refers to serialize field at top
             clone.sellable = true;
-            inventory.InventorySystem.AddToInventory(clone, 1);
+            inventory.InventorySystem.AddToInventory(clone);
 
             isPlanted = false;
             plant.gameObject.SetActive(false);

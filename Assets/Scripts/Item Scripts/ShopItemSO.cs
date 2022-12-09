@@ -12,6 +12,7 @@ public class ShopItemSO : ScriptableObject
     public List<Attribute> attributes;
     public int score;
     public bool sellable = false;
+    public int sellIndex = -1;
 
     public void Reset()
     {

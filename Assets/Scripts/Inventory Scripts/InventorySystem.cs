@@ -33,7 +33,7 @@ public class InventorySystem
         }
     }
     //l
-    public bool AddToInventory(ShopItemSO itemToAdd, int amountToAdd)
+    public bool AddToInventory(ShopItemSO itemToAdd)
     {
         // getting rid of stackability because doesn't carry over to planting functionality
 
@@ -53,7 +53,7 @@ public class InventorySystem
         if (HasFreeSlot(out InventorySlot freeSlot))
         {
             //Debug.Log("has free slot = " + freeSlot);
-            freeSlot.UpdateInventorySlot(itemToAdd, amountToAdd);
+            freeSlot.UpdateInventorySlot(itemToAdd);
             OnInventorySlotChanged.Invoke(freeSlot);
             return true;
         }
