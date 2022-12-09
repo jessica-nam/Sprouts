@@ -35,7 +35,7 @@ public class PlotManager : MonoBehaviour
     public bool scareCrowOut = false;
     SpriteRenderer plant;
 
-    int daycount = 1;
+    //int daycount = 1;
 
     public Sprite[] plantStages;
     int plantStage = 0;
@@ -60,7 +60,7 @@ public class PlotManager : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(Weather.isRaining);
+       // Debug.Log(Weather.isRaining);
 
         if (Weather.isRaining)
             isRain = true;

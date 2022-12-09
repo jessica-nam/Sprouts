@@ -50,7 +50,7 @@ public class Ticker : MonoBehaviour
                 }
 
             }else{
-                int temp = 2;
+                //int temp = 2;
             }
         
     }

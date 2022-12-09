@@ -157,11 +157,20 @@ public class SellItem : MonoBehaviour
         // get order in hierarchy -- should match order in global lists storing templates/data 
         int index = thisItem.transform.GetSiblingIndex();
 
+        // get actual shopItem (data)
+        ShopItemSO data = itemsToSell[index];
+
+        // get template storing that data 
+        SellTemplate template = templateList[index];
+
         // add back to inventory
         var inventory = invHolder.GetComponent<InventoryHolder>();
         inventory.InventorySystem.AddToInventory(itemsToSell.ElementAt(index), 1);
 
+        // subtract undone item's revenue from total
+        totalRevenue -= data.cost;
+
         // set sell template inactive
-        templateList.ElementAt(index).gameObject.SetActive(false);
+        template.gameObject.SetActive(false);
     }
 }
