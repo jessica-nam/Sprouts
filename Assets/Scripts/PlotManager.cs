@@ -18,7 +18,6 @@ public class PlotManager : MonoBehaviour
 
     public GameObject sproutAnim;
     public GameObject umbrella;
-    public GameObject scarecrow;
     public Weather Weather;
     public Button NextDay;
     
@@ -32,7 +31,6 @@ public class PlotManager : MonoBehaviour
     bool clicked = false;
     bool canHarvest = false;
     bool isRain = false;
-    public bool scareCrowOut = false;
     SpriteRenderer plant;
 
     //int daycount = 1;
@@ -80,8 +78,6 @@ public class PlotManager : MonoBehaviour
             plantStage += 1;
             UpdatePlant();
             sproutAnim.SetActive(false);
-            
-            scarecrow.SetActive(false);
 
             // if(daycount == 3){
             //     plantStage += 1;
@@ -154,6 +150,7 @@ public class PlotManager : MonoBehaviour
             var inventory = invHolder.GetComponent<InventoryHolder>();
             var clone = Instantiate(babyObj);
             clone.icon = plant.sprite; // refers to serialize field at top
+            clone.sellable = true;
             inventory.InventorySystem.AddToInventory(clone, 1);
 
             isPlanted = false;

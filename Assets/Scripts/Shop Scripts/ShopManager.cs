@@ -82,9 +82,10 @@ public class ShopManager : MonoBehaviour
     public void CheckIfSelling()
     {
         var results = mouseObj.getObjectsClickedOn();
+        var thisItem = mouseObj.getCurrentMouseItem().ItemData;
         foreach (var result in results)
         {
-            if (result.gameObject.name == "Shop" && mouseObj.hasItem && Mouse.current.leftButton.wasPressedThisFrame) // if item on mouse and player clicks on shop canvas
+            if (result.gameObject.name == "Shop" && mouseObj.hasItem && Mouse.current.leftButton.wasPressedThisFrame && thisItem.sellable) // if item on mouse and player clicks on shop canvas and obj is sellable
             {
                 DisplayShopSell();      // swap to sell view
                 DisplayItemsToSell();   // add template for every item dragged onto sell view

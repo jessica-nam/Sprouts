@@ -11,6 +11,7 @@ public class ShopItemSO : ScriptableObject
     public Sprite icon;
     public List<Attribute> attributes;
     public int score;
+    public bool sellable = false;
 
     public void Reset()
     {
