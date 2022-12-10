@@ -59,7 +59,6 @@ public class PlotManager : MonoBehaviour
 
     private void Update()
     {
-       // Debug.Log(Weather.isRaining);
 
         if (Weather.isRaining)
             isRain = true;
@@ -91,7 +90,6 @@ public class PlotManager : MonoBehaviour
 
             if (isRain)
             {
-                Debug.Log("tag = " + gameObject.tag);
                 if (gameObject.tag == "Untagged")
                 {
                     canHarvest = true;
@@ -114,14 +112,12 @@ public class PlotManager : MonoBehaviour
         {
             clicked = true; // fixes error where you can interact with plots through shop canvas
         }
-        Debug.Log(dead.activeSelf);
         if(dead.activeSelf){
             dead.SetActive(false);
             gameObject.tag = "Untagged";
             isPlanted = false;
         }
         
-        Debug.Log("Here");
         if (isPlanted)
         {
             if (plantStage == plantStages.Length - 1)
@@ -132,12 +128,7 @@ public class PlotManager : MonoBehaviour
 
                         gameObject.tag = "Untagged";
                     }
-                    // }else{
-                    //     Debug.Log("Baby died");
-                    //     dead.SetActive(false);
-                    //     gameObject.tag = "Untagged";
 
-                    // }
                 }else{
                     Harvest();
                 }
@@ -147,7 +138,6 @@ public class PlotManager : MonoBehaviour
             else
             {
                 Upgrade();
-                Debug.Log("Stop");
             }
         }
         

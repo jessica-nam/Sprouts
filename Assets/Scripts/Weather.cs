@@ -47,15 +47,11 @@ public class Weather : MonoBehaviour
             actualRain = 0;
         }
         if (actualRain >= itemProbability){
-            Debug.Log(actualRain);
-            Debug.Log(itemProbability);
             isRaining = true;
             didNotRainDayBefore = false;
             
             return true;
         }else{
-            Debug.Log(actualRain);
-            Debug.Log(itemProbability);
             isRaining = false;
             didNotRainDayBefore = true;
 
