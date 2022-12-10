@@ -112,7 +112,13 @@ public class PlotManager : MonoBehaviour
         {
             clicked = true; // fixes error where you can interact with plots through shop canvas
         }
-        dead.SetActive(false);
+        Debug.Log(dead.activeSelf);
+        if(dead.activeSelf){
+            dead.SetActive(false);
+            gameObject.tag = "Untagged";
+            isPlanted = false;
+        }
+        
         Debug.Log("Here");
         if (isPlanted)
         {
