@@ -229,6 +229,7 @@ public class PlotManager : MonoBehaviour
             MouseItemData.instance.ClearSlot();
             canPlantUpgrade = true;
             umbrella.SetActive(true);
+            gameObject.tag = "Untagged";
         }       
         
     }
