@@ -44,7 +44,7 @@ public class Ticker : MonoBehaviour
                 }
                 else
                 {
-                    AddTickerItem("     It is a beautiful day on Sprouts Farm!     Tomorrow's forecast: sunshine, rainbows and babies!");
+                    AddTickerItem("     Tomorrow's forecast: sunshine, rainbows and babies!");
 
 
                 }

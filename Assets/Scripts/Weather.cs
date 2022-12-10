@@ -31,7 +31,17 @@ public class Weather : MonoBehaviour
 
     public bool ProbabilityCheck(int itemProbability)
     {
-        float actualRain = Random.Range(0, 101);
+        int temp = 0;
+        // move below float actualRain = Random.Range(temp, 101); if we want to give players more time before rain
+        if (didNotRainDayBefore){
+            temp= 70;
+        }else{
+            temp = 0;
+        }
+
+        float actualRain = Random.Range(temp, 101);
+
+        
 
         if(TimeManager.instance.currentDay == 1){
             actualRain = 0;
@@ -57,13 +67,8 @@ public class Weather : MonoBehaviour
 
     public int rain()
     {
-        int temp = 40;
-        rainPercent = Random.Range(temp, 100); //60% chance to rain?
-        if (didNotRainDayBefore){
-            temp= 30;
-        }else{
-            temp = 40;
-        }
+        rainPercent = Random.Range(60, 100); 
+        
         return rainPercent;
 
     }
