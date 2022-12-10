@@ -102,6 +102,8 @@ public class PlotManager : MonoBehaviour
                     plant.gameObject.SetActive(false);
                     dead.SetActive(true);
                 }
+            }else{
+                canHarvest = true;
             }
         }
     }

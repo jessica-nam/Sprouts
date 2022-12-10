@@ -15,6 +15,8 @@ public class Weather : MonoBehaviour
 
     public GameObject rainParticles;
 
+    bool didNotRainDayBefore = false;
+
 
     void Awake(){
         instance = this;
@@ -29,17 +31,23 @@ public class Weather : MonoBehaviour
 
     public bool ProbabilityCheck(int itemProbability)
     {
-        float rnd = Random.Range(1, 101);
+        float actualRain = Random.Range(0, 101);
 
         if(TimeManager.instance.currentDay == 1){
-            rnd = 0;
+            actualRain = 0;
         }
-        if (rnd <= itemProbability){
+        if (actualRain >= itemProbability){
+            Debug.Log(actualRain);
+            Debug.Log(itemProbability);
             isRaining = true;
+            didNotRainDayBefore = false;
             
             return true;
         }else{
+            Debug.Log(actualRain);
+            Debug.Log(itemProbability);
             isRaining = false;
+            didNotRainDayBefore = true;
 
 
             return false;
@@ -49,8 +57,13 @@ public class Weather : MonoBehaviour
 
     public int rain()
     {
-        rainPercent = Random.Range(10, 60); //60% chance to rain?
-
+        int temp = 40;
+        rainPercent = Random.Range(temp, 100); //60% chance to rain?
+        if (didNotRainDayBefore){
+            temp= 30;
+        }else{
+            temp = 40;
+        }
         return rainPercent;
 
     }
