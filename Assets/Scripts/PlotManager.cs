@@ -47,6 +47,7 @@ public class PlotManager : MonoBehaviour
     {
         plant = transform.GetChild(0).GetComponent<SpriteRenderer>();
         NextDay.onClick.AddListener(NextDayButtonYes);
+        dead.tag = "WillDie";
     }
 
     private void Awake()
@@ -91,12 +92,13 @@ public class PlotManager : MonoBehaviour
             if (isRain)
             {
                 Debug.Log("tag = " + gameObject.tag);
-                if (gameObject.tag == "Protected")
+                if (gameObject.tag == "Untagged")
                 {
                     canHarvest = true;
                 }
                 else if (gameObject.tag == "WillDie")
                 {
+                    canHarvest = false;
                     plant.gameObject.SetActive(false);
                     dead.SetActive(true);
                 }
@@ -110,7 +112,8 @@ public class PlotManager : MonoBehaviour
         {
             clicked = true; // fixes error where you can interact with plots through shop canvas
         }
-
+        dead.SetActive(false);
+        Debug.Log("Here");
         if (isPlanted)
         {
             if (plantStage == plantStages.Length - 1)
@@ -118,9 +121,15 @@ public class PlotManager : MonoBehaviour
                 if(isRain){
                     if(canHarvest){
                         Harvest();
-                    }else{
-                        Debug.Log("Baby died no umb");
+
+                        gameObject.tag = "Untagged";
                     }
+                    // }else{
+                    //     Debug.Log("Baby died");
+                    //     dead.SetActive(false);
+                    //     gameObject.tag = "Untagged";
+
+                    // }
                 }else{
                     Harvest();
                 }
@@ -145,7 +154,7 @@ public class PlotManager : MonoBehaviour
     {
         plantHarvestSFX.pitch = (Random.Range(0.6f, .9f));
         plantHarvestSFX.PlayOneShot(harvestNoise);
-        if (clicked)
+        if (clicked && gameObject.tag == "Untagged")
         {
             var inventory = invHolder.GetComponent<InventoryHolder>();
             var clone = Instantiate(babyObj);
@@ -156,8 +165,10 @@ public class PlotManager : MonoBehaviour
             isPlanted = false;
             plant.gameObject.SetActive(false);
             umbrella.SetActive(false);
+            dead.SetActive(false);
 
         }
+
 
         clicked = false;
     }
@@ -187,11 +198,11 @@ public class PlotManager : MonoBehaviour
                     plant.gameObject.SetActive(true);
                     sproutAnim.SetActive(true);
 
+                    MouseItemData.instance.ClearSlot();
+
                     if(Weather.instance.isRaining){
                         gameObject.tag = "WillDie";
                     }
-
-                    MouseItemData.instance.ClearSlot();
                 }
                 else
                 {
@@ -218,14 +229,7 @@ public class PlotManager : MonoBehaviour
             MouseItemData.instance.ClearSlot();
             canPlantUpgrade = true;
             umbrella.SetActive(true);
-            gameObject.tag = "Protected";
-        }
-        else
-        {
-            gameObject.tag = "WillDie";
-        }
-       
-            
+        }       
         
     }
 
