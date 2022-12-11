@@ -29,10 +29,8 @@ public class TimeManager : MonoBehaviour
     public GameObject Shop;
     SpriteRenderer sprite;
     public ShopManager shopSell;
-    public Image win;
-    public Image lose;
-    public Image loseBG;
-    public Image winBG;
+    public GameObject winScreen;
+    public GameObject loseScreen;
 
     public NarrationManager narrate;
 
@@ -80,10 +78,8 @@ public class TimeManager : MonoBehaviour
         if(gameEnd && endingGood)
         {
             StateUI.SetActive(true);
-            win.enabled = true;
-            winBG.enabled = true;
-            loseBG.enabled = false;
-            lose.enabled = false;
+            winScreen.SetActive(true);
+            loseScreen.SetActive(false);
             swapSongEnd();
             Shop.SetActive(false);
 
@@ -91,10 +87,8 @@ public class TimeManager : MonoBehaviour
         else if(gameEnd && !endingGood)
         {
             StateUI.SetActive(true);
-            win.enabled = false;
-            lose.enabled = true;
-            winBG.enabled = false;
-            loseBG.enabled = true;
+            winScreen.SetActive(false);
+            loseScreen.SetActive(true);
             swapSongEnd();
             Shop.SetActive(false);
 
