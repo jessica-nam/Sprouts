@@ -244,6 +244,7 @@ public class ShopManager : MonoBehaviour
         {
             // these are set in inspector
             shopPanelsUpgrades[i].titleTxt.text = shopItemsUpgrades[i].title;
+            shopPanelsUpgrades[i].titleTxtShadow.text = shopItemsUpgrades[i].title;
             shopPanelsUpgrades[i].costTxt.text = shopItemsUpgrades[i].cost.ToString();
         }
     }

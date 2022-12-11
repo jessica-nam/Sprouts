@@ -66,7 +66,12 @@ public class TimeManager : MonoBehaviour
         }
         if(gameEnd == true)
         {
-            if(shopSell.sellMgr.goodSold >= scoreGoal)
+            UICanvas.SetActive(false);
+            StateUI.SetActive(true);
+            Shop.SetActive(false);
+            swapSongEnd();
+
+            if (shopSell.sellMgr.goodSold >= scoreGoal)
             {
                 endingGood = true;
             }
@@ -76,22 +81,14 @@ public class TimeManager : MonoBehaviour
             }
         }
         if(gameEnd && endingGood)
-        {
-            StateUI.SetActive(true);
+        {            
             winScreen.SetActive(true);
             loseScreen.SetActive(false);
-            swapSongEnd();
-            Shop.SetActive(false);
-
         }
         else if(gameEnd && !endingGood)
         {
-            StateUI.SetActive(true);
             winScreen.SetActive(false);
             loseScreen.SetActive(true);
-            swapSongEnd();
-            Shop.SetActive(false);
-
         }
     }
 
