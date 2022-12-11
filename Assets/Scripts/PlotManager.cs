@@ -90,7 +90,7 @@ public class PlotManager : MonoBehaviour
 
             if (isRain)
             {
-                if (gameObject.tag == "Untagged")
+                if (gameObject.tag == "Protected")
                 {
                     canHarvest = true;
                 }
@@ -114,7 +114,7 @@ public class PlotManager : MonoBehaviour
         }
         if(dead.activeSelf){
             dead.SetActive(false);
-            gameObject.tag = "Untagged";
+            gameObject.tag = "Protected";
             isPlanted = false;
         }
         
@@ -126,7 +126,7 @@ public class PlotManager : MonoBehaviour
                     if(canHarvest){
                         Harvest();
 
-                        gameObject.tag = "Untagged";
+                        gameObject.tag = "Protected";
                     }
 
                 }else{
@@ -152,7 +152,7 @@ public class PlotManager : MonoBehaviour
     {
         plantHarvestSFX.pitch = (Random.Range(0.6f, .9f));
         plantHarvestSFX.PlayOneShot(harvestNoise);
-        if (clicked && gameObject.tag == "Untagged")
+        if (clicked && gameObject.tag == "Protected")
         {
             var inventory = invHolder.GetComponent<InventoryHolder>();
             var clone = Instantiate(babyObj);
@@ -227,7 +227,7 @@ public class PlotManager : MonoBehaviour
             MouseItemData.instance.ClearSlot();
             canPlantUpgrade = true;
             umbrella.SetActive(true);
-            gameObject.tag = "Untagged";
+            gameObject.tag = "Protected";
         }       
         
     }
