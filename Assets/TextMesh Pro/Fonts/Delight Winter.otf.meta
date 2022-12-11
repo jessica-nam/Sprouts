@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 35affa89d2d3aca47b3d419a5c3f8cb3
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Delight Winter
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 1423e5691ce847b4d87cad9a4e8ba1fb, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
