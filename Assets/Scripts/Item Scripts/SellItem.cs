@@ -97,6 +97,7 @@ public class SellItem : MonoBehaviour
         data.cost = SetSellPrice(data);
         thisContainer.costTxt.text = data.cost.ToString();
         // calc val to add to score
+        Debug.Log(data.title + " " + data.score);
         if (data.score < 0)
             thisContainer.score.text = data.score.ToString();
         else
@@ -167,8 +168,9 @@ public class SellItem : MonoBehaviour
         // get actual shopItem (data)
         ShopItemSO data = itemsToSell[thisContainer.index];
 
-        // subtract undone item's revenue from total
+        // subtract undone item's revenue/score from total
         totalRevenue -= data.cost;
+        totalScore -= data.score;
 
         // add back to inventory
         var inventory = invHolder.GetComponent<InventoryHolder>();

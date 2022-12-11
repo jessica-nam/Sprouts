@@ -18,7 +18,6 @@ public class ShopManager : MonoBehaviour
     public ShopTemplate[] shopPanelsSeeds;
     public ShopTemplate[] shopPanelsUpgrades;
     public Button[] purchaseBtns;
-   // public GameObject sellTemplate;
 
     public GameObject UIObjs; 
     private GameObject invHolder;
@@ -175,6 +174,7 @@ public class ShopManager : MonoBehaviour
     public void PurchaseItem(int btnNum)
     {
         // seeds
+        Debug.Log(shopItemsSeeds[btnNum].title + " " + shopItemsSeeds[btnNum].score);
         if (seedsContent.gameObject.activeSelf)
         {
             if (coinMgr.coins >= shopItemsSeeds[btnNum].cost)
@@ -231,7 +231,7 @@ public class ShopManager : MonoBehaviour
             {
                 Attribute temp = PickRandomAttribute(shopItemsSeeds[i]);
                 shopPanelsSeeds[i].attributesTxt.text += temp.attributeName + " " + temp.weight + System.Environment.NewLine;
-
+         
                 // score is sum of attr weights 
                 shopItemsSeeds[i].score += shopItemsSeeds[i].attributes[j].weight;
             }
@@ -276,8 +276,6 @@ public class ShopManager : MonoBehaviour
         float badAdder = 20;
         int roundTo = 5;        // costs will be rounded to closest mult of 5
 
-        //Debug.Log(shopItem.title + " = " + shopItem.score);
-
         // if good 
         if(shopItem.score >= 0)
         {
@@ -294,7 +292,6 @@ public class ShopManager : MonoBehaviour
             temp = (temp / roundTo) * roundTo; // round to upper mult of 5
             shopItem.cost = (int)temp;
         }
-       // Debug.Log(shopItem.title + " " + shopItem.score + ", " + shopItem.cost);
 
         return shopItem.cost;
     }
@@ -321,6 +318,7 @@ public class ShopManager : MonoBehaviour
     // reset shop (randomize) each new day
     public void ResetShop()
     {
+        Debug.Log("new day");
         chosenAttrs.Clear(); // reset for randomize
         chosenIcons.Clear(); // reset for randomize
 
@@ -331,7 +329,6 @@ public class ShopManager : MonoBehaviour
             shopPanelsSeeds[i].Reset();
             shopPanelsGO_Seeds[i].SetActive(true);
         }
-
         LoadPanels();
         CheckPurchaseable();
     }
