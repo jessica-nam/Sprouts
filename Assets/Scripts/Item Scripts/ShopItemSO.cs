@@ -13,14 +13,23 @@ public class ShopItemSO : ScriptableObject
     public int score;
     public bool sellable = false;
     public int sellIndex = -1;
-
+    
     public void Reset()
     {
-       // title = "";
+        int nameType = 1; // 1 - all male and female names
+        title = NVJOBNameGen.Uppercase(NVJOBNameGen.GiveAName(nameType)); // gen random name
+        Debug.Log(title);
         cost = 0;
         //icon = 
         if(attributes != null)
             attributes.Clear();
         score = 0;
     }
+
+   
+    //void Start()
+    //{
+    //    GetComponent<Text>().text = curentName;
+    //    print(curentName);
+    //}
 }
