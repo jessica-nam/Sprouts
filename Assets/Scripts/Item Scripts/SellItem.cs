@@ -97,7 +97,6 @@ public class SellItem : MonoBehaviour
         data.cost = SetSellPrice(data);
         thisContainer.costTxt.text = data.cost.ToString();
         // calc val to add to score
-        Debug.Log(data.title + " " + data.score);
         if (data.score < 0)
             thisContainer.score.text = data.score.ToString();
         else

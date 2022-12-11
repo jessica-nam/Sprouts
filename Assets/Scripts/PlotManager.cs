@@ -9,7 +9,7 @@ public class PlotManager : MonoBehaviour
     public static PlotManager instance;
 
     private MouseItemData mouseObj;
-    private ShopItemSO babyObj;
+    private ShopItemSO babyCopy;
     private ShopItemSO upgradeObj;
     private GameObject invHolder;
 
@@ -21,7 +21,7 @@ public class PlotManager : MonoBehaviour
     public Weather Weather;
     public Button NextDay;
     
-    [SerializeField] private Sprite icon;
+    //[SerializeField] private Sprite icon;
 
     public GameObject UIObjs;
 
@@ -33,8 +33,6 @@ public class PlotManager : MonoBehaviour
     bool isRain = false;
     SpriteRenderer plant;
 
-    //int daycount = 1;
-
     public Sprite[] plantStages;
     int plantStage = 0;
 
@@ -45,6 +43,7 @@ public class PlotManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        babyCopy = new ShopItemSO(); // init global obj to be used later
         plant = transform.GetChild(0).GetComponent<SpriteRenderer>();
         NextDay.onClick.AddListener(NextDayButtonYes);
         dead.tag = "WillDie";
@@ -125,7 +124,6 @@ public class PlotManager : MonoBehaviour
                 if(isRain){
                     if(canHarvest){
                         Harvest();
-
                         gameObject.tag = "Protected";
                     }
 
@@ -144,7 +142,6 @@ public class PlotManager : MonoBehaviour
         else
         { 
             Plant();
-
         }
     }
 
@@ -155,19 +152,16 @@ public class PlotManager : MonoBehaviour
         if (clicked && gameObject.tag == "Protected")
         {
             var inventory = invHolder.GetComponent<InventoryHolder>();
-            var clone = Instantiate(babyObj);
-            clone.icon = plant.sprite; // refers to serialize field at top
-            clone.sellable = true;
-            inventory.InventorySystem.AddToInventory(clone);
+            babyCopy.icon = plant.sprite; 
+            babyCopy.sellable = true;
+            inventory.InventorySystem.AddToInventory(babyCopy);
 
             isPlanted = false;
             plant.gameObject.SetActive(false);
             umbrella.SetActive(false);
             dead.SetActive(false);
-
         }
-
-
+        
         clicked = false;
     }
 
@@ -179,19 +173,14 @@ public class PlotManager : MonoBehaviour
         {
             if (MouseItemData.instance.hasItem)
             {
+                ShopItemSO babyOnMouse = mouseObj.getCurrentMouseItem().ItemData;
 
-                babyObj = mouseObj.getCurrentMouseItem().ItemData;
-                //Debug.Log("Baby on mouse: ");
-               // Debug.Log(babyObj.name);
-
-                // if baby net positive == good baby
-                //  good baby is true
-                
-
-                if (babyObj.name == "Baby 1" || babyObj.name == "Baby 2" || babyObj.name == "Baby 3" || babyObj.name == "Baby 4" || babyObj.name == "Baby 5" || babyObj.name == "Baby 6")
+                if (babyOnMouse.name == "Baby 1" || babyOnMouse.name == "Baby 2" || babyOnMouse.name == "Baby 3" || babyOnMouse.name == "Baby 4" || babyOnMouse.name == "Baby 5" || babyOnMouse.name == "Baby 6")
                 {
                     isPlanted = true;
                     plantStage = 0;
+                    // copy baby on mouse to another ShopItemSO obj
+                    babyCopy = Instantiate(babyOnMouse);
                     UpdatePlant();
                     plant.gameObject.SetActive(true);
                     sproutAnim.SetActive(true);
@@ -211,7 +200,6 @@ public class PlotManager : MonoBehaviour
 
             }
         }
-
         clicked = false;
     }
 

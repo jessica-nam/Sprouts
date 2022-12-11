@@ -174,7 +174,6 @@ public class ShopManager : MonoBehaviour
     public void PurchaseItem(int btnNum)
     {
         // seeds
-        Debug.Log(shopItemsSeeds[btnNum].title + " " + shopItemsSeeds[btnNum].score);
         if (seedsContent.gameObject.activeSelf)
         {
             if (coinMgr.coins >= shopItemsSeeds[btnNum].cost)
@@ -318,7 +317,6 @@ public class ShopManager : MonoBehaviour
     // reset shop (randomize) each new day
     public void ResetShop()
     {
-        Debug.Log("new day");
         chosenAttrs.Clear(); // reset for randomize
         chosenIcons.Clear(); // reset for randomize
 
