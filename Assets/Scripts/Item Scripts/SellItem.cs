@@ -92,6 +92,7 @@ public class SellItem : MonoBehaviour
         thisContainer.image.sprite = data.icon;
         thisContainer.image.color = Color.white;
         thisContainer.titleTxt.text = data.title;
+        thisContainer.titleTxtShadow.text = data.title;
         thisContainer.descriptionTxt.text = GetAttributesText(data);
         // set cost based on baby's status (good/bad)
         data.cost = SetSellPrice(data);
