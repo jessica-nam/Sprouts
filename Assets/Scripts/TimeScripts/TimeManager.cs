@@ -23,6 +23,7 @@ public class TimeManager : MonoBehaviour
     //variables for UI
     public TMP_Text currDay;
     public TMP_Text ending;
+    public GameObject UICanvas;
     public GameObject TimeUI;
     public GameObject StateUI;
     public GameObject Shop;
@@ -106,6 +107,7 @@ public class TimeManager : MonoBehaviour
         //bring up canvas to make sure user wants to move to next day
         if (narrate.narration == false)
         {
+            UICanvas.SetActive(false);
             TimeUI.SetActive(true);
             openWindow = true;
             NextDay.SetActive(false);
@@ -116,6 +118,7 @@ public class TimeManager : MonoBehaviour
 
     public void selectNo()
     {
+        UICanvas.gameObject.SetActive(true);
         UIAudio.PlayOneShot(selectSound);
         TimeUI.SetActive(false);
         clickedNo = true;
@@ -132,6 +135,7 @@ public class TimeManager : MonoBehaviour
             rainParticles.SetActive(false);
         }
 
+        UICanvas.gameObject.SetActive(true);
         UIAudio.PlayOneShot(selectSound);
         clickedYes = true;
         TimeUI.SetActive(false);
