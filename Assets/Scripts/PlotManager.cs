@@ -200,6 +200,8 @@ public class PlotManager : MonoBehaviour
 
                     if(Weather.instance.isRaining){
                         gameObject.tag = "WillDie";
+                    }else{
+                        gameObject.tag = "Protected";
                     }
                 }
                 else
