@@ -220,6 +220,7 @@ public class ShopManager : MonoBehaviour
         {
             // these are set in inspector
             shopPanelsSeeds[i].titleTxt.text = shopItemsSeeds[i].title;
+            shopPanelsSeeds[i].titleTxtShadow.text = shopItemsSeeds[i].title;
 
             // randomly selected
             shopPanelsSeeds[i].image.sprite = GetRandomIcon(shopItemsSeeds[i]);

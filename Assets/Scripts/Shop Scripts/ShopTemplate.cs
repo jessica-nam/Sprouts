@@ -8,6 +8,7 @@ using UnityEngine.EventSystems;
 public class ShopTemplate : MonoBehaviour
 {
     public TMP_Text titleTxt;
+    public TMP_Text titleTxtShadow;
     public TMP_Text descriptionTxt;
     public TMP_Text costTxt;
     public Image image;

@@ -18,11 +18,8 @@ public class ShopItemSO : ScriptableObject
     {
         int nameType = 1; // 1 - all male and female names
         title = NVJOBNameGen.Uppercase(NVJOBNameGen.GiveAName(nameType)); // gen random name
-        Debug.Log(title);
         cost = 0;
-        //icon = 
-        if(attributes != null)
-            attributes.Clear();
+        if(attributes != null) attributes.Clear();
         score = 0;
     }
 
