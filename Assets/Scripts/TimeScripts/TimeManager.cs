@@ -25,6 +25,7 @@ public class TimeManager : MonoBehaviour
     public TMP_Text ending;
     public GameObject UICanvas;
     public GameObject WeatherUI;
+    public GameObject GameViewUI;
     public GameObject TimeUI;
     public GameObject StateUI;
     public GameObject Shop;
@@ -32,6 +33,7 @@ public class TimeManager : MonoBehaviour
     public ShopManager shopSell;
     public GameObject winScreen;
     public GameObject loseScreen;
+    private ScoreMgr scoreMgr;
 
     public NarrationManager narrate;
 
@@ -56,6 +58,8 @@ public class TimeManager : MonoBehaviour
         UIAudio.clip = selectSound;
         musicPlayer.loop = true;
         UIAudio.volume = 0.5f;
+
+        scoreMgr = UICanvas.gameObject.transform.Find("Score UI").gameObject.GetComponent<ScoreMgr>();
     }
 
     private void Update()
@@ -68,12 +72,13 @@ public class TimeManager : MonoBehaviour
         if(gameEnd == true)
         {
             WeatherUI.SetActive(false);
+            GameViewUI.SetActive(false);
             UICanvas.SetActive(false);
             StateUI.SetActive(true);
             Shop.SetActive(false);
             swapSongEnd();
 
-            if (shopSell.sellMgr.goodSold >= scoreGoal)
+            if (scoreMgr.score >= scoreGoal)
             {
                 endingGood = true;
             }

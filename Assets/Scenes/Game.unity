@@ -334,7 +334,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4845720}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 999824493}
+        m_TargetAssemblyTypeName: SceneManagement, Assembly-CSharp
+        m_MethodName: Menu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &4845720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3356,6 +3368,7 @@ MonoBehaviour:
   ending: {fileID: 0}
   UICanvas: {fileID: 65597449}
   WeatherUI: {fileID: 1734534104}
+  GameViewUI: {fileID: 937258378}
   TimeUI: {fileID: 1508976018}
   StateUI: {fileID: 630271445}
   Shop: {fileID: 277334076}
@@ -3431,7 +3444,7 @@ Transform:
   m_GameObject: {fileID: 680588361}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 19.46, y: -3.61, z: 0}
-  m_LocalScale: {x: 1.4, y: 1.7, z: 1}
+  m_LocalScale: {x: 1.4, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1447618504}
