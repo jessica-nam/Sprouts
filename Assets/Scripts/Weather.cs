@@ -14,6 +14,8 @@ public class Weather : MonoBehaviour
     public bool isRaining = false;
 
     public GameObject rainParticles;
+    public GameObject rainIcon;
+    public GameObject sunIcon;
 
     bool didNotRainDayBefore = false;
 
@@ -24,7 +26,7 @@ public class Weather : MonoBehaviour
 
     void Start(){
         rainPercent = rain();
-
+        sunIcon.SetActive(true);
         ProbabilityCheck(rainPercent);
     }
 
@@ -48,11 +50,15 @@ public class Weather : MonoBehaviour
         }
         if (actualRain >= itemProbability){
             isRaining = true;
+            rainIcon.SetActive(true);
+            sunIcon.SetActive(false);
             didNotRainDayBefore = false;
             
             return true;
         }else{
             isRaining = false;
+            rainIcon.SetActive(false);
+            sunIcon.SetActive(true);
             didNotRainDayBefore = true;
 
 

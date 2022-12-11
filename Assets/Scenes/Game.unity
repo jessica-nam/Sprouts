@@ -3321,6 +3321,82 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 666664221}
   m_CullTransparentMesh: 1
+--- !u!1 &676210333
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 676210334}
+  - component: {fileID: 676210336}
+  - component: {fileID: 676210335}
+  m_Layer: 5
+  m_Name: rain icon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &676210334
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 676210333}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 937258379}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 119.7, y: 463}
+  m_SizeDelta: {x: 95.25, y: 86.45}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &676210335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 676210333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 22ff7c6d10ba5af43bb30ef6a80d1cb9, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &676210336
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 676210333}
+  m_CullTransparentMesh: 1
 --- !u!1 &680588361
 GameObject:
   m_ObjectHideFlags: 0
@@ -5655,6 +5731,7 @@ RectTransform:
   - {fileID: 1276616861}
   - {fileID: 1438418782}
   - {fileID: 1044799173}
+  - {fileID: 676210334}
   m_Father: {fileID: 999824492}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -23684,12 +23761,12 @@ GameObject:
   - component: {fileID: 1438418784}
   - component: {fileID: 1438418783}
   m_Layer: 5
-  m_Name: icon
+  m_Name: sun icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1438418782
 RectTransform:
   m_ObjectHideFlags: 0
@@ -23707,8 +23784,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 116, y: 463}
-  m_SizeDelta: {x: 81.74, y: 74.44}
+  m_AnchoredPosition: {x: 119.7, y: 463}
+  m_SizeDelta: {x: 95.25, y: 86.45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1438418783
 MonoBehaviour:
@@ -23730,7 +23807,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f0ef3e9f713eb3d43b21c87e2594979f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 90d41dd7517d0d44c9f858b34d74e586, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -30774,6 +30851,8 @@ MonoBehaviour:
   rainPercent: 0
   isRaining: 0
   rainParticles: {fileID: 1514371670}
+  rainIcon: {fileID: 676210333}
+  sunIcon: {fileID: 1438418781}
 --- !u!1 &1780867754
 GameObject:
   m_ObjectHideFlags: 0
