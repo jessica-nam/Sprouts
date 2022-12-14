@@ -1842,6 +1842,12 @@ RectTransform:
   m_AnchoredPosition: {x: -168.6962, y: 54.241}
   m_SizeDelta: {x: 300, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &310559860 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3149053671763459311, guid: 2a09638f68d6b2b4da080397702d0746,
+    type: 3}
+  m_PrefabInstance: {fileID: 1424038443}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &313789023
 GameObject:
   m_ObjectHideFlags: 0
@@ -2663,6 +2669,11 @@ PrefabInstance:
       propertyPath: Weather
       value: 
       objectReference: {fileID: 1734534109}
+    - target: {fileID: 1854014343154962264, guid: 2a09638f68d6b2b4da080397702d0746,
+        type: 3}
+      propertyPath: babyAnim
+      value: 
+      objectReference: {fileID: 1560821973}
     - target: {fileID: 1854014343154962264, guid: 2a09638f68d6b2b4da080397702d0746,
         type: 3}
       propertyPath: umbrella
@@ -3770,6 +3781,12 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &710368374 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3149053671763459311, guid: 2a09638f68d6b2b4da080397702d0746,
+    type: 3}
+  m_PrefabInstance: {fileID: 1111669523}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &719790783
 GameObject:
   m_ObjectHideFlags: 0
@@ -6906,6 +6923,11 @@ PrefabInstance:
       objectReference: {fileID: 1734534109}
     - target: {fileID: 1854014343154962264, guid: 2a09638f68d6b2b4da080397702d0746,
         type: 3}
+      propertyPath: babyAnim
+      value: 
+      objectReference: {fileID: 710368374}
+    - target: {fileID: 1854014343154962264, guid: 2a09638f68d6b2b4da080397702d0746,
+        type: 3}
       propertyPath: umbrella
       value: 
       objectReference: {fileID: 1111669525}
@@ -6994,6 +7016,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3149053671763459311, guid: 2a09638f68d6b2b4da080397702d0746,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -7595,7 +7622,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1236949250
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8332,6 +8359,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1352607664 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3149053671763459311, guid: 2a09638f68d6b2b4da080397702d0746,
+    type: 3}
+  m_PrefabInstance: {fileID: 1839064257}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1360686032
 GameObject:
   m_ObjectHideFlags: 0
@@ -23629,6 +23662,11 @@ PrefabInstance:
       objectReference: {fileID: 1734534109}
     - target: {fileID: 1854014343154962264, guid: 2a09638f68d6b2b4da080397702d0746,
         type: 3}
+      propertyPath: babyAnim
+      value: 
+      objectReference: {fileID: 310559860}
+    - target: {fileID: 1854014343154962264, guid: 2a09638f68d6b2b4da080397702d0746,
+        type: 3}
       propertyPath: umbrella
       value: 
       objectReference: {fileID: 1424038445}
@@ -29423,6 +29461,12 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.6416144, y: 5.898564}
   m_EdgeRadius: 0
+--- !u!1 &1560821973 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3149053671763459311, guid: 2a09638f68d6b2b4da080397702d0746,
+    type: 3}
+  m_PrefabInstance: {fileID: 496949658}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1576472460
 GameObject:
   m_ObjectHideFlags: 0
@@ -30373,6 +30417,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1691868351}
   m_CullTransparentMesh: 1
+--- !u!1 &1692741314 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3149053671763459311, guid: 2a09638f68d6b2b4da080397702d0746,
+    type: 3}
+  m_PrefabInstance: {fileID: 2079921950}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1694031041
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31180,6 +31230,11 @@ PrefabInstance:
       propertyPath: Weather
       value: 
       objectReference: {fileID: 1734534109}
+    - target: {fileID: 1854014343154962264, guid: 2a09638f68d6b2b4da080397702d0746,
+        type: 3}
+      propertyPath: babyAnim
+      value: 
+      objectReference: {fileID: 1352607664}
     - target: {fileID: 1854014343154962264, guid: 2a09638f68d6b2b4da080397702d0746,
         type: 3}
       propertyPath: umbrella
@@ -32232,6 +32287,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1987071641}
   m_CullTransparentMesh: 1
+--- !u!1 &2006440800 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3149053671763459311, guid: 2a09638f68d6b2b4da080397702d0746,
+    type: 3}
+  m_PrefabInstance: {fileID: 1854014342599472936}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2021417740
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32691,6 +32752,11 @@ PrefabInstance:
       objectReference: {fileID: 1734534109}
     - target: {fileID: 1854014343154962264, guid: 2a09638f68d6b2b4da080397702d0746,
         type: 3}
+      propertyPath: babyAnim
+      value: 
+      objectReference: {fileID: 1692741314}
+    - target: {fileID: 1854014343154962264, guid: 2a09638f68d6b2b4da080397702d0746,
+        type: 3}
       propertyPath: umbrella
       value: 
       objectReference: {fileID: 2079921952}
@@ -32799,7 +32865,7 @@ PrefabInstance:
     - target: {fileID: 3149053671763459311, guid: 2a09638f68d6b2b4da080397702d0746,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -33885,6 +33951,11 @@ PrefabInstance:
       propertyPath: Weather
       value: 
       objectReference: {fileID: 1734534109}
+    - target: {fileID: 1854014343154962264, guid: 2a09638f68d6b2b4da080397702d0746,
+        type: 3}
+      propertyPath: babyAnim
+      value: 
+      objectReference: {fileID: 2006440800}
     - target: {fileID: 1854014343154962264, guid: 2a09638f68d6b2b4da080397702d0746,
         type: 3}
       propertyPath: umbrella

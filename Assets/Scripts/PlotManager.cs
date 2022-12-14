@@ -17,6 +17,7 @@ public class PlotManager : MonoBehaviour
     public bool canPlantUpgrade = false;
 
     public GameObject sproutAnim;
+    public GameObject babyAnim;
     public GameObject umbrella;
     public Weather Weather;
     public Button NextDay;
@@ -76,6 +77,7 @@ public class PlotManager : MonoBehaviour
             // else
             plantStage += 1;
             UpdatePlant();
+            
             sproutAnim.SetActive(false);
 
             // if(daycount == 3){
@@ -86,12 +88,18 @@ public class PlotManager : MonoBehaviour
             //     scarecrow.SetActive(false);
 
             // }
+            if(gameObject.tag == "Protected"){
+                babyAnim.SetActive(true);
+            }else{
+                babyAnim.SetActive(false);
+            }
 
             if (isRain)
             {
                 if (gameObject.tag == "Protected")
                 {
                     canHarvest = true;
+                    babyAnim.SetActive(true);
                 }
                 else if (gameObject.tag == "WillDie")
                 {
@@ -160,6 +168,7 @@ public class PlotManager : MonoBehaviour
             plant.gameObject.SetActive(false);
             umbrella.SetActive(false);
             dead.SetActive(false);
+            babyAnim.SetActive(false);
         }
         
         clicked = false;
