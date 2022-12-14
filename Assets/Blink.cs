@@ -1,28 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
+ 
 public class Blink : MonoBehaviour
 {
-    [SerializeField] GameObject blink;
-    // Start is called before the first frame update
-    void Start()
+    public Color startColor = Color.green;
+    public Color endColor = Color.white;
+    [Range(0,10)]
+    public float speed = 1;
+    private double alpha;
+ 
+    Image imgComp;
+ 
+    void Awake()
     {
-        blink.SetActive(false);
-    }
+        imgComp = GetComponent<Image>();
 
-    void Update(){
-        if(Weather.instance.isRaining){
-            Invoke("EnableBlink", 0f);
-            Invoke("DisableBlink", 0.1f);
-        }
     }
+ 
+    void Update()
+    {
+        imgComp.color = Color.Lerp(startColor, endColor, Mathf.PingPong(Time.time * speed, 1));
+        // if(endColor =)
 
-    private void EnableBlink(){
-        blink.SetActive(true);
-    }
-
-    private void DisableBlink(){
-        blink.SetActive(false);
+        
     }
 }
