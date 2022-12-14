@@ -153,6 +153,13 @@ public class PlotManager : MonoBehaviour
                 gameObject.tag = "Protected";
                 }else{
                     umbrella.SetActive(false);
+
+                    ////// ADD UMBRELLA BACK TO INVENTORY //////
+
+
+                    ////////////////////////////////////////////
+
+                    
                     if(umbrella.activeSelf == false){
                         Debug.Log(Weather.instance.isRaining);
                         if(Weather.instance.isRaining == false){
