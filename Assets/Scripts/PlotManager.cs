@@ -36,6 +36,7 @@ public class PlotManager : MonoBehaviour
 
     public Sprite[] plantStages;
     int plantStage = 0;
+    int clickCount = 0;
 
     public AudioSource plantHarvestSFX;
     public AudioClip plantNoise;
@@ -222,11 +223,21 @@ public class PlotManager : MonoBehaviour
         }
         if (isPlanted && upgradeName == "Umbrella")
         {
+            clickCount++;
+            Debug.Log(clickCount);
+            Debug.Log(clickCount%2==0);
             Debug.Log("Can plant because it is an upgrade");
+
             MouseItemData.instance.ClearSlot();
             canPlantUpgrade = true;
             umbrella.SetActive(true);
             gameObject.tag = "Protected";
+
+            if(clickCount%2==0){
+                umbrella.SetActive(false);
+            }else{
+                umbrella.SetActive(true);
+            }
         }       
         
     }
