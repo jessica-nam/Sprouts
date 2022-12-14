@@ -233,7 +233,7 @@ public class PlotManager : MonoBehaviour
             umbrella.SetActive(true);
             gameObject.tag = "Protected";
 
-            if(clickCount%2==0){
+            if(clickCount>1){
                 umbrella.SetActive(false);
                 gameObject.tag = "Untagged";
                 /// ADD BACK TO INVENTORY??? ///
@@ -242,9 +242,7 @@ public class PlotManager : MonoBehaviour
 
                 /////////////////////////////////
             }
-            // else{
-            //     umbrella.SetActive(true);
-            // }
+
         }
 
     } 
