@@ -1391,7 +1391,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: 801c78fa99755224192cd485f9061d48, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2697,7 +2697,7 @@ PrefabInstance:
         type: 3}
       propertyPath: plantStages.Array.data[1]
       value: 
-      objectReference: {fileID: 21300000, guid: 6021340fda49c7f49b8b7215532ced4e,
+      objectReference: {fileID: 21300000, guid: 5d0cf8bc4e5dc9646832170a56dde6b7,
         type: 3}
     - target: {fileID: 1854014343154962266, guid: 2a09638f68d6b2b4da080397702d0746,
         type: 3}
@@ -6938,7 +6938,7 @@ PrefabInstance:
         type: 3}
       propertyPath: plantStages.Array.data[1]
       value: 
-      objectReference: {fileID: 21300000, guid: dd97119b2156e8944b2f24588fac1609,
+      objectReference: {fileID: 21300000, guid: 5a2bbb1f36e5f84438a0d3f05d9ebd15,
         type: 3}
     - target: {fileID: 1854014343154962266, guid: 2a09638f68d6b2b4da080397702d0746,
         type: 3}
@@ -23661,7 +23661,7 @@ PrefabInstance:
         type: 3}
       propertyPath: plantStages.Array.data[1]
       value: 
-      objectReference: {fileID: 21300000, guid: 3ef51bc3abcd3f741acae6faed54f6ac,
+      objectReference: {fileID: 21300000, guid: 30fee53afccf59244ac7a4cd9f3d8c12,
         type: 3}
     - target: {fileID: 1854014343154962265, guid: 2a09638f68d6b2b4da080397702d0746,
         type: 3}
@@ -29322,7 +29322,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: bec8c2e2085e330489839acca99c541a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -31214,7 +31214,7 @@ PrefabInstance:
         type: 3}
       propertyPath: plantStages.Array.data[1]
       value: 
-      objectReference: {fileID: 21300000, guid: 0057d847b51a4404d9d92936dec17a21,
+      objectReference: {fileID: 21300000, guid: 2973d0e7b3bf0944db9a17a114ebbe2c,
         type: 3}
     - target: {fileID: 1854014343154962265, guid: 2a09638f68d6b2b4da080397702d0746,
         type: 3}
@@ -32659,6 +32659,11 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1854014342256779131, guid: 2a09638f68d6b2b4da080397702d0746,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1854014343154962247, guid: 2a09638f68d6b2b4da080397702d0746,
         type: 3}
       propertyPath: m_Name
@@ -32718,7 +32723,7 @@ PrefabInstance:
         type: 3}
       propertyPath: plantStages.Array.data[1]
       value: 
-      objectReference: {fileID: 21300000, guid: dbb796ca003752e4f8ad5b1ed7b05246,
+      objectReference: {fileID: 21300000, guid: 10bacdf731eba3548aae70c491b78995,
         type: 3}
     - target: {fileID: 1854014343154962265, guid: 2a09638f68d6b2b4da080397702d0746,
         type: 3}
@@ -32790,6 +32795,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 20.862188
+      objectReference: {fileID: 0}
+    - target: {fileID: 3149053671763459311, guid: 2a09638f68d6b2b4da080397702d0746,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -33915,6 +33925,12 @@ PrefabInstance:
       propertyPath: plantStages.Array.data[0]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1854014343154962264, guid: 2a09638f68d6b2b4da080397702d0746,
+        type: 3}
+      propertyPath: plantStages.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: caa3482a56349044ab335899151f51a6,
+        type: 3}
     - target: {fileID: 1854014343154962265, guid: 2a09638f68d6b2b4da080397702d0746,
         type: 3}
       propertyPath: m_Sprite
