@@ -235,12 +235,19 @@ public class PlotManager : MonoBehaviour
 
             if(clickCount%2==0){
                 umbrella.SetActive(false);
-            }else{
-                umbrella.SetActive(true);
+                gameObject.tag = "Untagged";
+                /// ADD BACK TO INVENTORY??? ///
+
+
+
+                /////////////////////////////////
             }
-        }       
-        
-    }
+            // else{
+            //     umbrella.SetActive(true);
+            // }
+        }
+
+    } 
 
     void UpdatePlant()
     {
