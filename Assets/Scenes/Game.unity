@@ -2708,7 +2708,7 @@ PrefabInstance:
         type: 3}
       propertyPath: plantStages.Array.data[1]
       value: 
-      objectReference: {fileID: 21300000, guid: 5d0cf8bc4e5dc9646832170a56dde6b7,
+      objectReference: {fileID: 21300000, guid: 54d3b27c6b7a9be44b28d58bcd10f2ed,
         type: 3}
     - target: {fileID: 1854014343154962266, guid: 2a09638f68d6b2b4da080397702d0746,
         type: 3}
@@ -7175,7 +7175,7 @@ PrefabInstance:
         type: 3}
       propertyPath: plantStages.Array.data[1]
       value: 
-      objectReference: {fileID: 21300000, guid: 5a2bbb1f36e5f84438a0d3f05d9ebd15,
+      objectReference: {fileID: 21300000, guid: 163b8cb7ac411cb42a9bbca5d2af2119,
         type: 3}
     - target: {fileID: 1854014343154962266, guid: 2a09638f68d6b2b4da080397702d0746,
         type: 3}
@@ -7842,7 +7842,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1236949250
 RectTransform:
   m_ObjectHideFlags: 0
