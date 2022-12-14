@@ -92,7 +92,10 @@ public class PlotManager : MonoBehaviour
             if(gameObject.tag == "Protected"){
                 babyAnim.SetActive(true);
             }else{
-                babyAnim.SetActive(false);
+                if(Weather.instance.isRaining){
+                    babyAnim.SetActive(false);
+                }
+
             }
 
             if (isRain)
@@ -144,7 +147,22 @@ public class PlotManager : MonoBehaviour
             }
             else
             {
+                if (MouseItemData.instance.hasItem)
+                {
                 Upgrade();
+                gameObject.tag = "Protected";
+                }else{
+                    umbrella.SetActive(false);
+                    if(umbrella.activeSelf == false){
+                        Debug.Log(Weather.instance.isRaining);
+                        if(Weather.instance.isRaining == false){
+                            gameObject.tag = "Protected";
+                        }else{
+                            gameObject.tag = "WillDie";
+                        }
+                    }
+                    
+                }
             }
         }
         
@@ -233,15 +251,15 @@ public class PlotManager : MonoBehaviour
             umbrella.SetActive(true);
             gameObject.tag = "Protected";
 
-            if(clickCount>1){
-                umbrella.SetActive(false);
-                gameObject.tag = "Untagged";
-                /// ADD BACK TO INVENTORY??? ///
+            // if(clickCount%2==0){
+            //     umbrella.SetActive(false);
+            //     clickCount = 0;
+            //     /// ADD BACK TO INVENTORY??? ///
 
 
 
-                /////////////////////////////////
-            }
+            //     /////////////////////////////////
+            // }
 
         }
 
