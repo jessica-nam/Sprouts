@@ -22,7 +22,6 @@ public class PlotManager : MonoBehaviour
     public Weather Weather;
     public Button NextDay;
     
-    //[SerializeField] private Sprite icon;
 
     public GameObject UIObjs;
 
@@ -72,23 +71,12 @@ public class PlotManager : MonoBehaviour
         
         if (plantStage < plantStages.Length - 1)
         {
-            //if good baby
-            //daycount+=1
 
-            // else
             plantStage += 1;
             UpdatePlant();
             
             sproutAnim.SetActive(false);
 
-            // if(daycount == 3){
-            //     plantStage += 1;
-            //     UpdatePlant();
-            //     sproutAnim.SetActive(false);
-
-            //     scarecrow.SetActive(false);
-
-            // }
             if(gameObject.tag == "Protected"){
                 babyAnim.SetActive(true);
             }else{
@@ -159,7 +147,7 @@ public class PlotManager : MonoBehaviour
 
                     ////////////////////////////////////////////
 
-                    
+
                     if(umbrella.activeSelf == false){
                         Debug.Log(Weather.instance.isRaining);
                         if(Weather.instance.isRaining == false){
@@ -257,16 +245,6 @@ public class PlotManager : MonoBehaviour
             canPlantUpgrade = true;
             umbrella.SetActive(true);
             gameObject.tag = "Protected";
-
-            // if(clickCount%2==0){
-            //     umbrella.SetActive(false);
-            //     clickCount = 0;
-            //     /// ADD BACK TO INVENTORY??? ///
-
-
-
-            //     /////////////////////////////////
-            // }
 
         }
 
