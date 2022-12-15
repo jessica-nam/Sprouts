@@ -933,7 +933,7 @@ RectTransform:
   - {fileID: 250361397}
   - {fileID: 4845718}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1239,7 +1239,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &250361396
 GameObject:
@@ -1336,6 +1336,7 @@ GameObject:
   - component: {fileID: 277334077}
   - component: {fileID: 277334080}
   - component: {fileID: 277334081}
+  - component: {fileID: 277334082}
   m_Layer: 0
   m_Name: Shop Object
   m_TagString: Untagged
@@ -1416,7 +1417,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1465,6 +1466,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 30.000002, y: 30.000002}
   m_EdgeRadius: 0
+--- !u!50 &277334082
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 277334076}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &293440519
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2725,7 +2747,7 @@ PrefabInstance:
     - target: {fileID: 1854014343154962266, guid: 2a09638f68d6b2b4da080397702d0746,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 1854014343154962266, guid: 2a09638f68d6b2b4da080397702d0746,
         type: 3}
@@ -3373,13 +3395,15 @@ MonoBehaviour:
   - {fileID: 460192868}
   shopPanelsUpgrades:
   - {fileID: 1074129216}
-  purchaseBtns:
+  seedPurchaseBtns:
   - {fileID: 862362720}
   - {fileID: 1694031042}
   - {fileID: 1080842298}
   - {fileID: 1934322952}
   - {fileID: 2120562069}
   - {fileID: 460192867}
+  upgradePurchaseBtns:
+  - {fileID: 1773087859}
   UIObjs: {fileID: 65597449}
   sellMgr: {fileID: 810285773}
   buyBtn: {fileID: 305861833}
@@ -3675,7 +3699,7 @@ Transform:
   m_Children:
   - {fileID: 1447618504}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &680588365
 Rigidbody2D:
@@ -6172,7 +6196,7 @@ RectTransform:
   m_Children:
   - {fileID: 666664222}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -7209,7 +7233,7 @@ PrefabInstance:
     - target: {fileID: 1854014343154962266, guid: 2a09638f68d6b2b4da080397702d0746,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1854014343154962266, guid: 2a09638f68d6b2b4da080397702d0746,
         type: 3}
@@ -8606,7 +8630,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1352607664 stripped
 GameObject:
@@ -23959,7 +23983,7 @@ PrefabInstance:
     - target: {fileID: 1854014343154962266, guid: 2a09638f68d6b2b4da080397702d0746,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1854014343154962266, guid: 2a09638f68d6b2b4da080397702d0746,
         type: 3}
@@ -29531,7 +29555,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1518328903
 GameObject:
@@ -29689,6 +29713,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f26cf9ded47cf0140957490a16f85acc, type: 3}
   lastTime: 0
   duration: 0.45
+  ShopCanvas: {fileID: 962777765}
 --- !u!61 &1518328909
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -31151,6 +31176,18 @@ MonoBehaviour:
   rainParticles: {fileID: 1514371670}
   rainIcon: {fileID: 676210333}
   sunIcon: {fileID: 1438418781}
+--- !u!114 &1773087859 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 859605862794872272, guid: 6d3261781a4aaaa439e0f17a862b77dd,
+    type: 3}
+  m_PrefabInstance: {fileID: 1074129214}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1780867754
 GameObject:
   m_ObjectHideFlags: 0
@@ -31528,7 +31565,7 @@ PrefabInstance:
     - target: {fileID: 1854014343154962266, guid: 2a09638f68d6b2b4da080397702d0746,
         type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1854014343154962266, guid: 2a09638f68d6b2b4da080397702d0746,
         type: 3}
@@ -33189,7 +33226,7 @@ PrefabInstance:
     - target: {fileID: 1854014343154962266, guid: 2a09638f68d6b2b4da080397702d0746,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1854014343154962266, guid: 2a09638f68d6b2b4da080397702d0746,
         type: 3}
@@ -34415,7 +34452,7 @@ PrefabInstance:
     - target: {fileID: 1854014343154962266, guid: 2a09638f68d6b2b4da080397702d0746,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1854014343154962266, guid: 2a09638f68d6b2b4da080397702d0746,
         type: 3}

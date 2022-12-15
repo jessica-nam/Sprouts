@@ -17,7 +17,8 @@ public class ShopManager : MonoBehaviour
     public GameObject[] shopPanelsGO_Upgrades;
     public ShopTemplate[] shopPanelsSeeds;
     public ShopTemplate[] shopPanelsUpgrades;
-    public Button[] purchaseBtns;
+    public Button[] seedPurchaseBtns;
+    public Button[] upgradePurchaseBtns;
 
     public GameObject UIObjs; 
     private GameObject invHolder;
@@ -73,28 +74,6 @@ public class ShopManager : MonoBehaviour
         LoadPanels();
         CheckPurchaseable();
     }
-
-    //private void Update()
-    //{
-    //    CheckIfSelling();
-    //}
-    
-    //public void CheckIfSelling()
-    //{
-    //    var results = mouseObj.getObjectsClickedOn();
-    //    var thisItem = mouseObj.getCurrentMouseItem().ItemData;
-    //    foreach (var result in results)
-    //    {
-    //        if (result.gameObject.name == "Shop" && mouseObj.hasItem && Mouse.current.leftButton.wasPressedThisFrame && thisItem.sellable) // if item on mouse and player clicks on shop canvas and obj is sellable
-    //        {
-    //            DisplayShopSell();      // swap to sell view
-    //            DisplayItemsToSell();   // add template for every item dragged onto sell view
-    //            mouseObj.ClearSlot();   // destroy item on mouse
-    //        }
-    //    }
-    //}
-
-
     
     public void DisplayShopSell()
     {
@@ -154,21 +133,21 @@ public class ShopManager : MonoBehaviour
             for (int i = 0; i < shopItemsSeeds.Length; i++)
             {
                 if (coinMgr.coins >= shopItemsSeeds[i].cost) // if player has enough money
-                    purchaseBtns[i].interactable = true;
+                    seedPurchaseBtns[i].interactable = true;
                 else
-                    purchaseBtns[i].interactable = false;
+                    seedPurchaseBtns[i].interactable = false;
             }
         }
 
         // upgrades
         else if (upgradesContent.gameObject.activeSelf)
-        {
+        {            
             for (int i = 0; i < shopItemsUpgrades.Length; i++)
             {
                 if (coinMgr.coins >= shopItemsUpgrades[i].cost) // if player has enough money
-                    purchaseBtns[i].interactable = true;
+                    upgradePurchaseBtns[i].interactable = true;
                 else
-                    purchaseBtns[i].interactable = false;
+                    upgradePurchaseBtns[i].interactable = false;
             }
         }
     }
