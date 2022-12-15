@@ -31,6 +31,7 @@ public class ShopManager : MonoBehaviour
     public Button sellBtn;
     public GameObject seedsContent;
     public GameObject upgradesContent;
+    public GameObject sellContent;
 
     Transform childFound = null;
 
@@ -73,25 +74,27 @@ public class ShopManager : MonoBehaviour
         CheckPurchaseable();
     }
 
-    private void Update()
-    {
-        CheckIfSelling();
-    }
+    //private void Update()
+    //{
+    //    CheckIfSelling();
+    //}
     
-    public void CheckIfSelling()
-    {
-        var results = mouseObj.getObjectsClickedOn();
-        var thisItem = mouseObj.getCurrentMouseItem().ItemData;
-        foreach (var result in results)
-        {
-            if (result.gameObject.name == "Shop" && mouseObj.hasItem && Mouse.current.leftButton.wasPressedThisFrame && thisItem.sellable) // if item on mouse and player clicks on shop canvas and obj is sellable
-            {
-                DisplayShopSell();      // swap to sell view
-                DisplayItemsToSell();   // add template for every item dragged onto sell view
-                mouseObj.ClearSlot();   // destroy item on mouse
-            }
-        }
-    }
+    //public void CheckIfSelling()
+    //{
+    //    var results = mouseObj.getObjectsClickedOn();
+    //    var thisItem = mouseObj.getCurrentMouseItem().ItemData;
+    //    foreach (var result in results)
+    //    {
+    //        if (result.gameObject.name == "Shop" && mouseObj.hasItem && Mouse.current.leftButton.wasPressedThisFrame && thisItem.sellable) // if item on mouse and player clicks on shop canvas and obj is sellable
+    //        {
+    //            DisplayShopSell();      // swap to sell view
+    //            DisplayItemsToSell();   // add template for every item dragged onto sell view
+    //            mouseObj.ClearSlot();   // destroy item on mouse
+    //        }
+    //    }
+    //}
+
+
     
     public void DisplayShopSell()
     {
@@ -103,12 +106,12 @@ public class ShopManager : MonoBehaviour
         sellBtn.onClick.Invoke();
     }
 
-    public void DisplayItemsToSell()
+    public void DisplayItemToSell(ShopItemSO item)
     {
         Transform parentTransform = CustomFindChild("Templates Container", this.transform);
         if (parentTransform)
         {
-            sellMgr.UpdateSellScreen(parentTransform);
+            sellMgr.UpdateSellScreen(parentTransform, item);
         }
         else
         {

@@ -46,9 +46,9 @@ public class SellItem : MonoBehaviour
             sellItemsButton.interactable = false;
     }
 
-    public void UpdateSellScreen(Transform parentTransform)
+    public void UpdateSellScreen(Transform parentTransform, ShopItemSO thisItem)
     {
-        ShopItemSO thisItem = mouseObj.getCurrentMouseItem().ItemData;
+        Debug.Log(thisItem.sellIndex);
         if (thisItem.sellIndex > -1) // has already been assigned to a container
         {
             // set container at that index to active

@@ -1783,6 +1783,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 825882590}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &305861834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3374,6 +3386,7 @@ MonoBehaviour:
   sellBtn: {fileID: 719790784}
   seedsContent: {fileID: 1817871482}
   upgradesContent: {fileID: 825882590}
+  sellContent: {fileID: 810285771}
   possibleAttrs:
   - {fileID: 11400000, guid: 64e9618586432614783aa9b051ff28e8, type: 2}
   - {fileID: 11400000, guid: 455180534f8eb55489209046d8e9440d, type: 2}
@@ -3772,7 +3785,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseInventoryItem: {fileID: 93796796}
-  babyName: 
+  ShopMgr: {fileID: 666664223}
   inventoryHolder: {fileID: 2036558495}
   slots:
   - {fileID: 1288450633}
@@ -4679,7 +4692,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Restart
+  m_text: Play Again
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e47ff952878008c48b540a03d1f86033, type: 2}
   m_sharedMaterial: {fileID: 8096111763595755784, guid: e47ff952878008c48b540a03d1f86033,
@@ -4707,12 +4720,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100
+  m_fontSize: 90
   m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 100
+  m_fontSizeMax: 90
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -7858,7 +7871,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1236949250
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8234,8 +8247,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -402}
-  m_SizeDelta: {x: 500, y: 300}
+  m_AnchoredPosition: {x: 0, y: -405.01}
+  m_SizeDelta: {x: 590.07, y: 269.98}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1318116671
 MonoBehaviour:
@@ -33097,6 +33110,11 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1394435839076892181, guid: 2a09638f68d6b2b4da080397702d0746,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1854014342256779131, guid: 2a09638f68d6b2b4da080397702d0746,
         type: 3}
       propertyPath: m_IsActive
@@ -34308,6 +34326,11 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1394435839076892181, guid: 2a09638f68d6b2b4da080397702d0746,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1854014343154962247, guid: 2a09638f68d6b2b4da080397702d0746,
         type: 3}
       propertyPath: m_Name

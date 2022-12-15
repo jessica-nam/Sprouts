@@ -5,11 +5,11 @@ using UnityEngine.InputSystem;
 
 public abstract class InventoryDisplay : MonoBehaviour
 {
-
     public static InventoryDisplay instance;
     [SerializeField] MouseItemData mouseInventoryItem;
 
-    public string babyName;
+    private string babyName;
+    public ShopManager ShopMgr;
 
     protected InventorySystem inventorySystem;
     protected Dictionary<InventorySlot_UI, InventorySlot> slotDictionary;
@@ -46,19 +46,28 @@ public abstract class InventoryDisplay : MonoBehaviour
 
     public void SlotClicked(InventorySlot_UI clickedUISlot)
     {
-        // clicked slot has an item, mouse doesn't have item -- pick up item
-        if (clickedUISlot.AssignedInvSlot.ItemData != null && mouseInventoryItem.AssignedInvSlot.ItemData == null)
+        ShopItemSO itemInSlot = clickedUISlot.AssignedInvSlot.ItemData;
+        // clicked slot has an item, mouse doesn't have item, in sell part of shop
+        if (itemInSlot != null && mouseInventoryItem.AssignedInvSlot.ItemData == null && ShopMgr.sellContent.activeSelf && itemInSlot.sellable)
         {
-           // Debug.Log(mouseInventoryItem.AssignedInvSlot.ItemData);
+            // add item to sell list
+            ShopMgr.DisplayShopSell();      // swap to sell view
+            ShopMgr.DisplayItemToSell(itemInSlot);   // add template for every item dragged onto sell view
+            clickedUISlot.ClearSlot();      // clear slot
+            return;
+        }
+
+        // clicked slot has an item, mouse doesn't have item -- pick up item
+        if (itemInSlot != null && mouseInventoryItem.AssignedInvSlot.ItemData == null)
+        {
             mouseInventoryItem.UpdateMouseSlot(clickedUISlot.AssignedInvSlot);
             babyName = mouseInventoryItem.AssignedInvSlot.ItemData.name;
-           // Debug.Log(babyName);
             clickedUISlot.ClearSlot();
             return;
         }
 
         // clicked slot doesn't have item, mouse does -- place mouse item into empty slot
-        if (clickedUISlot.AssignedInvSlot.ItemData == null && mouseInventoryItem.AssignedInvSlot.ItemData != null)
+        if (itemInSlot == null && mouseInventoryItem.AssignedInvSlot.ItemData != null)
         {
             clickedUISlot.AssignedInvSlot.AssignItem(mouseInventoryItem.AssignedInvSlot);
             clickedUISlot.UpdateUISlot();
@@ -67,10 +76,10 @@ public abstract class InventoryDisplay : MonoBehaviour
         }
 
         // both slots have item 
-        if (clickedUISlot.AssignedInvSlot.ItemData != null && mouseInventoryItem.AssignedInvSlot.ItemData != null)
+        if (itemInSlot != null && mouseInventoryItem.AssignedInvSlot.ItemData != null)
         {
             // If items same -- combine stack
-            if (clickedUISlot.AssignedInvSlot.ItemData == mouseInventoryItem.AssignedInvSlot.ItemData)
+            if (itemInSlot == mouseInventoryItem.AssignedInvSlot.ItemData)
             {
                 clickedUISlot.AssignedInvSlot.AssignItem(mouseInventoryItem.AssignedInvSlot); // add to stack
                 clickedUISlot.UpdateUISlot();

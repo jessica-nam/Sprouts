@@ -25,8 +25,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1394435839076892181}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.1, y: 8.4, z: 0}
-  m_LocalScale: {x: 1.0159254, y: 0.8486878, z: 1}
+  m_LocalPosition: {x: -5.8, y: 4.669, z: 0}
+  m_LocalScale: {x: 0.67152673, y: 0.7103619, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1854014343154962266}
@@ -271,15 +271,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02af07eba9d07d44db3d58110af440f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeName: 
-  canPlantUpgrade: 0
-  sproutAnim: {fileID: 0}
-  babyAnim: {fileID: 0}
-  umbrella: {fileID: 0}
+  sproutAnim: {fileID: 6378274012312585666}
+  babyAnim: {fileID: 3149053671763459311}
+  umbrella: {fileID: 1394435839076892181}
   Weather: {fileID: 0}
   NextDay: {fileID: 0}
   UIObjs: {fileID: 0}
-  dead: {fileID: 0}
+  headstone: {fileID: 3548657278702612128}
   plantStages:
   - {fileID: 0}
   - {fileID: 21300000, guid: 2374021822b433b4e9b5193125ed268e, type: 3}
@@ -338,8 +336,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3149053671763459311}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.1, y: 1.2, z: 0}
-  m_LocalScale: {x: 3.9932082, y: 4.368818, z: 1}
+  m_LocalPosition: {x: -0.1, y: 0.1, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1854014343154962266}
@@ -428,7 +426,7 @@ GameObject:
   - component: {fileID: 3983934831391079170}
   - component: {fileID: 6543041395059929580}
   m_Layer: 0
-  m_Name: Dead
+  m_Name: Headstone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
