@@ -13,6 +13,7 @@ public class NarrationManager : MonoBehaviour
 {
 
     //Fade letter in and out
+    public GameObject ToolTips;
     public CanvasGroup fade;
     bool fadeIn = false;
     public bool narration = true;
@@ -97,6 +98,7 @@ public class NarrationManager : MonoBehaviour
         shop.SetActive(true);
         WeatherWindow.SetActive(true);
         weather.SetActive(true);
+        ToolTips.SetActive(true);
     }
     public void pressedButton()
     {
@@ -107,4 +109,6 @@ public class NarrationManager : MonoBehaviour
             beginGame();
             
     }
+
+
 }
