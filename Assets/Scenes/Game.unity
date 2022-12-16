@@ -3608,7 +3608,6 @@ MonoBehaviour:
   dayLimit: 10
   gameEnd: 0
   endingGood: 0
-  scoreGoal: 20
   musicPlayer: {fileID: 1349092905}
   UIAudio: {fileID: 3721212}
   goodEndMusic: {fileID: 8300000, guid: 37e8fa1c80c0f794c941ecfbdee76fe1, type: 3}
@@ -29715,7 +29714,9 @@ MonoBehaviour:
   duration: 0.45
   ShopCanvas: {fileID: 962777765}
   TimePanel: {fileID: 1508976018}
-  giveUpButton: {fileID: 4845719}
+  buyBtn: {fileID: 305861833}
+  sellBtn: {fileID: 719790784}
+  giveUpBtn: {fileID: 4845719}
 --- !u!61 &1518328909
 BoxCollider2D:
   m_ObjectHideFlags: 0
