@@ -13,7 +13,7 @@ public class TimeManager : MonoBehaviour
     public int dayLimit = 10;
     public bool gameEnd = false;
     public bool endingGood = false;
-    public int scoreGoal = 150;
+    private int scoreGoal = 150;
     public AudioSource musicPlayer;
     public AudioSource UIAudio;
     public AudioClip goodEndMusic;
@@ -77,7 +77,7 @@ public class TimeManager : MonoBehaviour
             StateUI.SetActive(true);
             Shop.SetActive(false);
             swapSongEnd();
-
+            
             if (scoreMgr.score >= scoreGoal)
             {
                 endingGood = true;

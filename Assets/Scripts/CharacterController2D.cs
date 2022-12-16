@@ -20,7 +20,9 @@ public class CharacterController2D : MonoBehaviour
 
     public GameObject ShopCanvas;
     public GameObject TimePanel;
-    public Button giveUpButton;
+    public Button buyBtn;
+    public Button sellBtn;
+    public Button giveUpBtn;
 
     void Awake()
     {
@@ -32,17 +34,20 @@ public class CharacterController2D : MonoBehaviour
 
     private void Update()
     {
-        // E = open shop
-        if (Input.GetKeyDown(KeyCode.E)) ShopCanvas.SetActive(true);
+        // E = open/close shop
+        if (Input.GetKeyDown(KeyCode.E)) ShopCanvas.SetActive(!ShopCanvas.activeSelf);
 
         // ESC = exit shop
         if (ShopCanvas.activeSelf && Input.GetKeyDown(KeyCode.Escape)) ShopCanvas.SetActive(false);
 
-        // N = open next day panel
-        if (!TimePanel.activeSelf && Input.GetKeyDown(KeyCode.N)) TimePanel.SetActive(true);
-   
+        // B = buy screen
+        if (ShopCanvas.activeSelf && Input.GetKeyDown(KeyCode.B)) buyBtn.onClick.Invoke();
+
+        // S = sell screen
+        if (ShopCanvas.activeSelf && Input.GetKeyDown(KeyCode.S)) sellBtn.onClick.Invoke();
+
         // R = give up/restart
-        if (Input.GetKeyDown(KeyCode.R)) giveUpButton.onClick.Invoke();
+        if (Input.GetKeyDown(KeyCode.R)) giveUpBtn.onClick.Invoke();
     }
 
     void FixedUpdate()
