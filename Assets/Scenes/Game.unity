@@ -29714,6 +29714,8 @@ MonoBehaviour:
   lastTime: 0
   duration: 0.45
   ShopCanvas: {fileID: 962777765}
+  TimePanel: {fileID: 1508976018}
+  giveUpButton: {fileID: 4845719}
 --- !u!61 &1518328909
 BoxCollider2D:
   m_ObjectHideFlags: 0

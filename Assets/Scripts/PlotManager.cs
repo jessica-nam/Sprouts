@@ -89,28 +89,10 @@ public class PlotManager : MonoBehaviour
                     else
                     {
                         canHarvest = false;
-                        //plant.gameObject.SetActive(false);
                         headstone.SetActive(true);
                     }
                 }
             }
-            
-            //if (isRain)
-            //{
-            //    if (umbrella.activeSelf && hasPlant) 
-            //    {
-            //        canHarvest = true;
-            //        babyAnim.SetActive(true);
-            //    }
-            //    else if (thisPlot.tag == "WillDie")
-            //    {
-            //        canHarvest = false;
-            //        plant.gameObject.SetActive(false);
-            //        dead.SetActive(true);
-            //    }
-            //}else{
-            //    canHarvest = true;
-            //}
         }
 
         // remove all umbrellas
